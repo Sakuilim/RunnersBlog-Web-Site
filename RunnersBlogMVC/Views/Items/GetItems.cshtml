@@ -1,0 +1,13 @@
+﻿@using RunnersBlogMVC.Controllers
+@{
+    ViewData["Title"] = "Ani API Page";
+}
+@{
+    //var controller = new ItemsController();
+    //var items = controller.GetItems();
+   // var items = ViewData["items"];
+}
+@foreach (var item in ViewBag.Items)
+{
+    <p>@item</p>
+}
