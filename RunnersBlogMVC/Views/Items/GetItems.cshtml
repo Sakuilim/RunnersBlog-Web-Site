@@ -1,13 +1,67 @@
-﻿@using RunnersBlogMVC.Controllers
+﻿@using MongoDB.Driver
+@using RunnersBlogMVC.Controllers
+@using RunnersBlogMVC.DTO
+@using RunnersBlogMVC.Repositories
 @{
-    ViewData["Title"] = "Ani API Page";
+    ViewData["Title"] = "Items page";
 }
-@{
-    //var controller = new ItemsController();
-    //var items = controller.GetItems();
-   // var items = ViewData["items"];
-}
-@foreach (var item in ViewBag.Items)
-{
-    <p>@item</p>
+<h1>All Items</h1>
+<div>
+</div>
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">List of Running Shoes</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Items" asp-action="CreateItem" class="btn btn-primary">
+                <i class="bi bi-bag-plus-fill"></i> &nbsp; Create New Shoe
+            </a>
+        </div>
+    </div>
+</div>
+<br />
+
+
+<table class ="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                Name of Shoe
+            </th>
+            <th>
+                Price
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var obj in ViewBag.Items)
+        {
+            <tr>
+                <td width="50%">
+                    @obj.Name
+                </td>
+                <td width="50%">
+                    @obj.Price
+                </td>
+                <td>
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Items" asp-action="EditItem" asp-route-id="@obj.Id"
+                        class="btn btn-primary mx-2"> <i class="bi bi-pencil-square"></i>Edit</a>
+                    </div>
+                </td>
+                <td>
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Items" asp-action="DeleteItem" asp-route-id="@obj.Id"
+                        class="btn btn-primary mx-2"> <i class="bi bi-trash3"></i>Delete</a>
+                    </div>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+
+</table>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

@@ -1,12 +1,24 @@
-using Microsoft.OpenApi.Models;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Serializers;
+using MongoDB.Driver;
 using RunnersBlogMVC.Repositories;
+using RunnersBlogMVC.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
+BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(BsonType.String));
+ConfigurationManager configuration = builder.Configuration;
 builder.Services.AddControllersWithViews();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<IInMemItemsRepository,InMemItemsRepository>();
+builder.Services.AddSingleton<IItemsRepository,MongoDbItemsRepo>();
+builder.Services.AddSingleton<IMongoClient>(serviceProvider =>
+{
+    var settings = configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
+    return new MongoClient(settings.ConnectionString);
+});
 
 var app = builder.Build();
 

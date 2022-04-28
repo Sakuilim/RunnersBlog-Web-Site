@@ -7,39 +7,38 @@ using System.Linq;
 
 namespace RunnersBlogMVC.Controllers
 {
-    [ApiController]
-    [Route("/items")]
     public class ItemsController : Controller
     {
-        private readonly IInMemItemsRepository repo;
-        public ItemsController(IInMemItemsRepository repo)
+        private readonly IItemsRepository repo;
+        public ItemsController(IItemsRepository repo)
         {
             this.repo = repo;
         }
         // GET /items
         [HttpGet]
-        //public IActionResult GetItems()
-        public IEnumerable<ItemDto> GetItems()
+        public async Task<ActionResult> GetItemsAsync()
         {
-            var items = repo.GetItems().Select(item => item.AsDto());
+            var items = (await repo.GetItemsAsync())
+                        .Select(item => item.AsDto());
             ViewBag.Items = items;
-            return items;
-            // return View();
+            // return items;
+            return View();
         }
         // GET /items/{id}
-        [HttpGet("{id}")]
-        public ActionResult<ItemDto> GetItem(Guid id)
+        [HttpGet]
+        public async Task<ActionResult<ItemDto>> EditItemAsync(Guid id)
         {
-            var item = repo.GetItem(id);
+            var item = await repo.GetItemAsync(id);
             if (item is null)
             {
                 return NotFound();
             }
-            return item.AsDto();
+            return View(item.AsDto());
         }
         //POST /items
         [HttpPost]
-        public ActionResult<ItemDto> CreateItem(CreateItemDto itemDto)
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CreateItemAsync(CreateItemDto itemDto)
         {
             Item item = new()
             {
@@ -49,42 +48,60 @@ namespace RunnersBlogMVC.Controllers
                 CreatedDate = DateTimeOffset.UtcNow,
             };
 
-            repo.CreateItem(item);
-
-            return CreatedAtAction(nameof(GetItem), new { id = item.Id }, item.AsDto());
+            await repo.CreateItemAsync(item);
+            //return CreatedAtAction(nameof(GetItemAsync), new { id = item.Id }, item.AsDto());
+            //  return View();
+            return RedirectToAction("GetItems");
         }
         //PUT /items/{id}
-        [HttpPut("{id}")]
-        public ActionResult UpdateItem(Guid id, UpdateItemDto itemDto)
+        [HttpPost]
+        public async Task<ActionResult> EditItemAsync(Guid id, ItemDto itemDto)
         {
-            var existingItem = repo.GetItem(id);
-            if(existingItem is null)
+            var existingItem = await repo.GetItemAsync(id);
+            if (existingItem is null)
             {
                 return NotFound();
             }
 
             Item updatedItem = existingItem with
-            { 
+            {
                 Name = itemDto.Name,
                 Price = itemDto.Price,
             };
 
-            repo.UpdateItem(updatedItem);
-            return NoContent();
+            await repo.UpdateItemAsync(updatedItem);
+            // return NoContent();
+            // return View(updatedItem);
+            return RedirectToAction("GetItems");
+        }
+        [HttpGet]
+        public async Task<ActionResult<ItemDto>> DeleteItemAsync(Guid id)
+        {
+            var item = await repo.GetItemAsync(id);
+            if (item is null)
+            {
+                return NotFound();
+            }
+            return View(item.AsDto());
         }
         //Delete /items/{id}
-        [HttpDelete("{id}")]
-        public ActionResult DeleteItem(Guid id)
+        [HttpPost]
+        public async Task<ActionResult> DeleteItemPOSTAsync(Guid id)
         {
-            var existingItem = repo.GetItem(id);
-            if(existingItem is null)
+            var existingItem = await repo.GetItemAsync(id);
+            if (existingItem is null)
             {
                 return NotFound();
             }
 
-            repo.DeleteItem(id);
-            return NoContent();
-        }
+            await repo.DeleteItemAsync(id);
 
+            return RedirectToAction("GetItems");
+        }
+        [HttpGet]
+        public ActionResult CreateItem()
+        {
+            return View();
+        }
     }
 }
