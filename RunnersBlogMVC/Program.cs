@@ -2,6 +2,7 @@
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
+using RunnersBlogMVC.Models;
 using RunnersBlogMVC.Repositories;
 using RunnersBlogMVC.Settings;
 
@@ -10,15 +11,23 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
 BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(BsonType.String));
+
 ConfigurationManager configuration = builder.Configuration;
+
 builder.Services.AddControllersWithViews();
+
 builder.Services.AddSwaggerGen();
+
 builder.Services.AddSingleton<IItemsRepository,MongoDbItemsRepo>();
+var settings = configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
 builder.Services.AddSingleton<IMongoClient>(serviceProvider =>
 {
-    var settings = configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
     return new MongoClient(settings.ConnectionString);
 });
+builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
+    .AddMongoDbStores<ApplicationUser, ApplicationRole, Guid>(
+    settings.ConnectionString, "Users"
+    );
 
 var app = builder.Build();
 
@@ -35,6 +44,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseSwagger();

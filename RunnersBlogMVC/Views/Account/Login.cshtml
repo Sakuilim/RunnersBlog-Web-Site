@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Login</h1>
+@*<h1 class="bg-info text-white"</h1>*@
+<div class="text-danger" asp-validation-summary="All"></div>
+
+<form method="post">
+    <div class="col-md-4">
+        <div class="col-md-4">
+            <label>Email</label>
+            <input name="email" class="form-control" />
+        </div>
+        <div class="col-md-4">
+            <label>Password</label>
+            <input name="password" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Login</button>
+    </div>
+</form>

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RunnersBlogMVC.DTO;
 using RunnersBlogMVC.Models;
@@ -7,6 +8,7 @@ using System.Linq;
 
 namespace RunnersBlogMVC.Controllers
 {
+    //[Authorize]
     public class ItemsController : Controller
     {
         private readonly IItemsRepository repo;
@@ -14,30 +16,26 @@ namespace RunnersBlogMVC.Controllers
         {
             this.repo = repo;
         }
-        // GET /items
+        // GET /items/GetItems
         [HttpGet]
         public async Task<ActionResult> GetItemsAsync()
         {
             var items = (await repo.GetItemsAsync())
                         .Select(item => item.AsDto());
             ViewBag.Items = items;
-            // return items;
             return View();
         }
-        // GET /items/{id}
+        // GET /items/CreateItem
         [HttpGet]
-        public async Task<ActionResult<ItemDto>> EditItemAsync(Guid id)
+        [Authorize(Roles = "Admin")]
+        public ActionResult CreateItem()
         {
-            var item = await repo.GetItemAsync(id);
-            if (item is null)
-            {
-                return NotFound();
-            }
-            return View(item.AsDto());
+            return View();
         }
-        //POST /items
+        //POST /CreateItem/Item/{id}
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles ="Admin")]
         public async Task<ActionResult> CreateItemAsync(CreateItemDto itemDto)
         {
             Item item = new()
@@ -49,12 +47,23 @@ namespace RunnersBlogMVC.Controllers
             };
 
             await repo.CreateItemAsync(item);
-            //return CreatedAtAction(nameof(GetItemAsync), new { id = item.Id }, item.AsDto());
-            //  return View();
             return RedirectToAction("GetItems");
         }
-        //PUT /items/{id}
+        // GET Items/EditItem/{id}
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult<ItemDto>> EditItemAsync(Guid id)
+        {
+            var item = await repo.GetItemAsync(id);
+            if (item is null)
+            {
+                return NotFound();
+            }
+            return View(item.AsDto());
+        }
+        //PUT Items/EditItem/{id}
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> EditItemAsync(Guid id, ItemDto itemDto)
         {
             var existingItem = await repo.GetItemAsync(id);
@@ -70,11 +79,11 @@ namespace RunnersBlogMVC.Controllers
             };
 
             await repo.UpdateItemAsync(updatedItem);
-            // return NoContent();
-            // return View(updatedItem);
             return RedirectToAction("GetItems");
         }
+        //DELETE Items/DeleteItem/{id}
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<ItemDto>> DeleteItemAsync(Guid id)
         {
             var item = await repo.GetItemAsync(id);
@@ -84,8 +93,9 @@ namespace RunnersBlogMVC.Controllers
             }
             return View(item.AsDto());
         }
-        //Delete /items/{id}
+        //DELETE Items/DeleteItem/{id}
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteItemPOSTAsync(Guid id)
         {
             var existingItem = await repo.GetItemAsync(id);
@@ -95,13 +105,7 @@ namespace RunnersBlogMVC.Controllers
             }
 
             await repo.DeleteItemAsync(id);
-
             return RedirectToAction("GetItems");
-        }
-        [HttpGet]
-        public ActionResult CreateItem()
-        {
-            return View();
         }
     }
 }

@@ -23,7 +23,7 @@
 <br />
 
 
-<table class ="table table-bordered table-striped" style="width:100%">
+<table class="table table-bordered table-striped" style="width:100%">
     <thead>
         <tr>
             <th>
@@ -35,7 +35,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach(var obj in ViewBag.Items)
+        @foreach (var obj in ViewBag.Items)
         {
             <tr>
                 <td width="50%">
@@ -44,18 +44,23 @@
                 <td width="50%">
                     @obj.Price
                 </td>
-                <td>
-                    <div class="w-75 btn-group" role="group">
-                        <a asp-controller="Items" asp-action="EditItem" asp-route-id="@obj.Id"
-                        class="btn btn-primary mx-2"> <i class="bi bi-pencil-square"></i>Edit</a>
-                    </div>
-                </td>
-                <td>
-                    <div class="w-75 btn-group" role="group">
-                        <a asp-controller="Items" asp-action="DeleteItem" asp-route-id="@obj.Id"
-                        class="btn btn-primary mx-2"> <i class="bi bi-trash3"></i>Delete</a>
-                    </div>
-                </td>
+                @{
+                    if (User?.Identity?.IsAuthenticated ?? false)
+                    {
+                        <td>
+                            <div class="w-75 btn-group" role="group">
+                                <a asp-controller="Items" asp-action="EditItem" asp-route-id="@obj.Id"
+                       class="btn btn-primary mx-2"> <i class="bi bi-pencil-square"></i>Edit</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="w-75 btn-group" role="group">
+                                <a asp-controller="Items" asp-action="DeleteItem" asp-route-id="@obj.Id"
+                       class="btn btn-primary mx-2"> <i class="bi bi-trash3"></i>Delete</a>
+                            </div>
+                        </td>
+                    }
+                }
 
             </tr>
         }
@@ -63,5 +68,7 @@
 
 </table>
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
 }
