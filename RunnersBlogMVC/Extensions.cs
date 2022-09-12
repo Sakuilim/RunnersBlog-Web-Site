@@ -9,10 +9,8 @@ namespace RunnersBlogMVC
         {
             return new ItemDto
             {
-                Id = item.Id,
                 Name = item.Name,
-                Price = item.Price,
-                CreatedDate = item.CreatedDate
+                Price = item.Price
             };  
 
         }
