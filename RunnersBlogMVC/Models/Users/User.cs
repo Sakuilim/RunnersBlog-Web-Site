@@ -5,14 +5,15 @@ namespace RunnersBlogMVC.Models
 {
     public class User
     {
-        [Required(ErrorMessage = "Sorry the email is invalid")]
+        [EmailAddress]
+        [Required(ErrorMessage = "Sorry the Email is invalid")]
         public string Email { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Sorry the Name is invalid")]
         public string Name { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Sorry the Password is invalid")]
         public string Password { get; set; }
         [EnumDataType(typeof(UserRole))]
-        public string Role { get; set; }
+        public string Role { get; set; } = UserRole.User.ToString();
     }
     public enum UserRole
     {

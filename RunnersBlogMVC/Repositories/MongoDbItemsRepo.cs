@@ -20,24 +20,20 @@ namespace RunnersBlogMVC.Repositories
         {
             await itemsCollection.InsertOneAsync(item);
         }
-
         public async Task DeleteItemAsync(Guid Id)
         {
             var filter = filterBuilder.Eq(item => item.Id, Id);
-            await itemsCollection.DeleteOneAsync(filter);  
+            await itemsCollection.DeleteOneAsync(filter);
         }
-
         public async Task<Item> GetItemAsync(Guid Id)
         {
             var filter = filterBuilder.Eq(item => item.Id, Id);
             return await itemsCollection.Find(filter).SingleOrDefaultAsync();
         }
-
         public async Task<IEnumerable<Item>> GetItemsAsync()
         {
             return await itemsCollection.Find(new BsonDocument()).ToListAsync();
         }
-
         public async Task UpdateItemAsync(Item item)
         {
             var filter = filterBuilder.Eq(existingItem => existingItem.Id, item.Id);

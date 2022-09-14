@@ -18,7 +18,7 @@
 <h2>Properties</h2>
 
 <d1>
-    @foreach ( var prop in (await Context.AuthenticateAsync()).Properties.Items)
+    @foreach (var prop in (await Context.AuthenticateAsync()).Properties.Items)
     {
         <dt>@prop.Key</dt>
         <dd>@prop.Value</dd>

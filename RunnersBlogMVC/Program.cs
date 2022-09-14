@@ -24,7 +24,8 @@ builder.Services.AddSingleton<IMongoClient>(serviceProvider =>
 {
     return new MongoClient(settings.ConnectionString);
 });
-builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
+builder.Services
+    .AddIdentity<ApplicationUser, ApplicationRole>()
     .AddMongoDbStores<ApplicationUser, ApplicationRole, Guid>(
     settings.ConnectionString, "Users"
     );

@@ -18,12 +18,23 @@ namespace RunnersBlogMVC.Controllers
         }
         // GET /items/GetItems
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult> GetItemsAsync()
         {
             var items = (await repo.GetItemsAsync())
                         .Select(item => item.AsDto());
+
             ViewBag.Items = items;
             return View();
+        }
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult> GetItemsAdminAsync()
+        {
+            var items = await repo.GetItemsAsync();
+
+            ViewBag.Items = items;
+            return View("GetItems");
         }
         // GET /items/CreateItem
         [HttpGet]
@@ -52,19 +63,19 @@ namespace RunnersBlogMVC.Controllers
         // GET Items/EditItem/{id}
         [HttpGet]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<ItemDto>> EditItemAsync(Guid id)
+        public async Task<ActionResult<Item>> EditItemAsync(Guid id)
         {
             var item = await repo.GetItemAsync(id);
             if (item is null)
             {
                 return NotFound();
             }
-            return View(item.AsDto());
+            return View(item);
         }
         //PUT Items/EditItem/{id}
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> EditItemAsync(Guid id, ItemDto itemDto)
+        public async Task<ActionResult> EditItemAsync(Guid id, Item itemDto)
         {
             var existingItem = await repo.GetItemAsync(id);
             if (existingItem is null)
@@ -84,14 +95,14 @@ namespace RunnersBlogMVC.Controllers
         //DELETE Items/DeleteItem/{id}
         [HttpGet]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<ItemDto>> DeleteItemAsync(Guid id)
+        public async Task<ActionResult<Item>> DeleteItemAsync(Guid id)
         {
             var item = await repo.GetItemAsync(id);
             if (item is null)
             {
                 return NotFound();
             }
-            return View(item.AsDto());
+            return View(item);
         }
         //DELETE Items/DeleteItem/{id}
         [HttpPost]

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AspNetCore.Identity.MongoDbCore.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RunnersBlogMVC.Models;
@@ -38,8 +39,14 @@ namespace RunnersBlogMVC.Controllers
 
                 IdentityResult result = await _userManager.CreateAsync(appUser, user.Password);
 
-                //Add a Role
                 appUser.SecurityStamp = Guid.NewGuid().ToString();
+
+                bool userRoleExists = await _roleManager.RoleExistsAsync("User");
+                if(!userRoleExists)
+                {
+                    await _roleManager.CreateAsync(new ApplicationRole() { Name = "User"});
+                }
+
                 await _userManager.AddToRoleAsync(appUser,UserRole.User.ToString());
 
                 if (result.Succeeded)
@@ -54,10 +61,15 @@ namespace RunnersBlogMVC.Controllers
                     }
                 }
             }
+            else
+            {
+                ModelState.AddModelError("Error",errorMessage: "wot");
+            }
             return View(user);
         }
         //Post: User/CreateRole
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateRole([Required][EmailAddress] string email, UserRole userRole)
         {
             if (ModelState.IsValid)
@@ -66,7 +78,15 @@ namespace RunnersBlogMVC.Controllers
                 if (existingAppUser is not null)
                 {
                     existingAppUser.Roles.Clear();
+
+                    bool userRoleExists = await _roleManager.RoleExistsAsync(userRole.ToString());
+                    if (!userRoleExists)
+                    {
+                        await _roleManager.CreateAsync(new ApplicationRole() { Name = userRole.ToString() });
+                    }
+
                     var result = await _userManager.AddToRoleAsync(existingAppUser, userRole.ToString());
+
                     if (result.Succeeded)
                     {
                         ViewBag.Message = result;
