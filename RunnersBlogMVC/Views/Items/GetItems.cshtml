@@ -15,14 +15,14 @@
         </div>
         <div class="col-6 text-end">
             <a asp-controller="Items" asp-action="CreateItem" class="btn btn-primary">
-                <i class="bi bi-bag-plus-fill"></i> &nbsp; Create New Shoe
+                <em class="bi bi-bag-plus-fill"></em> &nbsp; Create New Shoe
             </a>
         </div>
     </div>
 </div>
 <br />
 
-
+<aria-label>Stock of available shoes</aria-label>
 <table class="table table-bordered table-striped" style="width:100%">
     <thead>
         <tr>
@@ -38,10 +38,10 @@
         @foreach (var obj in ViewBag.Items)
         {
             <tr>
-                <td width="50%">
+                <td>
                     @obj.Name
                 </td>
-                <td width="50%">
+                <td>
                     @obj.Price
                 </td>
                 @{
@@ -50,19 +50,19 @@
                         <td>
                             <div class="w-75 btn-group" role="group">
                                 <a asp-controller="Items" asp-action="EditItem" asp-route-id="@obj.Id"
-                           class="btn btn-primary mx-2"> <i class="bi bi-pencil-square"></i>Edit</a>
+                           class="btn btn-primary mx-2"> <em class="bi bi-pencil-square"></em>Edit</a>
                             </div>
                         </td>
                         <td>
                             <div class="w-75 btn-group" role="group">
                                 <a asp-controller="Items" asp-action="DeleteItem" asp-route-id="@obj.Id"
-                           class="btn btn-primary mx-2"> <i class="bi bi-trash3"></i>Delete</a>
+                           class="btn btn-primary mx-2"> <em class="bi bi-trash3"></em>Delete</a>
                             </div>
                         </td>
-                        <td width="100%">
+                        <td>
                             @obj.Id
                         </td>
-                        <td width="100%">
+                        <td>
                             @obj.CreatedDate
                         </td>
                     }
