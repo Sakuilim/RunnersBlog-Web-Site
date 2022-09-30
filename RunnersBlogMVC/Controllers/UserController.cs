@@ -9,12 +9,12 @@ namespace RunnersBlogMVC.Controllers
 {
     public class UserController : Controller
     {
-        private UserManager<ApplicationUser> _userManager;
-        private RoleManager<ApplicationRole> _roleManager; 
+        private UserManager<ApplicationUser> userManager;
+        private RoleManager<ApplicationRole> roleManager;
         public UserController(UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager)
         {
-            this._userManager = userManager;
-            this._roleManager = roleManager;
+            this.userManager = userManager;
+            this.roleManager = roleManager;
         }
         public IActionResult CreateUser()
         {
@@ -31,23 +31,23 @@ namespace RunnersBlogMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                ApplicationUser appUser = new ApplicationUser
+                ApplicationUser appUser = new()
                 {
                     UserName = user.Name,
                     Email = user.Email
                 };
 
-                IdentityResult result = await _userManager.CreateAsync(appUser, user.Password);
+                IdentityResult result = await userManager.CreateAsync(appUser, user.Password);
 
                 appUser.SecurityStamp = Guid.NewGuid().ToString();
 
-                bool userRoleExists = await _roleManager.RoleExistsAsync("User");
+                bool userRoleExists = await roleManager.RoleExistsAsync("User");
                 if(!userRoleExists)
                 {
-                    await _roleManager.CreateAsync(new ApplicationRole() { Name = "User"});
+                    await roleManager.CreateAsync(new ApplicationRole() { Name = "User"});
                 }
 
-                await _userManager.AddToRoleAsync(appUser,UserRole.User.ToString());
+                await userManager.AddToRoleAsync(appUser,UserRole.User.ToString());
 
                 if (result.Succeeded)
                 {
@@ -63,7 +63,7 @@ namespace RunnersBlogMVC.Controllers
             }
             else
             {
-                ModelState.AddModelError("Error",errorMessage: "wot");
+                ModelState.AddModelError("Error",errorMessage: "There was an error in user creation");
             }
             return View(user);
         }
@@ -74,18 +74,18 @@ namespace RunnersBlogMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                ApplicationUser existingAppUser = await _userManager.FindByEmailAsync(email);
+                ApplicationUser existingAppUser = await userManager.FindByEmailAsync(email);
                 if (existingAppUser is not null)
                 {
                     existingAppUser.Roles.Clear();
 
-                    bool userRoleExists = await _roleManager.RoleExistsAsync(userRole.ToString());
+                    bool userRoleExists = await roleManager.RoleExistsAsync(userRole.ToString());
                     if (!userRoleExists)
                     {
-                        await _roleManager.CreateAsync(new ApplicationRole() { Name = userRole.ToString() });
+                        await roleManager.CreateAsync(new ApplicationRole() { Name = userRole.ToString() });
                     }
 
-                    var result = await _userManager.AddToRoleAsync(existingAppUser, userRole.ToString());
+                    var result = await userManager.AddToRoleAsync(existingAppUser, userRole.ToString());
 
                     if (result.Succeeded)
                     {

@@ -1,4 +1,5 @@
 ﻿@using RunnersBlogMVC.DTO
+@using RunnersBlogMVC.Models
 @model Item
 @{
     ViewData["Title"] = "Delete";
@@ -7,7 +8,7 @@
     Delete Item
 </h1>
 <form method="post" asp-action="DeleteItemPOST">
-    @*<input asp-for="Id" hidden />*@
+    <input asp-for="Id" hidden />
     <div class="border p-3 mt-4">
         <div class="row pb-2">
             <h2 class="text-primary">Delete shoes</h2>

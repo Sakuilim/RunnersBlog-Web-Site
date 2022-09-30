@@ -21,16 +21,6 @@ namespace RunnersBlogMVC.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> GetItemsAsync()
         {
-            var items = (await repo.GetItemsAsync())
-                        .Select(item => item.AsDto());
-
-            ViewBag.Items = items;
-            return View();
-        }
-        [HttpGet]
-        [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> GetItemsAdminAsync()
-        {
             var items = await repo.GetItemsAsync();
 
             ViewBag.Items = items;
@@ -46,7 +36,7 @@ namespace RunnersBlogMVC.Controllers
         //POST /CreateItem/Item/{id}
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> CreateItemAsync(CreateItemDto itemDto)
         {
             Item item = new()
@@ -107,7 +97,7 @@ namespace RunnersBlogMVC.Controllers
         //DELETE Items/DeleteItem/{id}
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> DeleteItemPOSTAsync(Guid id)
+        public async Task<ActionResult<Item>> DeleteItemPOSTAsync(Guid id)
         {
             var existingItem = await repo.GetItemAsync(id);
             if (existingItem is null)
@@ -120,3 +110,4 @@ namespace RunnersBlogMVC.Controllers
         }
     }
 }
+
