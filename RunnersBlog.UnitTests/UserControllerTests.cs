@@ -29,13 +29,10 @@ namespace RunnersBlogMVC.UnitTests
         public void UserPage_Should_ReturnDefaultView() 
         {
             //Arrange
-            var controller = new UserController(
-                It.IsAny<UserManager<ApplicationUser>>(),
-                It.IsAny<RoleManager<ApplicationRole>>());
-
+            var sut = GetSut();
             //Act
 
-            var result = controller.CreateUser();
+            var result = sut.CreateUser();
 
             //Assert
 
@@ -88,6 +85,32 @@ namespace RunnersBlogMVC.UnitTests
 
             //Act
             var result = await sut.CreateUser(user);
+
+            //Assert
+            result.Should().NotBeNull();
+            result.Should().BeOfType<ViewResult>();
+        }
+        [Fact]
+        public async Task When_CreateRoleIsSuccessful_ShouldCreateRole()
+        {
+            //Arrange
+            var user = new User
+            {
+                Email = "email@email.com",
+                Name = "test2"
+            };
+            var role = UserRole.User;
+
+            mockUserManager.Setup(x => x
+            .CreateAsync(
+                It.IsAny<ApplicationUser>(),
+                It.IsAny<string>()))
+            .Returns(Task.FromResult(IdentityResult.Failed()));
+
+            var sut = GetSut();
+
+            //Act
+            var result = await sut.CreateRole(user.Email, role);
 
             //Assert
             result.Should().NotBeNull();
