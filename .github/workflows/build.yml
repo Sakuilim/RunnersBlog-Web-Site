@@ -5,7 +5,6 @@ on:
       - main # or the name of your main branch
     paths:
       - 'RunnersBlog-Web-Site/**'
-
 jobs:
   build:
     name: Build
