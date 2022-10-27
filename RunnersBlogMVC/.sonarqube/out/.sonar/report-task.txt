@@ -1,0 +1,6 @@
+projectKey=Sakuilim_RunnersBlog-Web-Site
+serverUrl=http://localhost:9000
+serverVersion=9.7.0.61563
+dashboardUrl=http://localhost:9000/dashboard?id=Sakuilim_RunnersBlog-Web-Site
+ceTaskId=AYQGqo4FoAcSxeS_E-Mv
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYQGqo4FoAcSxeS_E-Mv

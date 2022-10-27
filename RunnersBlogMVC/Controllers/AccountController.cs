@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace RunnersBlogMVC.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
 
         private UserManager<ApplicationUser> _userManager;

@@ -1,0 +1,919 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeMetricsReport Version="1.0">
+  <Targets>
+    <Target Name="RunnersBlogMVC.csproj">
+      <Assembly Name="RunnersBlogMVC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <Metrics>
+          <Metric Name="MaintainabilityIndex" Value="89" />
+          <Metric Name="CyclomaticComplexity" Value="73" />
+          <Metric Name="ClassCoupling" Value="72" />
+          <Metric Name="DepthOfInheritance" Value="3" />
+          <Metric Name="SourceLines" Value="429" />
+          <Metric Name="ExecutableLines" Value="123" />
+        </Metrics>
+        <Namespaces>
+          <Namespace Name="&lt;global namespace&gt;">
+            <Metrics>
+              <Metric Name="MaintainabilityIndex" Value="100" />
+              <Metric Name="CyclomaticComplexity" Value="0" />
+              <Metric Name="ClassCoupling" Value="0" />
+              <Metric Name="DepthOfInheritance" Value="0" />
+              <Metric Name="SourceLines" Value="0" />
+              <Metric Name="ExecutableLines" Value="0" />
+            </Metrics>
+          </Namespace>
+          <Namespace Name="RunnersBlogMVC">
+            <Metrics>
+              <Metric Name="MaintainabilityIndex" Value="100" />
+              <Metric Name="CyclomaticComplexity" Value="1" />
+              <Metric Name="ClassCoupling" Value="3" />
+              <Metric Name="DepthOfInheritance" Value="1" />
+              <Metric Name="SourceLines" Value="15" />
+              <Metric Name="ExecutableLines" Value="1" />
+            </Metrics>
+            <Types>
+              <NamedType Name="Extensions">
+                <Metrics>
+                  <Metric Name="MaintainabilityIndex" Value="100" />
+                  <Metric Name="CyclomaticComplexity" Value="1" />
+                  <Metric Name="ClassCoupling" Value="3" />
+                  <Metric Name="DepthOfInheritance" Value="1" />
+                  <Metric Name="SourceLines" Value="12" />
+                  <Metric Name="ExecutableLines" Value="1" />
+                </Metrics>
+                <Members>
+                  <Method Name="ItemDto Extensions.AsDto(Item item)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Extensions.cs" Line="8">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="3" />
+                      <Metric Name="SourceLines" Value="9" />
+                      <Metric Name="ExecutableLines" Value="1" />
+                    </Metrics>
+                  </Method>
+                </Members>
+              </NamedType>
+            </Types>
+          </Namespace>
+          <Namespace Name="RunnersBlogMVC.Controllers">
+            <Metrics>
+              <Metric Name="MaintainabilityIndex" Value="78" />
+              <Metric Name="CyclomaticComplexity" Value="41" />
+              <Metric Name="ClassCoupling" Value="44" />
+              <Metric Name="DepthOfInheritance" Value="3" />
+              <Metric Name="SourceLines" Value="296" />
+              <Metric Name="ExecutableLines" Value="91" />
+            </Metrics>
+            <Types>
+              <NamedType Name="AccountController">
+                <Metrics>
+                  <Metric Name="MaintainabilityIndex" Value="78" />
+                  <Metric Name="CyclomaticComplexity" Value="8" />
+                  <Metric Name="ClassCoupling" Value="19" />
+                  <Metric Name="DepthOfInheritance" Value="3" />
+                  <Metric Name="SourceLines" Value="48" />
+                  <Metric Name="ExecutableLines" Value="14" />
+                </Metrics>
+                <Members>
+                  <Field Name="UserManager&lt;ApplicationUser&gt; AccountController._userManager" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\AccountController.cs" Line="12">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="0" />
+                      <Metric Name="ClassCoupling" Value="2" />
+                      <Metric Name="SourceLines" Value="1" />
+                      <Metric Name="ExecutableLines" Value="0" />
+                    </Metrics>
+                  </Field>
+                  <Field Name="SignInManager&lt;ApplicationUser&gt; AccountController._signInManager" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\AccountController.cs" Line="13">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="0" />
+                      <Metric Name="ClassCoupling" Value="2" />
+                      <Metric Name="SourceLines" Value="1" />
+                      <Metric Name="ExecutableLines" Value="0" />
+                    </Metrics>
+                  </Field>
+                  <Method Name="AccountController.AccountController(UserManager&lt;ApplicationUser&gt; userManager, SignInManager&lt;ApplicationUser&gt; signInManager)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\AccountController.cs" Line="15">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="85" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="3" />
+                      <Metric Name="SourceLines" Value="5" />
+                      <Metric Name="ExecutableLines" Value="2" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="IActionResult AccountController.Login()" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\AccountController.cs" Line="20">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="2" />
+                      <Metric Name="SourceLines" Value="4" />
+                      <Metric Name="ExecutableLines" Value="1" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="IActionResult AccountController.AccessDenied()" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\AccountController.cs" Line="24">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="2" />
+                      <Metric Name="SourceLines" Value="4" />
+                      <Metric Name="ExecutableLines" Value="1" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task&lt;ActionResult&gt; AccountController.Login(string email, string password)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\AccountController.cs" Line="32">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="64" />
+                      <Metric Name="CyclomaticComplexity" Value="4" />
+                      <Metric Name="ClassCoupling" Value="15" />
+                      <Metric Name="SourceLines" Value="22" />
+                      <Metric Name="ExecutableLines" Value="8" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task&lt;ActionResult&gt; AccountController.Logout()" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\AccountController.cs" Line="51">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="84" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="7" />
+                      <Metric Name="SourceLines" Value="6" />
+                      <Metric Name="ExecutableLines" Value="2" />
+                    </Metrics>
+                  </Method>
+                </Members>
+              </NamedType>
+              <NamedType Name="HomeController">
+                <Metrics>
+                  <Metric Name="MaintainabilityIndex" Value="86" />
+                  <Metric Name="CyclomaticComplexity" Value="6" />
+                  <Metric Name="ClassCoupling" Value="9" />
+                  <Metric Name="DepthOfInheritance" Value="3" />
+                  <Metric Name="SourceLines" Value="25" />
+                  <Metric Name="ExecutableLines" Value="5" />
+                </Metrics>
+                <Members>
+                  <Field Name="ILogger&lt;HomeController&gt; HomeController._logger" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\HomeController.cs" Line="9">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="0" />
+                      <Metric Name="ClassCoupling" Value="1" />
+                      <Metric Name="SourceLines" Value="1" />
+                      <Metric Name="ExecutableLines" Value="0" />
+                    </Metrics>
+                  </Field>
+                  <Method Name="HomeController.HomeController(ILogger&lt;HomeController&gt; logger)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\HomeController.cs" Line="11">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="96" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="1" />
+                      <Metric Name="SourceLines" Value="4" />
+                      <Metric Name="ExecutableLines" Value="1" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="IActionResult HomeController.Index()" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\HomeController.cs" Line="16">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="2" />
+                      <Metric Name="SourceLines" Value="4" />
+                      <Metric Name="ExecutableLines" Value="1" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="IActionResult HomeController.Privacy()" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\HomeController.cs" Line="21">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="2" />
+                      <Metric Name="SourceLines" Value="4" />
+                      <Metric Name="ExecutableLines" Value="1" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="IActionResult HomeController.Error()" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\HomeController.cs" Line="27">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="79" />
+                      <Metric Name="CyclomaticComplexity" Value="3" />
+                      <Metric Name="ClassCoupling" Value="7" />
+                      <Metric Name="SourceLines" Value="5" />
+                      <Metric Name="ExecutableLines" Value="2" />
+                    </Metrics>
+                  </Method>
+                </Members>
+              </NamedType>
+              <NamedType Name="ItemsController">
+                <Metrics>
+                  <Metric Name="MaintainabilityIndex" Value="72" />
+                  <Metric Name="CyclomaticComplexity" Value="12" />
+                  <Metric Name="ClassCoupling" Value="20" />
+                  <Metric Name="DepthOfInheritance" Value="3" />
+                  <Metric Name="SourceLines" Value="101" />
+                  <Metric Name="ExecutableLines" Value="37" />
+                </Metrics>
+                <Members>
+                  <Field Name="IItemsRepository ItemsController.repo" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\ItemsController.cs" Line="14">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="0" />
+                      <Metric Name="ClassCoupling" Value="1" />
+                      <Metric Name="SourceLines" Value="1" />
+                      <Metric Name="ExecutableLines" Value="0" />
+                    </Metrics>
+                  </Field>
+                  <Method Name="ItemsController.ItemsController(IItemsRepository repo)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\ItemsController.cs" Line="15">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="96" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="1" />
+                      <Metric Name="SourceLines" Value="4" />
+                      <Metric Name="ExecutableLines" Value="1" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task&lt;ActionResult&gt; ItemsController.GetItemsAsync()" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\ItemsController.cs" Line="22">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="78" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="9" />
+                      <Metric Name="SourceLines" Value="10" />
+                      <Metric Name="ExecutableLines" Value="3" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="ActionResult ItemsController.CreateItem()" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\ItemsController.cs" Line="32">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="86" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="4" />
+                      <Metric Name="SourceLines" Value="7" />
+                      <Metric Name="ExecutableLines" Value="2" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task&lt;ActionResult&gt; ItemsController.CreateItemAsync(CreateItemDto itemDto)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\ItemsController.cs" Line="40">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="74" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="12" />
+                      <Metric Name="SourceLines" Value="17" />
+                      <Metric Name="ExecutableLines" Value="4" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task&lt;ActionResult&lt;Item&gt;&gt; ItemsController.EditItemAsync(Guid id)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\ItemsController.cs" Line="56">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="72" />
+                      <Metric Name="CyclomaticComplexity" Value="2" />
+                      <Metric Name="ClassCoupling" Value="10" />
+                      <Metric Name="SourceLines" Value="12" />
+                      <Metric Name="ExecutableLines" Value="5" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task&lt;ActionResult&gt; ItemsController.EditItemAsync(Guid id, Item itemDto)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\ItemsController.cs" Line="68">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="62" />
+                      <Metric Name="CyclomaticComplexity" Value="2" />
+                      <Metric Name="ClassCoupling" Value="11" />
+                      <Metric Name="SourceLines" Value="20" />
+                      <Metric Name="ExecutableLines" Value="11" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task&lt;ActionResult&lt;Item&gt;&gt; ItemsController.DeleteItemAsync(Guid id)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\ItemsController.cs" Line="88">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="72" />
+                      <Metric Name="CyclomaticComplexity" Value="2" />
+                      <Metric Name="ClassCoupling" Value="10" />
+                      <Metric Name="SourceLines" Value="12" />
+                      <Metric Name="ExecutableLines" Value="5" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task&lt;ActionResult&lt;Item&gt;&gt; ItemsController.DeleteItemPOSTAsync(Guid id)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\ItemsController.cs" Line="100">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="69" />
+                      <Metric Name="CyclomaticComplexity" Value="2" />
+                      <Metric Name="ClassCoupling" Value="11" />
+                      <Metric Name="SourceLines" Value="14" />
+                      <Metric Name="ExecutableLines" Value="6" />
+                    </Metrics>
+                  </Method>
+                </Members>
+              </NamedType>
+              <NamedType Name="SecuredController">
+                <Metrics>
+                  <Metric Name="MaintainabilityIndex" Value="86" />
+                  <Metric Name="CyclomaticComplexity" Value="1" />
+                  <Metric Name="ClassCoupling" Value="4" />
+                  <Metric Name="DepthOfInheritance" Value="3" />
+                  <Metric Name="SourceLines" Value="10" />
+                  <Metric Name="ExecutableLines" Value="2" />
+                </Metrics>
+                <Members>
+                  <Method Name="ActionResult SecuredController.Index()" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\SecuredController.cs" Line="12">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="86" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="3" />
+                      <Metric Name="SourceLines" Value="6" />
+                      <Metric Name="ExecutableLines" Value="2" />
+                    </Metrics>
+                  </Method>
+                </Members>
+              </NamedType>
+              <NamedType Name="UserController">
+                <Metrics>
+                  <Metric Name="MaintainabilityIndex" Value="66" />
+                  <Metric Name="CyclomaticComplexity" Value="14" />
+                  <Metric Name="ClassCoupling" Value="24" />
+                  <Metric Name="DepthOfInheritance" Value="3" />
+                  <Metric Name="SourceLines" Value="96" />
+                  <Metric Name="ExecutableLines" Value="33" />
+                </Metrics>
+                <Members>
+                  <Field Name="UserManager&lt;ApplicationUser&gt; UserController.userManager" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\UserController.cs" Line="12">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="0" />
+                      <Metric Name="ClassCoupling" Value="2" />
+                      <Metric Name="SourceLines" Value="1" />
+                      <Metric Name="ExecutableLines" Value="0" />
+                    </Metrics>
+                  </Field>
+                  <Field Name="RoleManager&lt;ApplicationRole&gt; UserController.roleManager" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\UserController.cs" Line="13">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="0" />
+                      <Metric Name="ClassCoupling" Value="2" />
+                      <Metric Name="SourceLines" Value="1" />
+                      <Metric Name="ExecutableLines" Value="0" />
+                    </Metrics>
+                  </Field>
+                  <Method Name="UserController.UserController(UserManager&lt;ApplicationUser&gt; userManager, RoleManager&lt;ApplicationRole&gt; roleManager)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\UserController.cs" Line="14">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="85" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="4" />
+                      <Metric Name="SourceLines" Value="5" />
+                      <Metric Name="ExecutableLines" Value="2" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="IActionResult UserController.CreateUser()" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\UserController.cs" Line="19">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="2" />
+                      <Metric Name="SourceLines" Value="4" />
+                      <Metric Name="ExecutableLines" Value="1" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="IActionResult UserController.CreateRole()" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\UserController.cs" Line="23">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="2" />
+                      <Metric Name="SourceLines" Value="4" />
+                      <Metric Name="ExecutableLines" Value="1" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task&lt;IActionResult&gt; UserController.CreateUser(User user)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\UserController.cs" Line="30">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="56" />
+                      <Metric Name="CyclomaticComplexity" Value="5" />
+                      <Metric Name="ClassCoupling" Value="18" />
+                      <Metric Name="SourceLines" Value="43" />
+                      <Metric Name="ExecutableLines" Value="14" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task&lt;IActionResult&gt; UserController.CreateRole(string email, UserRole userRole)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\UserController.cs" Line="73">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="55" />
+                      <Metric Name="CyclomaticComplexity" Value="6" />
+                      <Metric Name="ClassCoupling" Value="19" />
+                      <Metric Name="SourceLines" Value="35" />
+                      <Metric Name="ExecutableLines" Value="15" />
+                    </Metrics>
+                  </Method>
+                </Members>
+              </NamedType>
+            </Types>
+          </Namespace>
+          <Namespace Name="RunnersBlogMVC.Models">
+            <Metrics>
+              <Metric Name="MaintainabilityIndex" Value="95" />
+              <Metric Name="CyclomaticComplexity" Value="15" />
+              <Metric Name="ClassCoupling" Value="9" />
+              <Metric Name="DepthOfInheritance" Value="3" />
+              <Metric Name="SourceLines" Value="53" />
+              <Metric Name="ExecutableLines" Value="15" />
+            </Metrics>
+            <Types>
+              <NamedType Name="ApplicationRole">
+                <Metrics>
+                  <Metric Name="MaintainabilityIndex" Value="100" />
+                  <Metric Name="CyclomaticComplexity" Value="1" />
+                  <Metric Name="ClassCoupling" Value="3" />
+                  <Metric Name="DepthOfInheritance" Value="3" />
+                  <Metric Name="SourceLines" Value="4" />
+                  <Metric Name="ExecutableLines" Value="2" />
+                </Metrics>
+              </NamedType>
+              <NamedType Name="ApplicationUser">
+                <Metrics>
+                  <Metric Name="MaintainabilityIndex" Value="100" />
+                  <Metric Name="CyclomaticComplexity" Value="1" />
+                  <Metric Name="ClassCoupling" Value="3" />
+                  <Metric Name="DepthOfInheritance" Value="3" />
+                  <Metric Name="SourceLines" Value="4" />
+                  <Metric Name="ExecutableLines" Value="2" />
+                </Metrics>
+              </NamedType>
+              <NamedType Name="ErrorViewModel">
+                <Metrics>
+                  <Metric Name="MaintainabilityIndex" Value="95" />
+                  <Metric Name="CyclomaticComplexity" Value="4" />
+                  <Metric Name="ClassCoupling" Value="0" />
+                  <Metric Name="DepthOfInheritance" Value="1" />
+                  <Metric Name="SourceLines" Value="6" />
+                  <Metric Name="ExecutableLines" Value="2" />
+                </Metrics>
+                <Members>
+                  <Property Name="string? ErrorViewModel.RequestId" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Models\ErrorViewModel.cs" Line="5">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="2" />
+                      <Metric Name="ClassCoupling" Value="0" />
+                      <Metric Name="SourceLines" Value="1" />
+                      <Metric Name="ExecutableLines" Value="0" />
+                    </Metrics>
+                    <Accessors>
+                      <Method Name="string? ErrorViewModel.RequestId.get" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Models\ErrorViewModel.cs" Line="5">
+                        <Metrics>
+                          <Metric Name="MaintainabilityIndex" Value="100" />
+                          <Metric Name="CyclomaticComplexity" Value="1" />
+                          <Metric Name="ClassCoupling" Value="0" />
+                          <Metric Name="SourceLines" Value="1" />
+                          <Metric Name="ExecutableLines" Value="0" />
+                        </Metrics>
+                      </Method>
+                      <Method Name="void ErrorViewModel.RequestId.set" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Models\ErrorViewModel.cs" Line="5">
+                        <Metrics>
+                          <Metric Name="MaintainabilityIndex" Value="100" />
+                          <Metric Name="CyclomaticComplexity" Value="1" />
+                          <Metric Name="ClassCoupling" Value="0" />
+                          <Metric Name="SourceLines" Value="1" />
+                          <Metric Name="ExecutableLines" Value="0" />
+                        </Metrics>
+                      </Method>
+                    </Accessors>
+                  </Property>
+                  <Property Name="bool ErrorViewModel.ShowRequestId" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Models\ErrorViewModel.cs" Line="7">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="95" />
+                      <Metric Name="CyclomaticComplexity" Value="2" />
+                      <Metric Name="ClassCoupling" Value="0" />
+                      <Metric Name="SourceLines" Value="1" />
+                      <Metric Name="ExecutableLines" Value="2" />
+                    </Metrics>
+                    <Accessors>
+                      <Method Name="bool ErrorViewModel.ShowRequestId.get" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Models\ErrorViewModel.cs" Line="7">
+                        <Metrics>
+                          <Metric Name="MaintainabilityIndex" Value="95" />
+                          <Metric Name="CyclomaticComplexity" Value="1" />
+                          <Metric Name="ClassCoupling" Value="0" />
+                          <Metric Name="SourceLines" Value="1" />
+                          <Metric Name="ExecutableLines" Value="1" />
+                        </Metrics>
+                      </Method>
+                    </Accessors>
+                  </Property>
+                </Members>
+              </NamedType>
+              <NamedType Name="User">
+                <Metrics>
+                  <Metric Name="MaintainabilityIndex" Value="82" />
+                  <Metric Name="CyclomaticComplexity" Value="8" />
+                  <Metric Name="ClassCoupling" Value="5" />
+                  <Metric Name="DepthOfInheritance" Value="1" />
+                  <Metric Name="SourceLines" Value="12" />
+                  <Metric Name="ExecutableLines" Value="9" />
+                </Metrics>
+                <Members>
+                  <Property Name="string User.Email" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Models\Users\User.cs" Line="10">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="2" />
+                      <Metric Name="ClassCoupling" Value="2" />
+                      <Metric Name="SourceLines" Value="3" />
+                      <Metric Name="ExecutableLines" Value="2" />
+                    </Metrics>
+                    <Accessors>
+                      <Method Name="string User.Email.get" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Models\Users\User.cs" Line="10">
+                        <Metrics>
+                          <Metric Name="MaintainabilityIndex" Value="100" />
+                          <Metric Name="CyclomaticComplexity" Value="1" />
+                          <Metric Name="ClassCoupling" Value="0" />
+                          <Metric Name="SourceLines" Value="1" />
+                          <Metric Name="ExecutableLines" Value="0" />
+                        </Metrics>
+                      </Method>
+                      <Method Name="void User.Email.set" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Models\Users\User.cs" Line="10">
+                        <Metrics>
+                          <Metric Name="MaintainabilityIndex" Value="100" />
+                          <Metric Name="CyclomaticComplexity" Value="1" />
+                          <Metric Name="ClassCoupling" Value="0" />
+                          <Metric Name="SourceLines" Value="1" />
+                          <Metric Name="ExecutableLines" Value="0" />
+                        </Metrics>
+                      </Method>
+                    </Accessors>
+                  </Property>
+                  <Property Name="string User.Name" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Models\Users\User.cs" Line="12">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="2" />
+                      <Metric Name="ClassCoupling" Value="1" />
+                      <Metric Name="SourceLines" Value="2" />
+                      <Metric Name="ExecutableLines" Value="2" />
+                    </Metrics>
+                    <Accessors>
+                      <Method Name="string User.Name.get" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Models\Users\User.cs" Line="12">
+                        <Metrics>
+                          <Metric Name="MaintainabilityIndex" Value="100" />
+                          <Metric Name="CyclomaticComplexity" Value="1" />
+                          <Metric Name="ClassCoupling" Value="0" />
+                          <Metric Name="SourceLines" Value="1" />
+                          <Metric Name="ExecutableLines" Value="0" />
+                        </Metrics>
+                      </Method>
+                      <Method Name="void User.Name.set" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Models\Users\User.cs" Line="12">
+                        <Metrics>
+                          <Metric Name="MaintainabilityIndex" Value="100" />
+                          <Metric Name="CyclomaticComplexity" Value="1" />
+                          <Metric Name="ClassCoupling" Value="0" />
+                          <Metric Name="SourceLines" Value="1" />
+                          <Metric Name="ExecutableLines" Value="0" />
+                        </Metrics>
+                      </Method>
+                    </Accessors>
+                  </Property>
+                  <Property Name="string User.Password" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Models\Users\User.cs" Line="14">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="2" />
+                      <Metric Name="ClassCoupling" Value="1" />
+                      <Metric Name="SourceLines" Value="2" />
+                      <Metric Name="ExecutableLines" Value="2" />
+                    </Metrics>
+                    <Accessors>
+                      <Method Name="string User.Password.get" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Models\Users\User.cs" Line="14">
+                        <Metrics>
+                          <Metric Name="MaintainabilityIndex" Value="100" />
+                          <Metric Name="CyclomaticComplexity" Value="1" />
+                          <Metric Name="ClassCoupling" Value="0" />
+                          <Metric Name="SourceLines" Value="1" />
+                          <Metric Name="ExecutableLines" Value="0" />
+                        </Metrics>
+                      </Method>
+                      <Method Name="void User.Password.set" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Models\Users\User.cs" Line="14">
+                        <Metrics>
+                          <Metric Name="MaintainabilityIndex" Value="100" />
+                          <Metric Name="CyclomaticComplexity" Value="1" />
+                          <Metric Name="ClassCoupling" Value="0" />
+                          <Metric Name="SourceLines" Value="1" />
+                          <Metric Name="ExecutableLines" Value="0" />
+                        </Metrics>
+                      </Method>
+                    </Accessors>
+                  </Property>
+                  <Property Name="string User.Role" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Models\Users\User.cs" Line="16">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="2" />
+                      <Metric Name="ClassCoupling" Value="3" />
+                      <Metric Name="SourceLines" Value="2" />
+                      <Metric Name="ExecutableLines" Value="3" />
+                    </Metrics>
+                    <Accessors>
+                      <Method Name="string User.Role.get" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Models\Users\User.cs" Line="16">
+                        <Metrics>
+                          <Metric Name="MaintainabilityIndex" Value="100" />
+                          <Metric Name="CyclomaticComplexity" Value="1" />
+                          <Metric Name="ClassCoupling" Value="0" />
+                          <Metric Name="SourceLines" Value="1" />
+                          <Metric Name="ExecutableLines" Value="0" />
+                        </Metrics>
+                      </Method>
+                      <Method Name="void User.Role.set" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Models\Users\User.cs" Line="16">
+                        <Metrics>
+                          <Metric Name="MaintainabilityIndex" Value="100" />
+                          <Metric Name="CyclomaticComplexity" Value="1" />
+                          <Metric Name="ClassCoupling" Value="0" />
+                          <Metric Name="SourceLines" Value="1" />
+                          <Metric Name="ExecutableLines" Value="0" />
+                        </Metrics>
+                      </Method>
+                    </Accessors>
+                  </Property>
+                </Members>
+              </NamedType>
+              <NamedType Name="UserRole">
+                <Metrics>
+                  <Metric Name="MaintainabilityIndex" Value="100" />
+                  <Metric Name="CyclomaticComplexity" Value="1" />
+                  <Metric Name="ClassCoupling" Value="0" />
+                  <Metric Name="DepthOfInheritance" Value="1" />
+                  <Metric Name="SourceLines" Value="5" />
+                  <Metric Name="ExecutableLines" Value="0" />
+                </Metrics>
+                <Members>
+                  <Field Name="UserRole.Admin" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Models\Users\User.cs" Line="20">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="0" />
+                      <Metric Name="ClassCoupling" Value="0" />
+                      <Metric Name="SourceLines" Value="1" />
+                      <Metric Name="ExecutableLines" Value="0" />
+                    </Metrics>
+                  </Field>
+                  <Field Name="UserRole.User" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Models\Users\User.cs" Line="21">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="0" />
+                      <Metric Name="ClassCoupling" Value="0" />
+                      <Metric Name="SourceLines" Value="1" />
+                      <Metric Name="ExecutableLines" Value="0" />
+                    </Metrics>
+                  </Field>
+                </Members>
+              </NamedType>
+            </Types>
+          </Namespace>
+          <Namespace Name="RunnersBlogMVC.Repositories">
+            <Metrics>
+              <Metric Name="MaintainabilityIndex" Value="90" />
+              <Metric Name="CyclomaticComplexity" Value="11" />
+              <Metric Name="ClassCoupling" Value="32" />
+              <Metric Name="DepthOfInheritance" Value="1" />
+              <Metric Name="SourceLines" Value="50" />
+              <Metric Name="ExecutableLines" Value="15" />
+            </Metrics>
+            <Types>
+              <NamedType Name="IItemsRepository">
+                <Metrics>
+                  <Metric Name="MaintainabilityIndex" Value="100" />
+                  <Metric Name="CyclomaticComplexity" Value="5" />
+                  <Metric Name="ClassCoupling" Value="5" />
+                  <Metric Name="DepthOfInheritance" Value="0" />
+                  <Metric Name="SourceLines" Value="8" />
+                  <Metric Name="ExecutableLines" Value="0" />
+                </Metrics>
+                <Members>
+                  <Method Name="Task&lt;Item&gt; IItemsRepository.GetItemAsync(Guid Id)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\IItemsRepository.cs" Line="7">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="3" />
+                      <Metric Name="SourceLines" Value="1" />
+                      <Metric Name="ExecutableLines" Value="0" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task&lt;IEnumerable&lt;Item&gt;&gt; IItemsRepository.GetItemsAsync()" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\IItemsRepository.cs" Line="8">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="3" />
+                      <Metric Name="SourceLines" Value="1" />
+                      <Metric Name="ExecutableLines" Value="0" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task IItemsRepository.CreateItemAsync(Item item)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\IItemsRepository.cs" Line="9">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="2" />
+                      <Metric Name="SourceLines" Value="1" />
+                      <Metric Name="ExecutableLines" Value="0" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task IItemsRepository.UpdateItemAsync(Item item)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\IItemsRepository.cs" Line="10">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="2" />
+                      <Metric Name="SourceLines" Value="1" />
+                      <Metric Name="ExecutableLines" Value="0" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task IItemsRepository.DeleteItemAsync(Guid Id)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\IItemsRepository.cs" Line="11">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="2" />
+                      <Metric Name="SourceLines" Value="1" />
+                      <Metric Name="ExecutableLines" Value="0" />
+                    </Metrics>
+                  </Method>
+                </Members>
+              </NamedType>
+              <NamedType Name="MongoDbItemsRepo">
+                <Metrics>
+                  <Metric Name="MaintainabilityIndex" Value="81" />
+                  <Metric Name="CyclomaticComplexity" Value="6" />
+                  <Metric Name="ClassCoupling" Value="32" />
+                  <Metric Name="DepthOfInheritance" Value="1" />
+                  <Metric Name="SourceLines" Value="36" />
+                  <Metric Name="ExecutableLines" Value="15" />
+                </Metrics>
+                <Members>
+                  <Field Name="string MongoDbItemsRepo.databaseName" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\MongoDbItemsRepo.cs" Line="9">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="93" />
+                      <Metric Name="CyclomaticComplexity" Value="0" />
+                      <Metric Name="ClassCoupling" Value="0" />
+                      <Metric Name="SourceLines" Value="1" />
+                      <Metric Name="ExecutableLines" Value="1" />
+                    </Metrics>
+                  </Field>
+                  <Field Name="string MongoDbItemsRepo.collectionName" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\MongoDbItemsRepo.cs" Line="10">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="93" />
+                      <Metric Name="CyclomaticComplexity" Value="0" />
+                      <Metric Name="ClassCoupling" Value="0" />
+                      <Metric Name="SourceLines" Value="1" />
+                      <Metric Name="ExecutableLines" Value="1" />
+                    </Metrics>
+                  </Field>
+                  <Field Name="IMongoCollection&lt;Item&gt; MongoDbItemsRepo.itemsCollection" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\MongoDbItemsRepo.cs" Line="11">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="0" />
+                      <Metric Name="ClassCoupling" Value="2" />
+                      <Metric Name="SourceLines" Value="1" />
+                      <Metric Name="ExecutableLines" Value="0" />
+                    </Metrics>
+                  </Field>
+                  <Field Name="FilterDefinitionBuilder&lt;Item&gt; MongoDbItemsRepo.filterBuilder" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\MongoDbItemsRepo.cs" Line="12">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="93" />
+                      <Metric Name="CyclomaticComplexity" Value="0" />
+                      <Metric Name="ClassCoupling" Value="3" />
+                      <Metric Name="SourceLines" Value="1" />
+                      <Metric Name="ExecutableLines" Value="1" />
+                    </Metrics>
+                  </Field>
+                  <Method Name="MongoDbItemsRepo.MongoDbItemsRepo(IMongoClient mongoClient)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\MongoDbItemsRepo.cs" Line="14">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="82" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="6" />
+                      <Metric Name="SourceLines" Value="5" />
+                      <Metric Name="ExecutableLines" Value="2" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task MongoDbItemsRepo.CreateItemAsync(Item item)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\MongoDbItemsRepo.cs" Line="19">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="93" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="6" />
+                      <Metric Name="SourceLines" Value="4" />
+                      <Metric Name="ExecutableLines" Value="1" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task MongoDbItemsRepo.DeleteItemAsync(Guid Id)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\MongoDbItemsRepo.cs" Line="23">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="79" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="10" />
+                      <Metric Name="SourceLines" Value="5" />
+                      <Metric Name="ExecutableLines" Value="3" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task&lt;Item&gt; MongoDbItemsRepo.GetItemAsync(Guid Id)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\MongoDbItemsRepo.cs" Line="28">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="78" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="13" />
+                      <Metric Name="SourceLines" Value="5" />
+                      <Metric Name="ExecutableLines" Value="3" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task&lt;IEnumerable&lt;Item&gt;&gt; MongoDbItemsRepo.GetItemsAsync()" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\MongoDbItemsRepo.cs" Line="33">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="91" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="14" />
+                      <Metric Name="SourceLines" Value="4" />
+                      <Metric Name="ExecutableLines" Value="1" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task MongoDbItemsRepo.UpdateItemAsync(Item item)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\MongoDbItemsRepo.cs" Line="37">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="78" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="12" />
+                      <Metric Name="SourceLines" Value="5" />
+                      <Metric Name="ExecutableLines" Value="3" />
+                    </Metrics>
+                  </Method>
+                </Members>
+              </NamedType>
+            </Types>
+          </Namespace>
+          <Namespace Name="RunnersBlogMVC.Settings">
+            <Metrics>
+              <Metric Name="MaintainabilityIndex" Value="98" />
+              <Metric Name="CyclomaticComplexity" Value="5" />
+              <Metric Name="ClassCoupling" Value="0" />
+              <Metric Name="DepthOfInheritance" Value="1" />
+              <Metric Name="SourceLines" Value="15" />
+              <Metric Name="ExecutableLines" Value="1" />
+            </Metrics>
+            <Types>
+              <NamedType Name="MongoDbSettings">
+                <Metrics>
+                  <Metric Name="MaintainabilityIndex" Value="98" />
+                  <Metric Name="CyclomaticComplexity" Value="5" />
+                  <Metric Name="ClassCoupling" Value="0" />
+                  <Metric Name="DepthOfInheritance" Value="1" />
+                  <Metric Name="SourceLines" Value="12" />
+                  <Metric Name="ExecutableLines" Value="1" />
+                </Metrics>
+                <Members>
+                  <Property Name="string? MongoDbSettings.Host" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Settings\MongoDbSettings.cs" Line="5">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="2" />
+                      <Metric Name="ClassCoupling" Value="0" />
+                      <Metric Name="SourceLines" Value="1" />
+                      <Metric Name="ExecutableLines" Value="0" />
+                    </Metrics>
+                    <Accessors>
+                      <Method Name="string? MongoDbSettings.Host.get" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Settings\MongoDbSettings.cs" Line="5">
+                        <Metrics>
+                          <Metric Name="MaintainabilityIndex" Value="100" />
+                          <Metric Name="CyclomaticComplexity" Value="1" />
+                          <Metric Name="ClassCoupling" Value="0" />
+                          <Metric Name="SourceLines" Value="1" />
+                          <Metric Name="ExecutableLines" Value="0" />
+                        </Metrics>
+                      </Method>
+                      <Method Name="void MongoDbSettings.Host.set" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Settings\MongoDbSettings.cs" Line="5">
+                        <Metrics>
+                          <Metric Name="MaintainabilityIndex" Value="100" />
+                          <Metric Name="CyclomaticComplexity" Value="1" />
+                          <Metric Name="ClassCoupling" Value="0" />
+                          <Metric Name="SourceLines" Value="1" />
+                          <Metric Name="ExecutableLines" Value="0" />
+                        </Metrics>
+                      </Method>
+                    </Accessors>
+                  </Property>
+                  <Property Name="int MongoDbSettings.Port" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Settings\MongoDbSettings.cs" Line="6">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="2" />
+                      <Metric Name="ClassCoupling" Value="0" />
+                      <Metric Name="SourceLines" Value="1" />
+                      <Metric Name="ExecutableLines" Value="0" />
+                    </Metrics>
+                    <Accessors>
+                      <Method Name="int MongoDbSettings.Port.get" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Settings\MongoDbSettings.cs" Line="6">
+                        <Metrics>
+                          <Metric Name="MaintainabilityIndex" Value="100" />
+                          <Metric Name="CyclomaticComplexity" Value="1" />
+                          <Metric Name="ClassCoupling" Value="0" />
+                          <Metric Name="SourceLines" Value="1" />
+                          <Metric Name="ExecutableLines" Value="0" />
+                        </Metrics>
+                      </Method>
+                      <Method Name="void MongoDbSettings.Port.set" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Settings\MongoDbSettings.cs" Line="6">
+                        <Metrics>
+                          <Metric Name="MaintainabilityIndex" Value="100" />
+                          <Metric Name="CyclomaticComplexity" Value="1" />
+                          <Metric Name="ClassCoupling" Value="0" />
+                          <Metric Name="SourceLines" Value="1" />
+                          <Metric Name="ExecutableLines" Value="0" />
+                        </Metrics>
+                      </Method>
+                    </Accessors>
+                  </Property>
+                  <Property Name="string? MongoDbSettings.ConnectionString" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Settings\MongoDbSettings.cs" Line="7">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="94" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="0" />
+                      <Metric Name="SourceLines" Value="7" />
+                      <Metric Name="ExecutableLines" Value="1" />
+                    </Metrics>
+                    <Accessors>
+                      <Method Name="string? MongoDbSettings.ConnectionString.get" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Settings\MongoDbSettings.cs" Line="9">
+                        <Metrics>
+                          <Metric Name="MaintainabilityIndex" Value="94" />
+                          <Metric Name="CyclomaticComplexity" Value="1" />
+                          <Metric Name="ClassCoupling" Value="0" />
+                          <Metric Name="SourceLines" Value="4" />
+                          <Metric Name="ExecutableLines" Value="1" />
+                        </Metrics>
+                      </Method>
+                    </Accessors>
+                  </Property>
+                </Members>
+              </NamedType>
+            </Types>
+          </Namespace>
+        </Namespaces>
+      </Assembly>
+    </Target>
+  </Targets>
+</CodeMetricsReport>
