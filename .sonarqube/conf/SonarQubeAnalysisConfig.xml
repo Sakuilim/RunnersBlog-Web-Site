@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<AnalysisConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
+<AnalysisConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
   <SonarConfigDir>C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\.sonarqube\conf</SonarConfigDir>
   <SonarOutputDir>C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\.sonarqube\out</SonarOutputDir>
   <SonarBinDir>C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\.sonarqube\bin</SonarBinDir>
@@ -15,6 +17,8 @@
     <ConfigSetting Id="settings.file.path" Value="C:\Users\Marius Milius\.dotnet\tools\.store\dotnet-sonarscanner\5.8.0\dotnet-sonarscanner\5.8.0\tools\net5.0\any\SonarQube.Analysis.xml" />
   </AdditionalConfig>
   <ServerSettings>
+    <Property Name="sonar.host.url">http://localhost:9000</Property>
+    <Property Name="sonar.login">[my-user-token]</Property> 
     <Property Name="sonaranalyzer-cs.nuget.packageVersion">8.46.0.54807</Property>
     <Property Name="sonar.cs.ignoreHeaderComments">true</Property>
     <Property Name="sonar.typescript.file.suffixes">.ts,.tsx,.cts,.mts</Property>

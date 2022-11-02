@@ -25,7 +25,7 @@ namespace RunnersBlogMVC.Controllers
         {
             return View();
         }
-        //Post: /Account/Login
+        //POST /Account/Login
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]

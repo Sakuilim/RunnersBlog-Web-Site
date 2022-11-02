@@ -4,10 +4,10 @@ namespace RunnersBlogMVC.Repositories
 {
     public interface IItemsRepository
     {
-        Task<Item> GetItemAsync(Guid Id);
-        Task<IEnumerable<Item>> GetItemsAsync();
-        Task CreateItemAsync(Item item);
-        Task UpdateItemAsync(Item item);
-        Task DeleteItemAsync(Guid Id);  
+        Task<Item> GetItemAsync(Guid Id, CancellationToken cancellationToken);
+        Task<IEnumerable<Item>> GetItemsAsync(CancellationToken cancellationToken);
+        Task CreateItemAsync(Item item, CancellationToken cancellationToken);
+        Task UpdateItemAsync(Item item, CancellationToken cancellationToken);
+        Task DeleteItemAsync(Guid Id, CancellationToken cancellationToken);  
     }
 }

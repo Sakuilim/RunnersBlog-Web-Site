@@ -2,20 +2,23 @@
 
 namespace RunnersBlogMVC.Services
 {
-    public interface IBaseService<T> where T : class
+    public interface IBaseService<T,TDto> where T : class
     {
-        Task<ICollection<T>> GetAllAsync(CancellationToken cancellationToken);
+        Task<ActionResult> GetAllAsync(CancellationToken cancellationToken);
 
-        Task<T> GetByIdAsync(string id,
+        Task<ActionResult<T>> GetByIdAsync(Guid id,
             CancellationToken cancellationToken);
 
-        Task<ActionResult> CreateAsync(T data,
+        Task<ActionResult> CreateAsync(TDto dataDto,
             CancellationToken cancellationToken);
 
-        Task DeleteByIdAsync(string id,
+        Task<ActionResult<T>> DeleteByIdAsync(Guid id,
             CancellationToken cancellationToken);
 
-        Task UpdateAsync(T data,
+        Task<ActionResult> UpdateAsync(Guid id, TDto dataToUpdateWith,
+            CancellationToken cancellationToken);
+
+        Task<ActionResult> DeleteMiddlePage(Guid id, 
             CancellationToken cancellationToken);
     }
 }

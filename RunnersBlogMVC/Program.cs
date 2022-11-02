@@ -2,8 +2,10 @@
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
+using RunnersBlogMVC.DTO;
 using RunnersBlogMVC.Models;
 using RunnersBlogMVC.Repositories;
+using RunnersBlogMVC.Services;
 using RunnersBlogMVC.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +21,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<IItemsRepository,MongoDbItemsRepo>();
+builder.Services.AddSingleton<IBaseService<Item, CreateItemDto>, ItemsService>();
 var settings = configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
 builder.Services.AddSingleton<IMongoClient>(serviceProvider =>
 {

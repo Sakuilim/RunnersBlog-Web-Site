@@ -1,5 +1,4 @@
-﻿@using RunnersBlogMVC.DTO
-@using RunnersBlogMVC.Models
+﻿@using RunnersBlogMVC.Models
 @model Item
 @{
     ViewData["Title"] = "Delete";
@@ -7,7 +6,7 @@
 <h1>
     Delete Item
 </h1>
-<form method="post" asp-action="DeleteItemPOST">
+<form method="post">
     <input asp-for="Id" hidden />
     <div class="border p-3 mt-4">
         <div class="row pb-2">
@@ -23,14 +22,14 @@
             <label asp-for="Price"></label>
             <input asp-for="Price" disabled class="form-control" />
         </div>
-        <button type="submit" class="btn btn-primary" style="width:150px">Delete</button>
-        <a asp-controller="Items" asp-action="GetItems" class="btn btn-secondary" style="width:150px">
+        <a asp-controller="Items" asp-action="DeleteById" asp-route-id="@Model.Id" class="btn btn-primary" style="width:150px">
+            Delete
+        </a>
+        <a asp-controller="Items" asp-action="GetAllItems" class="btn btn-secondary" style="width:150px">
             Back to List
         </a>
     </div>
 </form>
-
-
 
 @section Scripts {
     @{

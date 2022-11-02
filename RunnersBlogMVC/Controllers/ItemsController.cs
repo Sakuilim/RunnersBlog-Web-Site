@@ -1,112 +1,65 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RunnersBlogMVC.DTO;
 using RunnersBlogMVC.Models;
 using RunnersBlogMVC.Repositories;
-using System.Linq;
+using RunnersBlogMVC.Services;
 
 namespace RunnersBlogMVC.Controllers
 {
     //[Authorize]
-    public class ItemsController : Controller
+    public class ItemsController : BaseController
     {
-        private readonly IItemsRepository repo;
-        public ItemsController(IItemsRepository repo)
+        private readonly IBaseService<Item,CreateItemDto> itemService;
+        private readonly CancellationToken cancellationToken;
+        public ItemsController(IBaseService<Item,CreateItemDto> itemService)
         {
-            this.repo = repo;
+            this.itemService = itemService;
+            cancellationToken = new CancellationToken();
         }
-        // GET /items/GetItems
+        // GET /items/createItem
         [HttpGet]
-        [AllowAnonymous]
-        public async Task<ActionResult> GetItemsAsync()
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult<Item>> DeleteItemAsync(Guid id)
         {
-            var items = await repo.GetItemsAsync();
-
-            ViewBag.Items = items;
-            return View("GetItems");
+            return await itemService.DeleteMiddlePage(id, cancellationToken);
         }
-        // GET /items/CreateItem
+        // GET /items/createItem
         [HttpGet]
         [Authorize(Roles = "Admin")]
         public ActionResult CreateItem()
         {
             return View();
         }
-        //POST /CreateItem/Item/{id}
+        //GET /items/getAllItems
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<ActionResult> GetAllItemsAsync()
+        {
+            return await itemService.GetAllAsync(cancellationToken);
+
+        }
+        //POST /createItem/Item/{id}
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken] 
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult> CreateItemAsync(CreateItemDto itemDto)
         {
-            Item item = new()
-            {
-                Id = Guid.NewGuid(),
-                Name = itemDto.Name,
-                Price = itemDto.Price,
-                CreatedDate = DateTimeOffset.UtcNow,
-            };
-
-            await repo.CreateItemAsync(item);
-            return RedirectToAction("GetItems");
+            return await itemService.CreateAsync(itemDto, cancellationToken);
         }
-        // GET Items/EditItem/{id}
-        [HttpGet]
-        [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<Item>> EditItemAsync(Guid id)
-        {
-            var item = await repo.GetItemAsync(id);
-            if (item is null)
-            {
-                return NotFound();
-            }
-            return View(item);
-        }
-        //PUT Items/EditItem/{id}
+        //PUT /items/editItem/{id}
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> EditItemAsync(Guid id, Item itemDto)
+        public async Task<ActionResult> EditItemAsync(Guid id, CreateItemDto currentItem)
         {
-            var existingItem = await repo.GetItemAsync(id);
-            if (existingItem is null)
-            {
-                return NotFound();
-            }
-
-            Item updatedItem = existingItem with
-            {
-                Name = itemDto.Name,
-                Price = itemDto.Price,
-            };
-
-            await repo.UpdateItemAsync(updatedItem);
-            return RedirectToAction("GetItems");
+            return await itemService.UpdateAsync(id, currentItem, cancellationToken);
         }
-        //DELETE Items/DeleteItem/{id}
+        //DELETE /items/deleteItem/{id}
         [HttpGet]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<Item>> DeleteItemAsync(Guid id)
+        public async Task<ActionResult<Item>> DeleteByIdAsync(Guid id)
         {
-            var item = await repo.GetItemAsync(id);
-            if (item is null)
-            {
-                return NotFound();
-            }
-            return View(item);
-        }
-        //DELETE Items/DeleteItem/{id}
-        [HttpPost]
-        [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<Item>> DeleteItemPOSTAsync(Guid id)
-        {
-            var existingItem = await repo.GetItemAsync(id);
-            if (existingItem is null)
-            {
-                return NotFound();
-            }
-
-            await repo.DeleteItemAsync(id);
-            return RedirectToAction("GetItems");
+            return await itemService.DeleteByIdAsync(id, cancellationToken);
         }
     }
 }
