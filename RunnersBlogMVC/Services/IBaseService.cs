@@ -15,10 +15,12 @@ namespace RunnersBlogMVC.Services
         Task<ActionResult<T>> DeleteByIdAsync(Guid id,
             CancellationToken cancellationToken);
 
-        Task<ActionResult> UpdateAsync(Guid id, TDto dataToUpdateWith,
+        Task<ActionResult> UpdateByIdAsync(Guid id, TDto dataToUpdateWith,
             CancellationToken cancellationToken);
 
         Task<ActionResult> DeleteMiddlePage(Guid id, 
             CancellationToken cancellationToken);
+        Task<ActionResult> UpdateMiddlePage(Guid id,
+           CancellationToken cancellationToken);
     }
 }

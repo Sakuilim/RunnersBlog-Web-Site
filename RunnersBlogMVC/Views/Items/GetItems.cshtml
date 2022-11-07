@@ -13,11 +13,16 @@
         <div class="col-6">
             <h2 class="text-primary">List of Running Shoes</h2>
         </div>
+          @{
+           if (User?.Identity?.IsAuthenticated ?? false)
+           {
         <div class="col-6 text-end">
             <a asp-controller="Items" asp-action="CreateItem" class="btn btn-primary">
                 <em class="bi bi-bag-plus-fill"></em> &nbsp; Create New Shoe
             </a>
         </div>
+           }
+           }
     </div>
 </div>
 <br />
@@ -49,7 +54,7 @@
                     {
                         <td>
                             <div class="w-75 btn-group" role="group">
-                                <a asp-controller="Items" asp-action="EditItem" asp-route-id="@obj.Id"
+                                <a asp-controller="Items" asp-action="UpdateItem" asp-route-id="@obj.Id"
                            class="btn btn-primary mx-2"> <em class="bi bi-pencil-square"></em>Edit</a>
                             </div>
                         </td>

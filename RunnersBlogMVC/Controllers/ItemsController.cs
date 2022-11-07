@@ -10,9 +10,9 @@ namespace RunnersBlogMVC.Controllers
     //[Authorize]
     public class ItemsController : BaseController
     {
-        private readonly IBaseService<Item,CreateItemDto> itemService;
+        private readonly IBaseService<Item, ItemDto> itemService;
         private readonly CancellationToken cancellationToken;
-        public ItemsController(IBaseService<Item,CreateItemDto> itemService)
+        public ItemsController(IBaseService<Item, ItemDto> itemService)
         {
             this.itemService = itemService;
             cancellationToken = new CancellationToken();
@@ -23,6 +23,10 @@ namespace RunnersBlogMVC.Controllers
         public async Task<ActionResult<Item>> DeleteItemAsync(Guid id)
         {
             return await itemService.DeleteMiddlePage(id, cancellationToken);
+        }
+        public async Task<ActionResult<Item>> UpdateItemAsync(Guid id)
+        {
+            return await itemService.UpdateMiddlePage(id, cancellationToken);
         }
         // GET /items/createItem
         [HttpGet]
@@ -43,16 +47,16 @@ namespace RunnersBlogMVC.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken] 
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> CreateItemAsync(CreateItemDto itemDto)
+        public async Task<ActionResult> CreateItemAsync(ItemDto itemDto)
         {
             return await itemService.CreateAsync(itemDto, cancellationToken);
         }
         //PUT /items/editItem/{id}
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> EditItemAsync(Guid id, CreateItemDto currentItem)
+        public async Task<ActionResult<Item>> UpdateByIdAsync(Guid id, ItemDto itemDto)
         {
-            return await itemService.UpdateAsync(id, currentItem, cancellationToken);
+            return await itemService.UpdateByIdAsync(id, itemDto, cancellationToken);
         }
         //DELETE /items/deleteItem/{id}
         [HttpGet]

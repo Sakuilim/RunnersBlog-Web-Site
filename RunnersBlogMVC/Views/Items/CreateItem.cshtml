@@ -1,12 +1,12 @@
 ﻿@using RunnersBlogMVC.DTO
-@model CreateItemDto
+@model ItemDto
 @{
     ViewData["Title"] = "Create";
 }
 <h1>
     Create Item
 </h1>
-<form method="post">
+<form asp-controller="Items" asp-action="CreateItem" method="post">
     <div class="border p-3 mt-4">
         <div class="row pb-2">
             <h2 class="text-primary">Add new shoes</h2>

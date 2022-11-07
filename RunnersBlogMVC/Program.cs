@@ -21,7 +21,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<IItemsRepository,MongoDbItemsRepo>();
-builder.Services.AddSingleton<IBaseService<Item, CreateItemDto>, ItemsService>();
+builder.Services.AddSingleton<IBaseService<Item, ItemDto>, ItemsService>();
 var settings = configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
 builder.Services.AddSingleton<IMongoClient>(serviceProvider =>
 {

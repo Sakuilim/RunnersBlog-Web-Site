@@ -6,7 +6,7 @@ using RunnersBlogMVC.Repositories;
 
 namespace RunnersBlogMVC.Services
 {
-    public class ItemsService : Controller, IBaseService<Item,CreateItemDto>
+    public class ItemsService : Controller, IBaseService<Item,ItemDto>
     {
         private readonly IItemsRepository repo;
         public ItemsService(IItemsRepository repo)
@@ -14,7 +14,7 @@ namespace RunnersBlogMVC.Services
             this.repo = repo;
         }
 
-        public async Task<ActionResult> CreateAsync(CreateItemDto itemDto, CancellationToken cancellationToken)
+        public async Task<ActionResult> CreateAsync(ItemDto itemDto, CancellationToken cancellationToken)
         {
             Item item = new()
             {
@@ -60,7 +60,7 @@ namespace RunnersBlogMVC.Services
             return View("Item");
         }
 
-        public async Task<ActionResult> UpdateAsync(Guid id, CreateItemDto item, CancellationToken cancellationToken)
+        public async Task<ActionResult> UpdateByIdAsync(Guid id, ItemDto itemDto, CancellationToken cancellationToken)
         {
             var existingItem = await repo.GetItemAsync(id, cancellationToken);
             if (existingItem is null)
@@ -70,14 +70,20 @@ namespace RunnersBlogMVC.Services
 
             Item updatedItem = existingItem with
             {
-                Name = item.Name,
-                Price = item.Price,
+                Name = itemDto.Name,
+                Price = itemDto.Price,
             };
 
             await repo.UpdateItemAsync(updatedItem, cancellationToken);
-            return RedirectToAction("GetItems");
+            return RedirectToAction("GetAllItems", new RouteValueDictionary(new { Controller = "Items", Action = "GetAllItems" }));
         }
         public async Task<ActionResult> DeleteMiddlePage(Guid id, CancellationToken cancellationToken)
+        {
+            var item = await repo.GetItemAsync(id, cancellationToken);
+
+            return View(item);
+        }
+        public async Task<ActionResult> UpdateMiddlePage(Guid id, CancellationToken cancellationToken)
         {
             var item = await repo.GetItemAsync(id, cancellationToken);
 

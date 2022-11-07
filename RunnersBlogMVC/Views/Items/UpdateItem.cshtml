@@ -7,7 +7,7 @@
 <h1>
     Edit Item
 </h1>
-<form method="post" asp-action="EditItem">
+<form asp-controller="Items" asp-action="UpdateById" asp-route-id="@Model.Id"  method="post">
     <div class="border p-3 mt-4">
         <div class="row pb-2">
             <h2 class="text-primary">Edit shoes</h2>
@@ -16,16 +16,16 @@
         <div asp-validation-summary="All"></div>
         <div class="mb-3">
             <label asp-for="Name" class="control-label"></label>
-            <input asp-for="Name" class="form-control" />
+            <input asp-for="Name" class="form-control" value="@Model.Name" />
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Price" class="control-label"></label>
-            <input asp-for="Price" class="form-control" />
+            <input asp-for="Price" class="form-control" value="@Model.Price"/>
             <span asp-validation-for="Price" class="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
-        <a asp-controller="Items" asp-action="GetItems" class="btn btn-secondary" style="width:150px">
+        <a asp-controller="Items" asp-action="GetAllItems" class="btn btn-secondary" style="width:150px">
             Back to List
         </a>
     </div>

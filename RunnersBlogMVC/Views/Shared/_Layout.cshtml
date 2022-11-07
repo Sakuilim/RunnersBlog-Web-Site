@@ -44,7 +44,7 @@
                             </div>
                             </li>*@
                         @{
-                            if (User?.Identity?.IsAuthenticated ?? false)
+                            if (User?.Identity?.IsAuthenticated ?? false && User.IsInRole("Admin"))
                             {
                                 <li class="nav-item">
                                     <u>Welcome: @User.Identity.Name</u>
