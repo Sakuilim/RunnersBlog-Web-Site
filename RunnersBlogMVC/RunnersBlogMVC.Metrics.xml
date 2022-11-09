@@ -4,12 +4,12 @@
     <Target Name="RunnersBlogMVC.csproj">
       <Assembly Name="RunnersBlogMVC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
         <Metrics>
-          <Metric Name="MaintainabilityIndex" Value="89" />
-          <Metric Name="CyclomaticComplexity" Value="73" />
+          <Metric Name="MaintainabilityIndex" Value="90" />
+          <Metric Name="CyclomaticComplexity" Value="88" />
           <Metric Name="ClassCoupling" Value="72" />
-          <Metric Name="DepthOfInheritance" Value="3" />
-          <Metric Name="SourceLines" Value="429" />
-          <Metric Name="ExecutableLines" Value="123" />
+          <Metric Name="DepthOfInheritance" Value="4" />
+          <Metric Name="SourceLines" Value="505" />
+          <Metric Name="ExecutableLines" Value="130" />
         </Metrics>
         <Namespaces>
           <Namespace Name="&lt;global namespace&gt;">
@@ -32,7 +32,7 @@
               <Metric Name="ExecutableLines" Value="1" />
             </Metrics>
             <Types>
-              <NamedType Name="Extensions">
+              <NamedType Name="DtoExtensions">
                 <Metrics>
                   <Metric Name="MaintainabilityIndex" Value="100" />
                   <Metric Name="CyclomaticComplexity" Value="1" />
@@ -42,7 +42,7 @@
                   <Metric Name="ExecutableLines" Value="1" />
                 </Metrics>
                 <Members>
-                  <Method Name="ItemDto Extensions.AsDto(Item item)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Extensions.cs" Line="8">
+                  <Method Name="ItemDto DtoExtensions.AsDto(Item item)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Common\Extensions\DtoExtensions.cs" Line="8">
                     <Metrics>
                       <Metric Name="MaintainabilityIndex" Value="100" />
                       <Metric Name="CyclomaticComplexity" Value="1" />
@@ -57,12 +57,12 @@
           </Namespace>
           <Namespace Name="RunnersBlogMVC.Controllers">
             <Metrics>
-              <Metric Name="MaintainabilityIndex" Value="78" />
-              <Metric Name="CyclomaticComplexity" Value="41" />
-              <Metric Name="ClassCoupling" Value="44" />
-              <Metric Name="DepthOfInheritance" Value="3" />
-              <Metric Name="SourceLines" Value="296" />
-              <Metric Name="ExecutableLines" Value="91" />
+              <Metric Name="MaintainabilityIndex" Value="83" />
+              <Metric Name="CyclomaticComplexity" Value="38" />
+              <Metric Name="ClassCoupling" Value="43" />
+              <Metric Name="DepthOfInheritance" Value="4" />
+              <Metric Name="SourceLines" Value="260" />
+              <Metric Name="ExecutableLines" Value="68" />
             </Metrics>
             <Types>
               <NamedType Name="AccountController">
@@ -70,7 +70,7 @@
                   <Metric Name="MaintainabilityIndex" Value="78" />
                   <Metric Name="CyclomaticComplexity" Value="8" />
                   <Metric Name="ClassCoupling" Value="19" />
-                  <Metric Name="DepthOfInheritance" Value="3" />
+                  <Metric Name="DepthOfInheritance" Value="4" />
                   <Metric Name="SourceLines" Value="48" />
                   <Metric Name="ExecutableLines" Value="14" />
                 </Metrics>
@@ -140,6 +140,16 @@
                   </Method>
                 </Members>
               </NamedType>
+              <NamedType Name="BaseController">
+                <Metrics>
+                  <Metric Name="MaintainabilityIndex" Value="100" />
+                  <Metric Name="CyclomaticComplexity" Value="1" />
+                  <Metric Name="ClassCoupling" Value="1" />
+                  <Metric Name="DepthOfInheritance" Value="3" />
+                  <Metric Name="SourceLines" Value="3" />
+                  <Metric Name="ExecutableLines" Value="0" />
+                </Metrics>
+              </NamedType>
               <NamedType Name="HomeController">
                 <Metrics>
                   <Metric Name="MaintainabilityIndex" Value="86" />
@@ -199,15 +209,24 @@
               </NamedType>
               <NamedType Name="ItemsController">
                 <Metrics>
-                  <Metric Name="MaintainabilityIndex" Value="72" />
-                  <Metric Name="CyclomaticComplexity" Value="12" />
-                  <Metric Name="ClassCoupling" Value="20" />
-                  <Metric Name="DepthOfInheritance" Value="3" />
-                  <Metric Name="SourceLines" Value="101" />
-                  <Metric Name="ExecutableLines" Value="37" />
+                  <Metric Name="MaintainabilityIndex" Value="83" />
+                  <Metric Name="CyclomaticComplexity" Value="8" />
+                  <Metric Name="ClassCoupling" Value="16" />
+                  <Metric Name="DepthOfInheritance" Value="4" />
+                  <Metric Name="SourceLines" Value="59" />
+                  <Metric Name="ExecutableLines" Value="14" />
                 </Metrics>
                 <Members>
-                  <Field Name="IItemsRepository ItemsController.repo" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\ItemsController.cs" Line="14">
+                  <Field Name="IBaseService&lt;Item, ItemDto&gt; ItemsController.itemService" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\ItemsController.cs" Line="13">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="0" />
+                      <Metric Name="ClassCoupling" Value="3" />
+                      <Metric Name="SourceLines" Value="1" />
+                      <Metric Name="ExecutableLines" Value="0" />
+                    </Metrics>
+                  </Field>
+                  <Field Name="CancellationToken ItemsController.cancellationToken" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\ItemsController.cs" Line="14">
                     <Metrics>
                       <Metric Name="MaintainabilityIndex" Value="100" />
                       <Metric Name="CyclomaticComplexity" Value="0" />
@@ -216,25 +235,34 @@
                       <Metric Name="ExecutableLines" Value="0" />
                     </Metrics>
                   </Field>
-                  <Method Name="ItemsController.ItemsController(IItemsRepository repo)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\ItemsController.cs" Line="15">
+                  <Method Name="ItemsController.ItemsController(IBaseService&lt;Item, ItemDto&gt; itemService)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\ItemsController.cs" Line="15">
                     <Metrics>
-                      <Metric Name="MaintainabilityIndex" Value="96" />
+                      <Metric Name="MaintainabilityIndex" Value="86" />
                       <Metric Name="CyclomaticComplexity" Value="1" />
-                      <Metric Name="ClassCoupling" Value="1" />
+                      <Metric Name="ClassCoupling" Value="4" />
+                      <Metric Name="SourceLines" Value="5" />
+                      <Metric Name="ExecutableLines" Value="2" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task&lt;ActionResult&lt;Item&gt;&gt; ItemsController.DeleteItemAsync(Guid id)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\ItemsController.cs" Line="23">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="83" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="11" />
+                      <Metric Name="SourceLines" Value="7" />
+                      <Metric Name="ExecutableLines" Value="2" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task&lt;ActionResult&lt;Item&gt;&gt; ItemsController.UpdateItemAsync(Guid id)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\ItemsController.cs" Line="27">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="91" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="9" />
                       <Metric Name="SourceLines" Value="4" />
                       <Metric Name="ExecutableLines" Value="1" />
                     </Metrics>
                   </Method>
-                  <Method Name="Task&lt;ActionResult&gt; ItemsController.GetItemsAsync()" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\ItemsController.cs" Line="22">
-                    <Metrics>
-                      <Metric Name="MaintainabilityIndex" Value="78" />
-                      <Metric Name="CyclomaticComplexity" Value="1" />
-                      <Metric Name="ClassCoupling" Value="9" />
-                      <Metric Name="SourceLines" Value="10" />
-                      <Metric Name="ExecutableLines" Value="3" />
-                    </Metrics>
-                  </Method>
-                  <Method Name="ActionResult ItemsController.CreateItem()" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\ItemsController.cs" Line="32">
+                  <Method Name="ActionResult ItemsController.CreateItem()" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\ItemsController.cs" Line="34">
                     <Metrics>
                       <Metric Name="MaintainabilityIndex" Value="86" />
                       <Metric Name="CyclomaticComplexity" Value="1" />
@@ -243,49 +271,40 @@
                       <Metric Name="ExecutableLines" Value="2" />
                     </Metrics>
                   </Method>
-                  <Method Name="Task&lt;ActionResult&gt; ItemsController.CreateItemAsync(CreateItemDto itemDto)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\ItemsController.cs" Line="40">
+                  <Method Name="Task&lt;ActionResult&gt; ItemsController.GetAllItemsAsync()" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\ItemsController.cs" Line="41">
                     <Metrics>
-                      <Metric Name="MaintainabilityIndex" Value="74" />
+                      <Metric Name="MaintainabilityIndex" Value="92" />
                       <Metric Name="CyclomaticComplexity" Value="1" />
-                      <Metric Name="ClassCoupling" Value="12" />
-                      <Metric Name="SourceLines" Value="17" />
-                      <Metric Name="ExecutableLines" Value="4" />
+                      <Metric Name="ClassCoupling" Value="9" />
+                      <Metric Name="SourceLines" Value="8" />
+                      <Metric Name="ExecutableLines" Value="1" />
                     </Metrics>
                   </Method>
-                  <Method Name="Task&lt;ActionResult&lt;Item&gt;&gt; ItemsController.EditItemAsync(Guid id)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\ItemsController.cs" Line="56">
+                  <Method Name="Task&lt;ActionResult&gt; ItemsController.CreateItemAsync(ItemDto itemDto)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\ItemsController.cs" Line="50">
                     <Metrics>
-                      <Metric Name="MaintainabilityIndex" Value="72" />
-                      <Metric Name="CyclomaticComplexity" Value="2" />
+                      <Metric Name="MaintainabilityIndex" Value="83" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
                       <Metric Name="ClassCoupling" Value="10" />
-                      <Metric Name="SourceLines" Value="12" />
-                      <Metric Name="ExecutableLines" Value="5" />
+                      <Metric Name="SourceLines" Value="8" />
+                      <Metric Name="ExecutableLines" Value="2" />
                     </Metrics>
                   </Method>
-                  <Method Name="Task&lt;ActionResult&gt; ItemsController.EditItemAsync(Guid id, Item itemDto)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\ItemsController.cs" Line="68">
+                  <Method Name="Task&lt;ActionResult&lt;Item&gt;&gt; ItemsController.UpdateByIdAsync(Guid id, ItemDto itemDto)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\ItemsController.cs" Line="57">
                     <Metrics>
-                      <Metric Name="MaintainabilityIndex" Value="62" />
-                      <Metric Name="CyclomaticComplexity" Value="2" />
+                      <Metric Name="MaintainabilityIndex" Value="82" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
                       <Metric Name="ClassCoupling" Value="11" />
-                      <Metric Name="SourceLines" Value="20" />
-                      <Metric Name="ExecutableLines" Value="11" />
+                      <Metric Name="SourceLines" Value="7" />
+                      <Metric Name="ExecutableLines" Value="2" />
                     </Metrics>
                   </Method>
-                  <Method Name="Task&lt;ActionResult&lt;Item&gt;&gt; ItemsController.DeleteItemAsync(Guid id)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\ItemsController.cs" Line="88">
+                  <Method Name="Task&lt;ActionResult&lt;Item&gt;&gt; ItemsController.DeleteByIdAsync(Guid id)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\ItemsController.cs" Line="64">
                     <Metrics>
-                      <Metric Name="MaintainabilityIndex" Value="72" />
-                      <Metric Name="CyclomaticComplexity" Value="2" />
+                      <Metric Name="MaintainabilityIndex" Value="83" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
                       <Metric Name="ClassCoupling" Value="10" />
-                      <Metric Name="SourceLines" Value="12" />
-                      <Metric Name="ExecutableLines" Value="5" />
-                    </Metrics>
-                  </Method>
-                  <Method Name="Task&lt;ActionResult&lt;Item&gt;&gt; ItemsController.DeleteItemPOSTAsync(Guid id)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\ItemsController.cs" Line="100">
-                    <Metrics>
-                      <Metric Name="MaintainabilityIndex" Value="69" />
-                      <Metric Name="CyclomaticComplexity" Value="2" />
-                      <Metric Name="ClassCoupling" Value="11" />
-                      <Metric Name="SourceLines" Value="14" />
-                      <Metric Name="ExecutableLines" Value="6" />
+                      <Metric Name="SourceLines" Value="7" />
+                      <Metric Name="ExecutableLines" Value="2" />
                     </Metrics>
                   </Method>
                 </Members>
@@ -643,9 +662,9 @@
             <Metrics>
               <Metric Name="MaintainabilityIndex" Value="90" />
               <Metric Name="CyclomaticComplexity" Value="11" />
-              <Metric Name="ClassCoupling" Value="32" />
+              <Metric Name="ClassCoupling" Value="29" />
               <Metric Name="DepthOfInheritance" Value="1" />
-              <Metric Name="SourceLines" Value="50" />
+              <Metric Name="SourceLines" Value="51" />
               <Metric Name="ExecutableLines" Value="15" />
             </Metrics>
             <Types>
@@ -653,13 +672,31 @@
                 <Metrics>
                   <Metric Name="MaintainabilityIndex" Value="100" />
                   <Metric Name="CyclomaticComplexity" Value="5" />
-                  <Metric Name="ClassCoupling" Value="5" />
+                  <Metric Name="ClassCoupling" Value="6" />
                   <Metric Name="DepthOfInheritance" Value="0" />
                   <Metric Name="SourceLines" Value="8" />
                   <Metric Name="ExecutableLines" Value="0" />
                 </Metrics>
                 <Members>
-                  <Method Name="Task&lt;Item&gt; IItemsRepository.GetItemAsync(Guid Id)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\IItemsRepository.cs" Line="7">
+                  <Method Name="Task&lt;Item&gt; IItemsRepository.GetItemAsync(Guid Id, CancellationToken cancellationToken)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\IItemsRepository.cs" Line="7">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="4" />
+                      <Metric Name="SourceLines" Value="1" />
+                      <Metric Name="ExecutableLines" Value="0" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task&lt;IEnumerable&lt;Item&gt;&gt; IItemsRepository.GetItemsAsync(CancellationToken cancellationToken)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\IItemsRepository.cs" Line="8">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="4" />
+                      <Metric Name="SourceLines" Value="1" />
+                      <Metric Name="ExecutableLines" Value="0" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task IItemsRepository.CreateItemAsync(Item item, CancellationToken cancellationToken)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\IItemsRepository.cs" Line="9">
                     <Metrics>
                       <Metric Name="MaintainabilityIndex" Value="100" />
                       <Metric Name="CyclomaticComplexity" Value="1" />
@@ -668,7 +705,7 @@
                       <Metric Name="ExecutableLines" Value="0" />
                     </Metrics>
                   </Method>
-                  <Method Name="Task&lt;IEnumerable&lt;Item&gt;&gt; IItemsRepository.GetItemsAsync()" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\IItemsRepository.cs" Line="8">
+                  <Method Name="Task IItemsRepository.UpdateItemAsync(Item item, CancellationToken cancellationToken)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\IItemsRepository.cs" Line="10">
                     <Metrics>
                       <Metric Name="MaintainabilityIndex" Value="100" />
                       <Metric Name="CyclomaticComplexity" Value="1" />
@@ -677,29 +714,11 @@
                       <Metric Name="ExecutableLines" Value="0" />
                     </Metrics>
                   </Method>
-                  <Method Name="Task IItemsRepository.CreateItemAsync(Item item)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\IItemsRepository.cs" Line="9">
+                  <Method Name="Task IItemsRepository.DeleteItemAsync(Guid Id, CancellationToken cancellationToken)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\IItemsRepository.cs" Line="11">
                     <Metrics>
                       <Metric Name="MaintainabilityIndex" Value="100" />
                       <Metric Name="CyclomaticComplexity" Value="1" />
-                      <Metric Name="ClassCoupling" Value="2" />
-                      <Metric Name="SourceLines" Value="1" />
-                      <Metric Name="ExecutableLines" Value="0" />
-                    </Metrics>
-                  </Method>
-                  <Method Name="Task IItemsRepository.UpdateItemAsync(Item item)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\IItemsRepository.cs" Line="10">
-                    <Metrics>
-                      <Metric Name="MaintainabilityIndex" Value="100" />
-                      <Metric Name="CyclomaticComplexity" Value="1" />
-                      <Metric Name="ClassCoupling" Value="2" />
-                      <Metric Name="SourceLines" Value="1" />
-                      <Metric Name="ExecutableLines" Value="0" />
-                    </Metrics>
-                  </Method>
-                  <Method Name="Task IItemsRepository.DeleteItemAsync(Guid Id)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\IItemsRepository.cs" Line="11">
-                    <Metrics>
-                      <Metric Name="MaintainabilityIndex" Value="100" />
-                      <Metric Name="CyclomaticComplexity" Value="1" />
-                      <Metric Name="ClassCoupling" Value="2" />
+                      <Metric Name="ClassCoupling" Value="3" />
                       <Metric Name="SourceLines" Value="1" />
                       <Metric Name="ExecutableLines" Value="0" />
                     </Metrics>
@@ -710,9 +729,9 @@
                 <Metrics>
                   <Metric Name="MaintainabilityIndex" Value="81" />
                   <Metric Name="CyclomaticComplexity" Value="6" />
-                  <Metric Name="ClassCoupling" Value="32" />
+                  <Metric Name="ClassCoupling" Value="29" />
                   <Metric Name="DepthOfInheritance" Value="1" />
-                  <Metric Name="SourceLines" Value="36" />
+                  <Metric Name="SourceLines" Value="37" />
                   <Metric Name="ExecutableLines" Value="15" />
                 </Metrics>
                 <Members>
@@ -761,16 +780,16 @@
                       <Metric Name="ExecutableLines" Value="2" />
                     </Metrics>
                   </Method>
-                  <Method Name="Task MongoDbItemsRepo.CreateItemAsync(Item item)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\MongoDbItemsRepo.cs" Line="19">
+                  <Method Name="Task MongoDbItemsRepo.CreateItemAsync(Item item, CancellationToken cancellationToken)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\MongoDbItemsRepo.cs" Line="20">
                     <Metrics>
-                      <Metric Name="MaintainabilityIndex" Value="93" />
+                      <Metric Name="MaintainabilityIndex" Value="94" />
                       <Metric Name="CyclomaticComplexity" Value="1" />
-                      <Metric Name="ClassCoupling" Value="6" />
-                      <Metric Name="SourceLines" Value="4" />
+                      <Metric Name="ClassCoupling" Value="7" />
+                      <Metric Name="SourceLines" Value="5" />
                       <Metric Name="ExecutableLines" Value="1" />
                     </Metrics>
                   </Method>
-                  <Method Name="Task MongoDbItemsRepo.DeleteItemAsync(Guid Id)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\MongoDbItemsRepo.cs" Line="23">
+                  <Method Name="Task MongoDbItemsRepo.DeleteItemAsync(Guid Id, CancellationToken cancellationToken)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\MongoDbItemsRepo.cs" Line="24">
                     <Metrics>
                       <Metric Name="MaintainabilityIndex" Value="79" />
                       <Metric Name="CyclomaticComplexity" Value="1" />
@@ -779,7 +798,25 @@
                       <Metric Name="ExecutableLines" Value="3" />
                     </Metrics>
                   </Method>
-                  <Method Name="Task&lt;Item&gt; MongoDbItemsRepo.GetItemAsync(Guid Id)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\MongoDbItemsRepo.cs" Line="28">
+                  <Method Name="Task&lt;Item&gt; MongoDbItemsRepo.GetItemAsync(Guid Id, CancellationToken cancellationToken)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\MongoDbItemsRepo.cs" Line="29">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="78" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="11" />
+                      <Metric Name="SourceLines" Value="5" />
+                      <Metric Name="ExecutableLines" Value="3" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task&lt;IEnumerable&lt;Item&gt;&gt; MongoDbItemsRepo.GetItemsAsync(CancellationToken cancellationToken)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\MongoDbItemsRepo.cs" Line="34">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="91" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="11" />
+                      <Metric Name="SourceLines" Value="4" />
+                      <Metric Name="ExecutableLines" Value="1" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task MongoDbItemsRepo.UpdateItemAsync(Item item, CancellationToken cancellation)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\MongoDbItemsRepo.cs" Line="38">
                     <Metrics>
                       <Metric Name="MaintainabilityIndex" Value="78" />
                       <Metric Name="CyclomaticComplexity" Value="1" />
@@ -788,22 +825,184 @@
                       <Metric Name="ExecutableLines" Value="3" />
                     </Metrics>
                   </Method>
-                  <Method Name="Task&lt;IEnumerable&lt;Item&gt;&gt; MongoDbItemsRepo.GetItemsAsync()" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\MongoDbItemsRepo.cs" Line="33">
+                </Members>
+              </NamedType>
+            </Types>
+          </Namespace>
+          <Namespace Name="RunnersBlogMVC.Services">
+            <Metrics>
+              <Metric Name="MaintainabilityIndex" Value="86" />
+              <Metric Name="CyclomaticComplexity" Value="18" />
+              <Metric Name="ClassCoupling" Value="18" />
+              <Metric Name="DepthOfInheritance" Value="3" />
+              <Metric Name="SourceLines" Value="111" />
+              <Metric Name="ExecutableLines" Value="30" />
+            </Metrics>
+            <Types>
+              <NamedType Name="IBaseService&lt;T, TDto&gt;">
+                <Metrics>
+                  <Metric Name="MaintainabilityIndex" Value="100" />
+                  <Metric Name="CyclomaticComplexity" Value="7" />
+                  <Metric Name="ClassCoupling" Value="5" />
+                  <Metric Name="DepthOfInheritance" Value="0" />
+                  <Metric Name="SourceLines" Value="21" />
+                  <Metric Name="ExecutableLines" Value="0" />
+                </Metrics>
+                <Members>
+                  <Method Name="Task&lt;ActionResult&gt; IBaseService&lt;T, TDto&gt;.GetAllAsync(CancellationToken cancellationToken)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Services\IBaseService.cs" Line="7">
                     <Metrics>
-                      <Metric Name="MaintainabilityIndex" Value="91" />
+                      <Metric Name="MaintainabilityIndex" Value="100" />
                       <Metric Name="CyclomaticComplexity" Value="1" />
-                      <Metric Name="ClassCoupling" Value="14" />
+                      <Metric Name="ClassCoupling" Value="3" />
+                      <Metric Name="SourceLines" Value="1" />
+                      <Metric Name="ExecutableLines" Value="0" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task&lt;ActionResult&lt;T&gt;&gt; IBaseService&lt;T, TDto&gt;.GetByIdAsync(Guid id, CancellationToken cancellationToken)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Services\IBaseService.cs" Line="9">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="4" />
+                      <Metric Name="SourceLines" Value="2" />
+                      <Metric Name="ExecutableLines" Value="0" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task&lt;ActionResult&gt; IBaseService&lt;T, TDto&gt;.CreateAsync(TDto dataDto, CancellationToken cancellationToken)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Services\IBaseService.cs" Line="12">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="3" />
+                      <Metric Name="SourceLines" Value="2" />
+                      <Metric Name="ExecutableLines" Value="0" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task&lt;ActionResult&lt;T&gt;&gt; IBaseService&lt;T, TDto&gt;.DeleteByIdAsync(Guid id, CancellationToken cancellationToken)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Services\IBaseService.cs" Line="15">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="4" />
+                      <Metric Name="SourceLines" Value="2" />
+                      <Metric Name="ExecutableLines" Value="0" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task&lt;ActionResult&gt; IBaseService&lt;T, TDto&gt;.UpdateByIdAsync(Guid id, TDto dataToUpdateWith, CancellationToken cancellationToken)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Services\IBaseService.cs" Line="18">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="4" />
+                      <Metric Name="SourceLines" Value="2" />
+                      <Metric Name="ExecutableLines" Value="0" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task&lt;ActionResult&gt; IBaseService&lt;T, TDto&gt;.DeleteMiddlePage(Guid id, CancellationToken cancellationToken)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Services\IBaseService.cs" Line="21">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="4" />
+                      <Metric Name="SourceLines" Value="2" />
+                      <Metric Name="ExecutableLines" Value="0" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task&lt;ActionResult&gt; IBaseService&lt;T, TDto&gt;.UpdateMiddlePage(Guid id, CancellationToken cancellationToken)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Services\IBaseService.cs" Line="23">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="4" />
+                      <Metric Name="SourceLines" Value="2" />
+                      <Metric Name="ExecutableLines" Value="0" />
+                    </Metrics>
+                  </Method>
+                </Members>
+              </NamedType>
+              <NamedType Name="ItemsService">
+                <Metrics>
+                  <Metric Name="MaintainabilityIndex" Value="73" />
+                  <Metric Name="CyclomaticComplexity" Value="11" />
+                  <Metric Name="ClassCoupling" Value="18" />
+                  <Metric Name="DepthOfInheritance" Value="3" />
+                  <Metric Name="SourceLines" Value="84" />
+                  <Metric Name="ExecutableLines" Value="30" />
+                </Metrics>
+                <Members>
+                  <Field Name="IItemsRepository ItemsService.repo" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Services\ItemsService.cs" Line="11">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="100" />
+                      <Metric Name="CyclomaticComplexity" Value="0" />
+                      <Metric Name="ClassCoupling" Value="1" />
+                      <Metric Name="SourceLines" Value="1" />
+                      <Metric Name="ExecutableLines" Value="0" />
+                    </Metrics>
+                  </Field>
+                  <Method Name="ItemsService.ItemsService(IItemsRepository repo)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Services\ItemsService.cs" Line="12">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="96" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="1" />
                       <Metric Name="SourceLines" Value="4" />
                       <Metric Name="ExecutableLines" Value="1" />
                     </Metrics>
                   </Method>
-                  <Method Name="Task MongoDbItemsRepo.UpdateItemAsync(Item item)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\MongoDbItemsRepo.cs" Line="37">
+                  <Method Name="Task&lt;ActionResult&gt; ItemsService.CreateAsync(ItemDto itemDto, CancellationToken cancellationToken)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Services\ItemsService.cs" Line="17">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="76" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="11" />
+                      <Metric Name="SourceLines" Value="14" />
+                      <Metric Name="ExecutableLines" Value="3" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task&lt;ActionResult&lt;Item&gt;&gt; ItemsService.DeleteByIdAsync(Guid id, CancellationToken cancellationToken)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Services\ItemsService.cs" Line="32">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="70" />
+                      <Metric Name="CyclomaticComplexity" Value="2" />
+                      <Metric Name="ClassCoupling" Value="11" />
+                      <Metric Name="SourceLines" Value="11" />
+                      <Metric Name="ExecutableLines" Value="5" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task&lt;ActionResult&gt; ItemsService.GetAllAsync(CancellationToken cancellationToken)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Services\ItemsService.cs" Line="44">
                     <Metrics>
                       <Metric Name="MaintainabilityIndex" Value="78" />
                       <Metric Name="CyclomaticComplexity" Value="1" />
-                      <Metric Name="ClassCoupling" Value="12" />
-                      <Metric Name="SourceLines" Value="5" />
+                      <Metric Name="ClassCoupling" Value="8" />
+                      <Metric Name="SourceLines" Value="7" />
                       <Metric Name="ExecutableLines" Value="3" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task&lt;ActionResult&lt;Item&gt;&gt; ItemsService.GetByIdAsync(Guid id, CancellationToken cancellationToken)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Services\ItemsService.cs" Line="52">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="74" />
+                      <Metric Name="CyclomaticComplexity" Value="2" />
+                      <Metric Name="ClassCoupling" Value="9" />
+                      <Metric Name="SourceLines" Value="10" />
+                      <Metric Name="ExecutableLines" Value="4" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task&lt;ActionResult&gt; ItemsService.UpdateByIdAsync(Guid id, ItemDto itemDto, CancellationToken cancellationToken)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Services\ItemsService.cs" Line="63">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="63" />
+                      <Metric Name="CyclomaticComplexity" Value="2" />
+                      <Metric Name="ClassCoupling" Value="12" />
+                      <Metric Name="SourceLines" Value="17" />
+                      <Metric Name="ExecutableLines" Value="10" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task&lt;ActionResult&gt; ItemsService.DeleteMiddlePage(Guid id, CancellationToken cancellationToken)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Services\ItemsService.cs" Line="80">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="83" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="8" />
+                      <Metric Name="SourceLines" Value="6" />
+                      <Metric Name="ExecutableLines" Value="2" />
+                    </Metrics>
+                  </Method>
+                  <Method Name="Task&lt;ActionResult&gt; ItemsService.UpdateMiddlePage(Guid id, CancellationToken cancellationToken)" File="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Services\ItemsService.cs" Line="86">
+                    <Metrics>
+                      <Metric Name="MaintainabilityIndex" Value="83" />
+                      <Metric Name="CyclomaticComplexity" Value="1" />
+                      <Metric Name="ClassCoupling" Value="8" />
+                      <Metric Name="SourceLines" Value="6" />
+                      <Metric Name="ExecutableLines" Value="2" />
                     </Metrics>
                   </Method>
                 </Members>

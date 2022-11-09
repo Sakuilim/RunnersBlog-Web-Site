@@ -1,4 +1,10 @@
-Œ
+§
+mC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Common\Extensions\DtoExtensions.cs
+
+ %
+
+ #
+. 2  Œ
 kC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\AccountController.cs
 
 		 "
@@ -17,7 +23,10 @@ kC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Cont
 $$  '%% ''q x
 ''? E(( 
 
-33( .Ú
+33( .v
+hC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\BaseController.cs
+
+ (Ú
 hC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\HomeController.cs
  		! /& 4
 		1 8 
@@ -27,39 +36,33 @@ hC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Cont
 
  $
 
- "¡
+ "‰
 iC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\ItemsController.cs
 
-  d
-* .  "22 :: !FF% )RR ZZ !ff% )ll 
-0 4 
+  P
+5 @  $ $++ $44 $;; $BB $P
++ < : K: K++1 B44: K;;B SBB9 J
+; F *
 
-( 5
-  !
+. =
+C E6 8
 
-   &
+. =
+C E6 8
 
-((( 7
-((F M-- .. 
-** 22' +
+"" &
 
-88. ;
-88A C::/ 1
-:: ;; ?? 
+))( 8
 
-DD( 5
-DD; =FF7 9
-DDD KNN OO 
-FF GG LL +
-LL RR' 2
+22( 7
+22@ G441 8
 
-XX. =
-XXC EZZ/ 1
-ZZ [[ __ 
+99. =
+99C E;;5 7
+99O V;;9 @
 
-dd. A
-ddG Iff7 9ll' )
-ff gg …
+@@. =
+@@C EBB5 7…
 kC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\SecuredController.cs
 
  "
@@ -90,27 +93,14 @@ hC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Cont
 IId lRRL TUUU ]XXS [(
 MM  /NN #PP #XXB Q
 RR 'SS '(
-XX ZZ \\* 0``8 >…
-_C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\DTO\CreateItemDto.cs
+XX ZZ \\* 0``8 >
+YC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\DTO\ItemDto.cs
 
- 
+ 
 
  
 
- 
-YC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\DTO\ItemDto.cs
-
- 
-
- 
-
- ’
-XC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Extensions.cs
-
- "
-
- #
-. 2  ƒ
+ ƒ
 uC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Models\ApplicationUsers\ApplicationRole.cs
 
   ƒ
@@ -147,15 +137,15 @@ _C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Mode
  
 
  
-  %+ 3Ó
-UC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Program.csF
-		 % ,     !!
+  %+ 3Û
+UC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Program.csN
+ % ,      $$
  
- " 
-  # 
+ " 
+  #!! 
 
-, ;p
-!! $$ && (( ++ ,, .. 00 11 33 44 77 ;; å
+, ;p
+$$ '' )) ++ .. // 11 33 44 66 77 :: >> ¡
 kC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\IItemsRepository.cs
 
  %
@@ -164,11 +154,17 @@ kC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repo
 
 % '
 
+; L
+
   -
+
+@ Q
 
 		 
 
 		" &
+
+		: K
 
 
 
@@ -178,9 +174,15 @@ kC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repo
 
 " &
 
+
+
+: K
+
  
 
-" $å
+" $
+
+8 IÉ
 kC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\MongoDbItemsRepo.cs
 
  !
@@ -188,30 +190,126 @@ kC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repo
 
 
  +; IF
-0 ?  ! ! (## ((( !(
-7 D & &'' &
+0 ?  ! !   ($$ ()) !(
+7 D & &(( &
 - 8& 1
  # &
 
- )
-/ 31 5
+ )
+/ 31 5
+G X7 H
 
- )
-/ 1; =
- 1 7
-* .2 6
+ )
+/ 1; =
+E V9 J
+ 1 7
+* .2 6
 
-  ,
-2 4; =
- . 4
-* .2 6
+  ,
+2 4; =
+H Y  K \
+   . 4
+* .2 6
 
-!!- :
+""- :
+""M ^$$N _
 
-%% )
-%%/ 3''K O((: >
-'' ((2 8
-''* 6'': F¬
+&& )
+&&/ 3((K O)): >
+
+&&G S
+(( ))2 8
+((* 6((: F·
+cC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Services\IBaseService.cs
+
+ !(
+" #0 1		  
+$ (' +4 8
+
+ &
+
+9 J
+
+		 *
+
+		0 2
+
+
+
+ /
+
+ &
+
+, 3
+
+ /
+
+ -
+
+3 5
+
+ /
+
+ *
+
+0 2
+
+9 I
+
+ /
+
+ +
+
+1 3
+
+ /
+
+ +
+
+1 3
+
+ .ë
+cC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Services\ItemsService.cs
+
+		 n
+* .  ""% )(( .. "66 !AA% )MM RR !XX !
+- 1 
+
+( 3
+< C  
+W h- >
+ ' +
+
+  . =
+  C E""7 9((' )
+  Y j""; L((+ <
+"" ## 
+
+,,( 3
+,,F W..1 B
+.. 00 !
+
+44. :
+44@ B66/ 1
+44V g663 D
+66 88 
+
+??( 7
+??= ?AA7 9
+??I PII JJ 
+??d uAA; LMM4 E
+AA BB GG +
+GG MM' 2
+
+PP( 8
+PP> @RR/ 1
+PPT eRR3 D
+RR TT 
+
+VV( 8
+VV> @XX/ 1
+VVT eXX3 D
+XX ZZ ¬
 fC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Settings\MongoDbSettings.cs
 
   

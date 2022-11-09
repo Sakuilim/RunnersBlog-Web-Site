@@ -1,4 +1,51 @@
-Î!
+ê
+mC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Common\Extensions\DtoExtensions.cs
+	namespace 	
+RunnersBlogMVC
+ 
+{ 
+public 
+
+static 
+class 
+DtoExtensions %
+{ 
+public 
+static 
+ItemDto 
+AsDto #
+(# $
+this$ (
+Item) -
+item. 2
+)2 3
+{		 	
+return
+
+ 
+new
+
+ 
+ItemDto
+
+ 
+{ 
+Name 
+= 
+item 
+. 
+Name  
+,  !
+Price 
+= 
+item 
+. 
+Price "
+} 
+; 
+} 	
+} 
+} Ô!
 kC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\AccountController.cs
 	namespace 	
 RunnersBlogMVC
@@ -10,9 +57,8 @@ kC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Cont
 
 class		 
 AccountController		 "
-:		# $
-
-Controller		% /
+:		# $
+BaseController		% 3
 {
 
  
@@ -239,7 +285,25 @@ ModelState-- 
 ;664 5
 }77 	
 }88 
-}99 á
+}99 ˚
+hC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\BaseController.cs
+	namespace 	
+RunnersBlogMVC
+ 
+. 
+Controllers $
+{ 
+public 
+
+abstract 
+class 
+BaseController (
+:) *
+
+Controller+ 5
+{ 
+} 
+} á
 hC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\HomeController.cs
 	namespace 	
 RunnersBlogMVC
@@ -349,448 +413,298 @@ Controller" ,
 ;o p
 } 	
 } 
-}   ‚<
+}   ¥*
 iC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\ItemsController.cs
-	namespace		 	
-RunnersBlogMVC		
+	namespace 	
+RunnersBlogMVC
  
-.		 
-Controllers		 $
-{
-
- 
-public 
+. 
+Controllers $
+{		 
+public 
 
-class 
-ItemsController  
-:! "
-
-Controller# -
-{ 
+class 
+ItemsController  
+:! "
+BaseController# 1
+{ 
+private 
+readonly 
+IBaseService %
+<% &
+Item& *
+,* +
+ItemDto, 3
+>3 4
+itemService5 @
+;@ A
 private 
-readonly 
-IItemsRepository )
-repo* .
-;. /
+readonly 
+CancellationToken *
+cancellationToken+ <
+;< =
 public 
 ItemsController 
-( 
-IItemsRepository /
-repo0 4
-)4 5
+( 
+IBaseService +
+<+ ,
+Item, 0
+,0 1
+ItemDto2 9
+>9 :
+itemService; F
+)F G
 { 	
 this 
-. 
-repo 
-= 
-repo 
-; 
-} 	
-[ 	
-HttpGet	 
-] 
-[ 	
-AllowAnonymous	 
-] 
-public 
-async 
-Task 
-< 
-ActionResult &
->& '
-GetItemsAsync( 5
-(5 6
-)6 7
-{ 	
-var 
-items 
-= 
-await 
-repo "
-." #
-GetItemsAsync# 0
-(0 1
-)1 2
-;2 3
-ViewBag 
-. 
-Items 
-= 
-items !
-;! "
-return 
-View 
-( 
-$str "
-)" #
-;# $
-} 	
-[ 	
-HttpGet	 
-] 
-[ 	
-	Authorize	 
-( 
-Roles 
-= 
-$str "
-)" #
-]# $
-public   
-ActionResult   
+. 
+itemService 
+= 
+itemService *
+;* +
+cancellationToken 
+= 
+new  #
+CancellationToken$ 5
+(5 6
+)6 7
+;7 8
+} 	
+[ 	
+HttpGet	 
+] 
+[ 	
+	Authorize	 
+( 
+Roles 
+= 
+$str "
+)" #
+]# $
+public 
+async 
+Task 
+< 
+ActionResult &
+<& '
+Item' +
+>+ ,
+>, -
+DeleteItemAsync. =
+(= >
+Guid> B
+idC E
+)E F
+{ 	
+return 
+await 
+itemService $
+.$ %
+DeleteMiddlePage% 5
+(5 6
+id6 8
+,8 9
+cancellationToken: K
+)K L
+;L M
+} 	
+public 
+async 
+Task 
+< 
+ActionResult &
+<& '
+Item' +
+>+ ,
+>, -
+UpdateItemAsync. =
+(= >
+Guid> B
+idC E
+)E F
+{ 	
+return 
+await 
+itemService $
+.$ %
+UpdateMiddlePage% 5
+(5 6
+id6 8
+,8 9
+cancellationToken: K
+)K L
+;L M
+} 	
+[   	
+HttpGet  	 
+]   
+[!! 	
+	Authorize!!	 
+(!! 
+Roles!! 
+=!! 
+$str!! "
+)!!" #
+]!!# $
+public"" 
+ActionResult"" 
 
-CreateItem   &
-(  & '
-)  ' (
-{!! 	
-return"" 
-View"" 
-("" 
-)"" 
-;"" 
-}## 	
-[%% 	
-HttpPost%%	 
-]%% 
-[&& 	$
-ValidateAntiForgeryToken&&	 !
-]&&! "
-['' 	
-	Authorize''	 
-('' 
-Roles'' 
-='' 
-$str'' "
-)''" #
-]''# $
-public(( 
-async(( 
-Task(( 
-<(( 
-ActionResult(( &
->((& '
-CreateItemAsync((( 7
-(((7 8
-CreateItemDto((8 E
-itemDto((F M
-)((M N
-{)) 	
-Item** 
-item** 
-=** 
-new** 
-(** 
-)** 
-{++ 
-Id,, 
-=,, 
-Guid,, 
-.,, 
-NewGuid,, !
-(,,! "
-),," #
-,,,# $
-Name-- 
-=-- 
-itemDto-- 
-.-- 
-Name-- #
-,--# $
-Price.. 
-=.. 
-itemDto.. 
-...  
-Price..  %
-,..% &
-CreatedDate// 
-=// 
-DateTimeOffset// ,
-.//, -
-UtcNow//- 3
-,//3 4
-}00 
-;00 
-await22 
-repo22 
-.22 
-CreateItemAsync22 &
-(22& '
-item22' +
-)22+ ,
-;22, -
-return33 
-RedirectToAction33 #
-(33# $
-$str33$ .
-)33. /
-;33/ 0
-}44 	
-[66 	
-HttpGet66	 
-]66 
-[77 	
-	Authorize77	 
-(77 
-Roles77 
-=77 
-$str77 "
-)77" #
-]77# $
-public88 
-async88 
-Task88 
-<88 
-ActionResult88 &
-<88& '
-Item88' +
->88+ ,
->88, -
-EditItemAsync88. ;
-(88; <
-Guid88< @
-id88A C
-)88C D
-{99 	
-var:: 
-item:: 
-=:: 
-await:: 
-repo:: !
-.::! "
-GetItemAsync::" .
-(::. /
-id::/ 1
-)::1 2
-;::2 3
-if;; 
-(;; 
-item;; 
-is;; 
-null;; 
-);; 
-{<< 
-return== 
-NotFound== 
-(==  
-)==  !
-;==! "
-}>> 
-return?? 
-View?? 
-(?? 
-item?? 
-)?? 
-;?? 
-}@@ 	
-[BB 	
-HttpPostBB	 
-]BB 
-[CC 	
-	AuthorizeCC	 
-(CC 
-RolesCC 
-=CC 
-$strCC "
-)CC" #
-]CC# $
-publicDD 
-asyncDD 
-TaskDD 
-<DD 
-ActionResultDD &
->DD& '
-EditItemAsyncDD( 5
-(DD5 6
-GuidDD6 :
-idDD; =
-,DD= >
-ItemDD? C
-itemDtoDDD K
-)DDK L
-{EE 	
-varFF 
-existingItemFF 
-=FF 
-awaitFF $
-repoFF% )
-.FF) *
-GetItemAsyncFF* 6
-(FF6 7
-idFF7 9
-)FF9 :
-;FF: ;
-ifGG 
-(GG 
-existingItemGG 
-isGG 
-nullGG  $
-)GG$ %
-{HH 
-returnII 
-NotFoundII 
-(II  
-)II  !
-;II! "
-}JJ 
-ItemLL 
-updatedItemLL 
-=LL 
-existingItemLL +
-withLL, 0
-{MM 
-NameNN 
-=NN 
-itemDtoNN 
-.NN 
-NameNN #
-,NN# $
-PriceOO 
-=OO 
-itemDtoOO 
-.OO  
-PriceOO  %
-,OO% &
-}PP 
-;PP 
-awaitRR 
-repoRR 
-.RR 
-UpdateItemAsyncRR &
-(RR& '
-updatedItemRR' 2
-)RR2 3
-;RR3 4
-returnSS 
-RedirectToActionSS #
-(SS# $
-$strSS$ .
-)SS. /
-;SS/ 0
-}TT 	
-[VV 	
-HttpGetVV	 
-]VV 
-[WW 	
-	AuthorizeWW	 
-(WW 
-RolesWW 
-=WW 
-$strWW "
-)WW" #
-]WW# $
-publicXX 
-asyncXX 
-TaskXX 
-<XX 
-ActionResultXX &
-<XX& '
-ItemXX' +
->XX+ ,
->XX, -
-DeleteItemAsyncXX. =
-(XX= >
-GuidXX> B
-idXXC E
-)XXE F
-{YY 	
-varZZ 
-itemZZ 
-=ZZ 
-awaitZZ 
-repoZZ !
-.ZZ! "
-GetItemAsyncZZ" .
-(ZZ. /
-idZZ/ 1
-)ZZ1 2
-;ZZ2 3
-if[[ 
-([[ 
-item[[ 
-is[[ 
-null[[ 
-)[[ 
-{\\ 
-return]] 
-NotFound]] 
-(]]  
-)]]  !
-;]]! "
-}^^ 
-return__ 
-View__ 
-(__ 
-item__ 
-)__ 
-;__ 
-}`` 	
-[bb 	
-HttpPostbb	 
-]bb 
-[cc 	
-	Authorizecc	 
-(cc 
-Rolescc 
-=cc 
-$strcc "
-)cc" #
-]cc# $
-publicdd 
-asyncdd 
-Taskdd 
-<dd 
-ActionResultdd &
-<dd& '
-Itemdd' +
->dd+ ,
->dd, -
-DeleteItemPOSTAsyncdd. A
-(ddA B
-GuidddB F
-idddG I
-)ddI J
-{ee 	
-varff 
-existingItemff 
-=ff 
-awaitff $
-repoff% )
-.ff) *
-GetItemAsyncff* 6
-(ff6 7
-idff7 9
-)ff9 :
-;ff: ;
-ifgg 
-(gg 
-existingItemgg 
-isgg 
-nullgg  $
-)gg$ %
-{hh 
-returnii 
-NotFoundii 
-(ii  
-)ii  !
-;ii! "
-}jj 
-awaitll 
-repoll 
-.ll 
-DeleteItemAsyncll &
-(ll& '
-idll' )
-)ll) *
-;ll* +
-returnmm 
-RedirectToActionmm #
-(mm# $
-$strmm$ .
-)mm. /
-;mm/ 0
-}nn 	
-}oo 
-}pp ˜
+CreateItem"" &
+(""& '
+)""' (
+{## 	
+return$$ 
+View$$ 
+($$ 
+)$$ 
+;$$ 
+}%% 	
+['' 	
+HttpGet''	 
+]'' 
+[(( 	
+AllowAnonymous((	 
+](( 
+public)) 
+async)) 
+Task)) 
+<)) 
+ActionResult)) &
+>))& '
+GetAllItemsAsync))( 8
+())8 9
+)))9 :
+{** 	
+return++ 
+await++ 
+itemService++ $
+.++$ %
+GetAllAsync++% 0
+(++0 1
+cancellationToken++1 B
+)++B C
+;++C D
+}-- 	
+[// 	
+HttpPost//	 
+]// 
+[00 	$
+ValidateAntiForgeryToken00	 !
+]00! "
+[11 	
+	Authorize11	 
+(11 
+Roles11 
+=11 
+$str11 "
+)11" #
+]11# $
+public22 
+async22 
+Task22 
+<22 
+ActionResult22 &
+>22& '
+CreateItemAsync22( 7
+(227 8
+ItemDto228 ?
+itemDto22@ G
+)22G H
+{33 	
+return44 
+await44 
+itemService44 $
+.44$ %
+CreateAsync44% 0
+(440 1
+itemDto441 8
+,448 9
+cancellationToken44: K
+)44K L
+;44L M
+}55 	
+[77 	
+HttpPost77	 
+]77 
+[88 	
+	Authorize88	 
+(88 
+Roles88 
+=88 
+$str88 "
+)88" #
+]88# $
+public99 
+async99 
+Task99 
+<99 
+ActionResult99 &
+<99& '
+Item99' +
+>99+ ,
+>99, -
+UpdateByIdAsync99. =
+(99= >
+Guid99> B
+id99C E
+,99E F
+ItemDto99G N
+itemDto99O V
+)99V W
+{:: 	
+return;; 
+await;; 
+itemService;; $
+.;;$ %
+UpdateByIdAsync;;% 4
+(;;4 5
+id;;5 7
+,;;7 8
+itemDto;;9 @
+,;;@ A
+cancellationToken;;B S
+);;S T
+;;;T U
+}<< 	
+[>> 	
+HttpGet>>	 
+]>> 
+[?? 	
+	Authorize??	 
+(?? 
+Roles?? 
+=?? 
+$str?? "
+)??" #
+]??# $
+public@@ 
+async@@ 
+Task@@ 
+<@@ 
+ActionResult@@ &
+<@@& '
+Item@@' +
+>@@+ ,
+>@@, -
+DeleteByIdAsync@@. =
+(@@= >
+Guid@@> B
+id@@C E
+)@@E F
+{AA 	
+returnBB 
+awaitBB 
+itemServiceBB $
+.BB$ %
+DeleteByIdAsyncBB% 4
+(BB4 5
+idBB5 7
+,BB7 8
+cancellationTokenBB9 J
+)BBJ K
+;BBK L
+}CC 	
+}DD 
+}EE ˜
 kC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Controllers\SecuredController.cs
 	namespace 	
 RunnersBlogMVC
@@ -1290,8 +1204,8 @@ ModelStatebb &
 ;gg 
 }hh 	
 }ii 
-}kk À
-_C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\DTO\CreateItemDto.cs
+}kk ø
+YC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\DTO\ItemDto.cs
 	namespace 	
 RunnersBlogMVC
  
@@ -1300,8 +1214,8 @@ _C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\DTO\
 { 
 public 
 
-record 
-CreateItemDto 
+record 
+ItemDto 
 { 
 [ 	
 Required	 
@@ -1352,87 +1266,7 @@ _C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\DTO\
 ;( )
 }* +
 } 
-} ’
-YC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\DTO\ItemDto.cs
-	namespace 	
-RunnersBlogMVC
- 
-. 
-DTO 
-{ 
-public 
-
-record 
-ItemDto 
-{ 
-public 
-string 
-Name 
-{ 
-get  
-;  !
-init" &
-;& '
-}( )
-public 
-decimal 
-Price 
-{ 
-get "
-;" #
-init$ (
-;( )
-}* +
-} 
-} ¯
-XC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Extensions.cs
-	namespace 	
-RunnersBlogMVC
- 
-{ 
-public 
-
-static 
-class 
-
-Extensions "
-{ 
-public 
-static 
-ItemDto 
-AsDto #
-(# $
-this$ (
-Item) -
-item. 2
-)2 3
-{		 	
-return
-
- 
-new
-
- 
-ItemDto
-
- 
-{ 
-Name 
-= 
-item 
-. 
-Name  
-,  !
-Price 
-= 
-item 
-. 
-Price "
-} 
-; 
-} 	
-} 
-} è
+} è
 uC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Models\ApplicationUsers\ApplicationRole.cs
 	namespace 	
 RunnersBlogMVC
@@ -1694,256 +1528,274 @@ _C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Mode
 , 
 User 
 } 
-} "
+} ≥%
 UC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Program.cs
-var		 
-builder		 
-=		 
-WebApplication		 
-.		 
-CreateBuilder		 *
-(		* +
-args		+ /
-)		/ 0
-;		0 1
-BsonSerializer 
-. 
-RegisterSerializer !
-(! "
-new" %
-GuidSerializer& 4
-(4 5
-BsonType5 =
-.= >
-String> D
-)D E
-)E F
-;F G
-BsonSerializer 
-. 
-RegisterSerializer !
-(! "
-new" %$
-DateTimeOffsetSerializer& >
-(> ?
-BsonType? G
-.G H
-StringH N
-)N O
-)O P
-;P Q
-ConfigurationManager 
-configuration "
-=# $
-builder% ,
-., -
-Configuration- :
-;: ;
-builder 
-. 
-Services 
-. #
-AddControllersWithViews (
-(( )
-)) *
-;* +
+var 
+builder 
+= 
+WebApplication 
+. 
+CreateBuilder *
+(* +
+args+ /
+)/ 0
+;0 1
+BsonSerializer 
+. 
+RegisterSerializer !
+(! "
+new" %
+GuidSerializer& 4
+(4 5
+BsonType5 =
+.= >
+String> D
+)D E
+)E F
+;F G
+BsonSerializer 
+. 
+RegisterSerializer !
+(! "
+new" %$
+DateTimeOffsetSerializer& >
+(> ?
+BsonType? G
+.G H
+StringH N
+)N O
+)O P
+;P Q
+ConfigurationManager 
+configuration "
+=# $
+builder% ,
+., -
+Configuration- :
+;: ;
 builder 
 . 
 Services 
-. 
-AddSwaggerGen 
-( 
-)  
-;  !
+. #
+AddControllersWithViews (
+(( )
+)) *
+;* +
 builder 
 . 
 Services 
-. 
-AddSingleton 
-< 
-IItemsRepository .
-,. /
-MongoDbItemsRepo/ ?
->? @
-(@ A
-)A B
-;B C
-var 
-settings 
-= 
-configuration 
-. 
-
-GetSection '
-(' (
-nameof( .
-(. /
-MongoDbSettings/ >
-)> ?
-)? @
-.@ A
-GetA D
-<D E
-MongoDbSettingsE T
->T U
-(U V
-)V W
-;W X
+. 
+AddSwaggerGen 
+( 
+)  
+;  !
 builder 
 . 
 Services 
 . 
 AddSingleton 
-< 
-IMongoClient *
->* +
-(+ ,
-serviceProvider, ;
-=>< >
-{ 
-return 
+< 
+IItemsRepository .
+,. /
+MongoDbItemsRepo/ ?
+>? @
+(@ A
+)A B
+;B C
+builder 
+. 
+Services 
+. 
+AddSingleton 
+< 
+IBaseService *
+<* +
+Item+ /
+,/ 0
+ItemDto1 8
+>8 9
+,9 :
+ItemsService; G
+>G H
+(H I
+)I J
+;J K
+var 
+settings 
+= 
+configuration 
+. 
+
+GetSection '
+(' (
+nameof( .
+(. /
+MongoDbSettings/ >
+)> ?
+)? @
+.@ A
+GetA D
+<D E
+MongoDbSettingsE T
+>T U
+(U V
+)V W
+;W X
+builder 
+. 
+Services 
+. 
+AddSingleton 
+< 
+IMongoClient *
+>* +
+(+ ,
+serviceProvider, ;
+=>< >
+{ 
+return 
 
-new 
-MongoClient 
-( 
-settings #
-.# $
-ConnectionString$ 4
-)4 5
-;5 6
-} 
-) 
-; 
-builder 
-. 
-Services 
-. 
-AddIdentity 
-< 
-ApplicationUser  
-,  !
-ApplicationRole" 1
->1 2
-(2 3
-)3 4
-. 
-AddMongoDbStores 
-< 
-ApplicationUser %
-,% &
-ApplicationRole' 6
-,6 7
-Guid8 <
->< =
-(= >
-settings 
-. 
-ConnectionString 
-, 
-$str &
-) 
-; 
-var!! 
-app!! 
-=!! 	
-builder!!
+new 
+MongoClient 
+( 
+settings #
+.# $
+ConnectionString$ 4
+)4 5
+;5 6
+} 
+) 
+; 
+builder 
+. 
+Services 
+. 
+AddIdentity 
+< 
+ApplicationUser  
+,  !
+ApplicationRole" 1
+>1 2
+(2 3
+)3 4
+.   
+AddMongoDbStores   
+<   
+ApplicationUser   %
+,  % &
+ApplicationRole  ' 6
+,  6 7
+Guid  8 <
+>  < =
+(  = >
+settings!! 
+.!! 
+ConnectionString!! 
+,!! 
+$str!! &
+)"" 
+;"" 
+var$$ 
+app$$ 
+=$$ 	
+builder$$
  
-.!! 
-Build!! 
-(!! 
-)!! 
-;!! 
-if$$ 
-($$ 
-!$$ 
-app$$ 
-.$$ 	
-Environment$$	 
-.$$ 
-IsDevelopment$$ "
-($$" #
-)$$# $
-)$$$ %
-{%% 
-app&& 
-.&& 
-UseExceptionHandler&& 
-(&& 
-$str&& )
-)&&) *
-;&&* +
-app(( 
-.(( 
-UseHsts(( 
-((( 
-)(( 
-;(( 
-})) 
-app++ 
-.++ 
-UseHttpsRedirection++ 
-(++ 
-)++ 
-;++ 
-app,, 
-.,, 
-UseStaticFiles,, 
-(,, 
-),, 
-;,, 
+.$$ 
+Build$$ 
+($$ 
+)$$ 
+;$$ 
+if'' 
+('' 
+!'' 
+app'' 
+.'' 	
+Environment''	 
+.'' 
+IsDevelopment'' "
+(''" #
+)''# $
+)''$ %
+{(( 
+app)) 
+.)) 
+UseExceptionHandler)) 
+()) 
+$str)) )
+)))) *
+;))* +
+app++ 
+.++ 
+UseHsts++ 
+(++ 
+)++ 
+;++ 
+},, 
 app.. 
-... 
-
-UseRouting.. 
-(.. 
-).. 
-;.. 
-app00 
-.00 
-UseAuthentication00 
-(00 
-)00 
-;00 
+... 
+UseHttpsRedirection.. 
+(.. 
+).. 
+;.. 
+app// 
+.// 
+UseStaticFiles// 
+(// 
+)// 
+;// 
 app11 
-.11 
-UseAuthorization11 
-(11 
-)11 
-;11 
-app33 
-.33 
+.11 
 
-UseSwagger33 
-(33 
-)33 
-;33 
+UseRouting11 
+(11 
+)11 
+;11 
+app33 
+.33 
+UseAuthentication33 
+(33 
+)33 
+;33 
 app44 
-.44 
-UseSwaggerUI44 
-(44 
-)44 
-;44 
+.44 
+UseAuthorization44 
+(44 
+)44 
+;44 
+app66 
+.66 
+
+UseSwagger66 
+(66 
+)66 
+;66 
 app77 
-.77 
-MapControllerRoute77 
-(77 
-name88 
-:88 	
-$str88
+.77 
+UseSwaggerUI77 
+(77 
+)77 
+;77 
+app:: 
+.:: 
+MapControllerRoute:: 
+(:: 
+name;; 
+:;; 	
+$str;;
  
-,88 
-pattern99 
-:99 
-$str99 5
-)995 6
-;996 7
-app;; 
-.;; 
-Run;; 
-(;; 
-);; 	
-;;;	 
-≤
+,;; 
+pattern<< 
+:<< 
+$str<< 5
+)<<5 6
+;<<6 7
+app>> 
+.>> 
+Run>> 
+(>> 
+)>> 	
+;>>	 
+§
 kC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\IItemsRepository.cs
 	namespace 	
 RunnersBlogMVC
@@ -1964,8 +1816,11 @@ kC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repo
 (  
 Guid  $
 Id% '
-)' (
-;( )
+,' (
+CancellationToken) :
+cancellationToken; L
+)L M
+;M N
 Task 
 < 
 IEnumerable 
@@ -1974,16 +1829,21 @@ kC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repo
 > 
 > 
 GetItemsAsync  -
-(- .
-). /
-;/ 0
+(- .
+CancellationToken. ?
+cancellationToken@ Q
+)Q R
+;R S
 Task		 
 CreateItemAsync		 
 (		 
 Item		 !
 item		" &
-)		& '
-;		' (
+,		& '
+CancellationToken		( 9
+cancellationToken		: K
+)		K L
+;		L M
 Task
 
  
@@ -1999,21 +1859,33 @@ kC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repo
 item
 
 " &
+,
+
+& '
+CancellationToken
+
+( 9
+cancellationToken
+
+: K
 )
 
-& '
+K L
 ;
 
-' (
+L M
 Task 
 DeleteItemAsync 
 ( 
 Guid !
 Id" $
-)$ %
-;% &
+,$ %
+CancellationToken& 7
+cancellationToken8 I
+)I J
+;J K
 } 
-} Ô#
+} ™(
 kC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repositories\MongoDbItemsRepo.cs
 	namespace 	
 RunnersBlogMVC
@@ -2108,171 +1980,791 @@ kC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Repo
 collectionName; I
 )I J
 ;J K
-} 	
-public 
-async 
-Task 
-CreateItemAsync )
-() *
-Item* .
-item/ 3
-)3 4
-{ 	
-await 
-itemsCollection !
-.! "
-InsertOneAsync" 0
-(0 1
-item1 5
-)5 6
-;6 7
-} 	
-public 
-async 
-Task 
-DeleteItemAsync )
-() *
-Guid* .
-Id/ 1
-)1 2
-{ 	
-var 
-filter 
-= 
-filterBuilder &
-.& '
-Eq' )
-() *
-item* .
-=>/ 1
-item2 6
-.6 7
-Id7 9
-,9 :
-Id; =
-)= >
-;> ?
-await 
-itemsCollection !
-.! "
-DeleteOneAsync" 0
-(0 1
-filter1 7
-)7 8
-;8 9
-} 	
-public 
-async 
-Task 
-< 
-Item 
-> 
-GetItemAsync  ,
-(, -
-Guid- 1
-Id2 4
-)4 5
-{ 	
-var 
-filter 
-= 
-filterBuilder &
-.& '
-Eq' )
-() *
-item* .
-=>/ 1
-item2 6
-.6 7
-Id7 9
-,9 :
-Id; =
-)= >
-;> ?
-return 
-await 
-itemsCollection (
-.( )
-Find) -
-(- .
-filter. 4
-)4 5
-.5 6 
-SingleOrDefaultAsync6 J
-(J K
-)K L
-;L M
-}   	
-public!! 
-async!! 
-Task!! 
-<!! 
-IEnumerable!! %
-<!!% &
-Item!!& *
->!!* +
->!!+ ,
-GetItemsAsync!!- :
-(!!: ;
-)!!; <
-{"" 	
-return## 
-await## 
-itemsCollection## (
-.##( )
-Find##) -
-(##- .
-new##. 1
-BsonDocument##2 >
-(##> ?
-)##? @
-)##@ A
-.##A B
-ToListAsync##B M
-(##M N
-)##N O
-;##O P
-}$$ 	
-public%% 
-async%% 
-Task%% 
-UpdateItemAsync%% )
-(%%) *
-Item%%* .
-item%%/ 3
-)%%3 4
-{&& 	
-var'' 
-filter'' 
-='' 
-filterBuilder'' &
-.''& '
-Eq''' )
-('') *
-existingItem''* 6
-=>''7 9
-existingItem'': F
-.''F G
-Id''G I
-,''I J
-item''K O
-.''O P
-Id''P R
-)''R S
-;''S T
-await(( 
-itemsCollection(( !
-.((! "
-ReplaceOneAsync((" 1
-(((1 2
-filter((2 8
-,((8 9
-item((: >
-)((> ?
-;((? @
-})) 	
-}** 
-}++ ﬁ
+} 	
+[ 	
+Obsolete	 
+] 
+public 
+async 
+Task 
+CreateItemAsync )
+() *
+Item* .
+item/ 3
+,3 4
+CancellationToken5 F
+cancellationTokenG X
+)X Y
+{ 	
+await 
+itemsCollection !
+.! "
+InsertOneAsync" 0
+(0 1
+item1 5
+,5 6
+cancellationToken7 H
+)H I
+;I J
+} 	
+public 
+async 
+Task 
+DeleteItemAsync )
+() *
+Guid* .
+Id/ 1
+,1 2
+CancellationToken3 D
+cancellationTokenE V
+)V W
+{ 	
+var 
+filter 
+= 
+filterBuilder &
+.& '
+Eq' )
+() *
+item* .
+=>/ 1
+item2 6
+.6 7
+Id7 9
+,9 :
+Id; =
+)= >
+;> ?
+await 
+itemsCollection !
+.! "
+DeleteOneAsync" 0
+(0 1
+filter1 7
+,7 8
+cancellationToken9 J
+)J K
+;K L
+} 	
+public 
+async 
+Task 
+< 
+Item 
+> 
+GetItemAsync  ,
+(, -
+Guid- 1
+Id2 4
+,4 5
+CancellationToken6 G
+cancellationTokenH Y
+)Y Z
+{ 	
+var 
+filter 
+= 
+filterBuilder &
+.& '
+Eq' )
+() *
+item* .
+=>/ 1
+item2 6
+.6 7
+Id7 9
+,9 :
+Id; =
+)= >
+;> ?
+return   
+await   
+itemsCollection   (
+.  ( )
+Find  ) -
+(  - .
+filter  . 4
+)  4 5
+.  5 6 
+SingleOrDefaultAsync  6 J
+(  J K
+cancellationToken  K \
+)  \ ]
+;  ] ^
+}!! 	
+public"" 
+async"" 
+Task"" 
+<"" 
+IEnumerable"" %
+<""% &
+Item""& *
+>""* +
+>""+ ,
+GetItemsAsync""- :
+("": ;
+CancellationToken""; L
+cancellationToken""M ^
+)""^ _
+{## 	
+return$$ 
+await$$ 
+itemsCollection$$ (
+.$$( )
+Find$$) -
+($$- .
+new$$. 1
+BsonDocument$$2 >
+($$> ?
+)$$? @
+)$$@ A
+.$$A B
+ToListAsync$$B M
+($$M N
+cancellationToken$$N _
+)$$_ `
+;$$` a
+}%% 	
+public&& 
+async&& 
+Task&& 
+UpdateItemAsync&& )
+(&&) *
+Item&&* .
+item&&/ 3
+,&&3 4
+CancellationToken&&5 F
+cancellation&&G S
+)&&S T
+{'' 	
+var(( 
+filter(( 
+=(( 
+filterBuilder(( &
+.((& '
+Eq((' )
+((() *
+existingItem((* 6
+=>((7 9
+existingItem((: F
+.((F G
+Id((G I
+,((I J
+item((K O
+.((O P
+Id((P R
+)((R S
+;((S T
+await)) 
+itemsCollection)) !
+.))! "
+ReplaceOneAsync))" 1
+())1 2
+filter))2 8
+,))8 9
+item)): >
+)))> ?
+;))? @
+}** 	
+}++ 
+},, √
+cC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Services\IBaseService.cs
+	namespace 	
+RunnersBlogMVC
+ 
+. 
+Services !
+{ 
+public 
+
+	interface 
+IBaseService !
+<! "
+T" #
+,# $
+TDto$ (
+>( )
+where* /
+T0 1
+:2 3
+class4 9
+{ 
+Task 
+< 
+ActionResult 
+> 
+GetAllAsync &
+(& '
+CancellationToken' 8
+cancellationToken9 J
+)J K
+;K L
+Task		 
+<		 
+ActionResult		 
+<		 
+T		 
+>		 
+>		 
+GetByIdAsync		 *
+(		* +
+Guid		+ /
+id		0 2
+,		2 3
+CancellationToken
+
+ 
+cancellationToken
+
+ /
+)
+
+/ 0
+;
+
+0 1
+Task 
+< 
+ActionResult 
+> 
+CreateAsync &
+(& '
+TDto' +
+dataDto, 3
+,3 4
+CancellationToken 
+cancellationToken /
+)/ 0
+;0 1
+Task 
+< 
+ActionResult 
+< 
+T 
+> 
+> 
+DeleteByIdAsync -
+(- .
+Guid. 2
+id3 5
+,5 6
+CancellationToken 
+cancellationToken /
+)/ 0
+;0 1
+Task 
+< 
+ActionResult 
+> 
+UpdateByIdAsync *
+(* +
+Guid+ /
+id0 2
+,2 3
+TDto4 8
+dataToUpdateWith9 I
+,I J
+CancellationToken 
+cancellationToken /
+)/ 0
+;0 1
+Task 
+< 
+ActionResult 
+> 
+DeleteMiddlePage +
+(+ ,
+Guid, 0
+id1 3
+,3 4
+CancellationToken 
+cancellationToken /
+)/ 0
+;0 1
+Task 
+< 
+ActionResult 
+> 
+UpdateMiddlePage +
+(+ ,
+Guid, 0
+id1 3
+,3 4
+CancellationToken 
+cancellationToken .
+). /
+;/ 0
+} 
+} æA
+cC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Services\ItemsService.cs
+	namespace 	
+RunnersBlogMVC
+ 
+. 
+Services !
+{ 
+public		 
+
+class		 
+ItemsService		 
+:		 
+
+Controller		  *
+,		* +
+IBaseService		, 8
+<		8 9
+Item		9 =
+,		= >
+ItemDto		> E
+>		E F
+{
+
+ 
+private 
+readonly 
+IItemsRepository )
+repo* .
+;. /
+public 
+ItemsService 
+( 
+IItemsRepository ,
+repo- 1
+)1 2
+{ 	
+this 
+. 
+repo 
+= 
+repo 
+; 
+} 	
+public 
+async 
+Task 
+< 
+ActionResult &
+>& '
+CreateAsync( 3
+(3 4
+ItemDto4 ;
+itemDto< C
+,C D
+CancellationTokenE V
+cancellationTokenW h
+)h i
+{ 	
+Item 
+item 
+= 
+new 
+( 
+) 
+{ 
+Id 
+= 
+Guid 
+. 
+NewGuid !
+(! "
+)" #
+,# $
+Name 
+= 
+itemDto 
+. 
+Name #
+,# $
+Price 
+= 
+itemDto 
+.  
+Price  %
+,% &
+CreatedDate 
+= 
+DateTimeOffset ,
+., -
+UtcNow- 3
+,3 4
+} 
+; 
+await 
+repo 
+. 
+CreateItemAsync &
+(& '
+item' +
+,+ ,
+cancellationToken- >
+)> ?
+;? @
+return 
+RedirectToAction #
+(# $
+$str$ 1
+,1 2
+new3 6 
+RouteValueDictionary7 K
+(K L
+newL O
+{P Q
+
+ControllerR \
+=] ^
+$str_ f
+,f g
+Actionh n
+=o p
+$strq ~
+}	 Ä
+)
+Ä Å
+)
+Å Ç
+;
+Ç É
+} 	
+public   
+async   
+Task   
+<   
+ActionResult   &
+<  & '
+Item  ' +
+>  + ,
+>  , -
+DeleteByIdAsync  . =
+(  = >
+Guid  > B
+id  C E
+,  E F
+CancellationToken  G X
+cancellationToken  Y j
+)  j k
+{!! 	
+var"" 
+existingItem"" 
+="" 
+await"" $
+repo""% )
+."") *
+GetItemAsync""* 6
+(""6 7
+id""7 9
+,""9 :
+cancellationToken""; L
+)""L M
+;""M N
+if## 
+(## 
+existingItem## 
+is## 
+null##  $
+)##$ %
+{$$ 
+return%% 
+NotFound%% 
+(%%  
+)%%  !
+;%%! "
+}&& 
+await(( 
+repo(( 
+.(( 
+DeleteItemAsync(( &
+(((& '
+id((' )
+,(() *
+cancellationToken((+ <
+)((< =
+;((= >
+return)) 
+RedirectToAction)) #
+())# $
+$str))$ 1
+,))1 2
+new))3 6 
+RouteValueDictionary))7 K
+())L M
+new))N Q
+{))R S
+
+Controller))T ^
+=))_ `
+$str))a h
+,))h i
+Action))j p
+=))q r
+$str	))s Ä
+}
+))Å Ç
+)
+))É Ñ
+)
+))Ñ Ö
+;
+))Ö Ü
+}** 	
+public,, 
+async,, 
+Task,, 
+<,, 
+ActionResult,, &
+>,,& '
+GetAllAsync,,( 3
+(,,3 4
+CancellationToken,,4 E
+cancellationToken,,F W
+),,W X
+{-- 	
+var.. 
+items.. 
+=.. 
+await.. 
+repo.. "
+..." #
+GetItemsAsync..# 0
+(..0 1
+cancellationToken..1 B
+)..B C
+;..C D
+ViewBag00 
+.00 
+Items00 
+=00 
+items00 !
+;00! "
+return11 
+View11 
+(11 
+$str11 "
+)11" #
+;11# $
+}22 	
+public44 
+async44 
+Task44 
+<44 
+ActionResult44 &
+<44& '
+Item44' +
+>44+ ,
+>44, -
+GetByIdAsync44. :
+(44: ;
+Guid44; ?
+id44@ B
+,44B C
+CancellationToken44D U
+cancellationToken44V g
+)44g h
+{55 	
+var66 
+item66 
+=66 
+await66 
+repo66 !
+.66! "
+GetItemAsync66" .
+(66. /
+id66/ 1
+,661 2
+cancellationToken663 D
+)66D E
+;66E F
+if88 
+(88 
+item88 
+is88 
+null88 
+)88 
+{99 
+return:: 
+NotFound:: 
+(::  
+)::  !
+;::! "
+};; 
+return<< 
+View<< 
+(<< 
+$str<< 
+)<< 
+;<<  
+}== 	
+public?? 
+async?? 
+Task?? 
+<?? 
+ActionResult?? &
+>??& '
+UpdateByIdAsync??( 7
+(??7 8
+Guid??8 <
+id??= ?
+,??? @
+ItemDto??A H
+itemDto??I P
+,??P Q
+CancellationToken??R c
+cancellationToken??d u
+)??u v
+{@@ 	
+varAA 
+existingItemAA 
+=AA 
+awaitAA $
+repoAA% )
+.AA) *
+GetItemAsyncAA* 6
+(AA6 7
+idAA7 9
+,AA9 :
+cancellationTokenAA; L
+)AAL M
+;AAM N
+ifBB 
+(BB 
+existingItemBB 
+isBB 
+nullBB  $
+)BB$ %
+{CC 
+returnDD 
+NotFoundDD 
+(DD  
+)DD  !
+;DD! "
+}EE 
+ItemGG 
+updatedItemGG 
+=GG 
+existingItemGG +
+withGG, 0
+{HH 
+NameII 
+=II 
+itemDtoII 
+.II 
+NameII #
+,II# $
+PriceJJ 
+=JJ 
+itemDtoJJ 
+.JJ  
+PriceJJ  %
+,JJ% &
+}KK 
+;KK 
+awaitMM 
+repoMM 
+.MM 
+UpdateItemAsyncMM &
+(MM& '
+updatedItemMM' 2
+,MM2 3
+cancellationTokenMM4 E
+)MME F
+;MMF G
+returnNN 
+RedirectToActionNN #
+(NN# $
+$strNN$ 1
+,NN1 2
+newNN3 6 
+RouteValueDictionaryNN7 K
+(NNK L
+newNNL O
+{NNP Q
+
+ControllerNNR \
+=NN] ^
+$strNN_ f
+,NNf g
+ActionNNh n
+=NNo p
+$strNNq ~
+}	NN Ä
+)
+NNÄ Å
+)
+NNÅ Ç
+;
+NNÇ É
+}OO 	
+publicPP 
+asyncPP 
+TaskPP 
+<PP 
+ActionResultPP &
+>PP& '
+DeleteMiddlePagePP( 8
+(PP8 9
+GuidPP9 =
+idPP> @
+,PP@ A
+CancellationTokenPPB S
+cancellationTokenPPT e
+)PPe f
+{QQ 	
+varRR 
+itemRR 
+=RR 
+awaitRR 
+repoRR !
+.RR! "
+GetItemAsyncRR" .
+(RR. /
+idRR/ 1
+,RR1 2
+cancellationTokenRR3 D
+)RRD E
+;RRE F
+returnTT 
+ViewTT 
+(TT 
+itemTT 
+)TT 
+;TT 
+}UU 	
+publicVV 
+asyncVV 
+TaskVV 
+<VV 
+ActionResultVV &
+>VV& '
+UpdateMiddlePageVV( 8
+(VV8 9
+GuidVV9 =
+idVV> @
+,VV@ A
+CancellationTokenVVB S
+cancellationTokenVVT e
+)VVe f
+{WW 	
+varXX 
+itemXX 
+=XX 
+awaitXX 
+repoXX !
+.XX! "
+GetItemAsyncXX" .
+(XX. /
+idXX/ 1
+,XX1 2
+cancellationTokenXX3 D
+)XXD E
+;XXE F
+returnZZ 
+ViewZZ 
+(ZZ 
+itemZZ 
+)ZZ 
+;ZZ 
+}[[ 	
+}\\ 
+}]] ﬁ
 fC:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\Settings\MongoDbSettings.cs
 	namespace 	
 RunnersBlogMVC

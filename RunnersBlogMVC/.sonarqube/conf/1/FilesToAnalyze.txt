@@ -7,3 +7,4 @@ C:\Users\Marius Milius\.nuget\packages\microsoft.testplatform.testhost\16.11.0\b
 C:\Users\Marius Milius\.nuget\packages\xunit.runner.visualstudio\2.4.3\build\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
 C:\Users\Marius Milius\.nuget\packages\xunit.runner.visualstudio\2.4.3\build\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
 C:\Users\Marius Milius\.nuget\packages\xunit.runner.visualstudio\2.4.3\build\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
+C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlog.UnitTests\RunnersBlogMVC.UnitTests.Metrics.xml
