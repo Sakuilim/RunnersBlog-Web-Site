@@ -6,6 +6,7 @@ using RunnersBlogMVC.Repositories;
 
 namespace RunnersBlogMVC.Services
 {
+    //Comment for Code review
     public class ItemsService : Controller, IBaseService<Item,ItemDto>
     {
         private readonly IItemsRepository repo;

@@ -7,7 +7,7 @@ using RunnersBlogMVC.Services;
 
 namespace RunnersBlogMVC.Controllers
 {
-    //[Authorize]
+    //Comment for code review
     public class ItemsController : BaseController
     {
         private readonly IBaseService<Item, ItemDto> itemService;

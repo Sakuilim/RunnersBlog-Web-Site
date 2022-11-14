@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace RunnersBlogMVC.Controllers
 {
+    //Comment for code review
     public class UserController : Controller
     {
         private UserManager<ApplicationUser> userManager;
