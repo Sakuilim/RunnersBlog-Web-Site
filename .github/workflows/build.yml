@@ -54,5 +54,5 @@ jobs:
           Move-Item -Path 'coverage.xml' -Destination ..
           cd ..
           ls
-          dotnet build --no-incremental
+          dotnet build RunnersBlogMVC --no-incremental
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
