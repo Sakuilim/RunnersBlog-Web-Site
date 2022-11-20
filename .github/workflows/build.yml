@@ -52,7 +52,7 @@ jobs:
           ls
           cd RunnersBlogMVC
           dotnet-coverage collect 'dotnet test' -f xml  -o 'coverage.xml'
-          Get-Item –Path coverage.xml | Move-Item -Destination ..
+          Get-Item –Path 'coverage.xml' | Move-Item -Destination ..
           cd ..
           ls
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
