@@ -15,7 +15,6 @@ namespace RunnersBlogMVC.UnitTests
 {
     public class UserControllerTests
     {
-
         private readonly Mock<UserManager<ApplicationUser>> mockUserManager;
         private readonly Mock<RoleManager<ApplicationRole>> mockRoleManager;
 

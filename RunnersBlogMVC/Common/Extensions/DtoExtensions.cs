@@ -12,7 +12,6 @@ namespace RunnersBlogMVC
                 Name = item.Name,
                 Price = item.Price
             };  
-
         }
     }
 }
