@@ -21,7 +21,7 @@ jobs:
       - name: Cache SonarCloud packages
         uses: actions/cache@v1
         with:
-          path: ~\sonar\cache
+          path: ~RunnersBlogMVC\sonar\cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
       - name: Install DotCover
@@ -32,25 +32,24 @@ jobs:
         id: cache-sonar-scanner
         uses: actions/cache@v1
         with:
-          path: .\.sonar\scanner
+          path: .RunnersBlogMVC\.sonar\scanner
           key: ${{ runner.os }}-sonar-scanner
           restore-keys: ${{ runner.os }}-sonar-scanner
       - name: Install SonarCloud scanner
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
         shell: powershell
         run: |
-          New-Item -Path .\.sonar\scanner -ItemType Directory
-          dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
+          New-Item -Path .RunnersBlogMVC\.sonar\scanner -ItemType Directory
+          dotnet tool update dotnet-sonarscanner --tool-path .RunnersBlogMVC\.sonar\scanner
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"Sakuilim_RunnersBlog-Web-Site" /o:"sakuilim" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
-          dotnet build RunnersBlogMVC --no-incremental
+          .RunnersBlogMVC\.sonar\scanner\dotnet-sonarscanner begin /k:"Sakuilim_RunnersBlog-Web-Site" /o:"sakuilim" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
+          dotnet build --no-incremental
           ls
-          cd RunnersBlogMVC
           dotnet-coverage collect 'dotnet test' -f xml  -o 'coverage.xml'
           ls
-          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+          .RunnersBlogMVC\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
