@@ -49,5 +49,7 @@ jobs:
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"Sakuilim_RunnersBlog-Web-Site" /o:"sakuilim" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
           dotnet build RunnersBlogMVC --no-incremental
+          ls
           dotnet-coverage collect 'dotnet test' -f xml  -o 'coverage.xml'
+          ls
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
