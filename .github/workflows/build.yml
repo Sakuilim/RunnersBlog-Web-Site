@@ -24,6 +24,10 @@ jobs:
           path: ~\sonar\cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
+      - name: Install DotCover
+        shell: powershell
+        run: |
+          dotnet tool install --global dotnet-coverage
       - name: Cache SonarCloud scanner
         id: cache-sonar-scanner
         uses: actions/cache@v1
