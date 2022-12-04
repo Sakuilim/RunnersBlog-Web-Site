@@ -6,9 +6,11 @@ using RunnersBlogMVC.Models;
 using RunnersBlogMVC.Services.RoleServices;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
+using System.Diagnostics.CodeAnalysis;
 
 namespace RunnersBlogMVC.Controllers
 {
+    [ExcludeFromCodeCoverage]
     public class RoleController : Controller
     {
         private readonly IRoleService roleService;

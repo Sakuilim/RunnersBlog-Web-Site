@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RunnersBlogMVC.Models;
+using System.Diagnostics.CodeAnalysis;
 
 namespace RunnersBlogMVC.Services
 {
@@ -53,22 +54,27 @@ namespace RunnersBlogMVC.Services
             }
             return View(user);
         }
+        [ExcludeFromCodeCoverage]
         public Task<ActionResult<User>> DeleteByIdAsync(Guid id, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
+        [ExcludeFromCodeCoverage]
         public Task<ActionResult> GetAllAsync(CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
+        [ExcludeFromCodeCoverage]
         public Task<ActionResult<User>> GetByIdAsync(Guid id, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
+        [ExcludeFromCodeCoverage]
         public Task<ActionResult> UpdateByIdAsync(Guid id, User dataToUpdateWith, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
+        [ExcludeFromCodeCoverage]
         public Task<ActionResult> MiddlePage(Guid id, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();

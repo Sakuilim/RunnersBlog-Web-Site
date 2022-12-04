@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using RunnersBlogMVC.Services.LoginServices;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace RunnersBlogMVC.Controllers
 {
+    [ExcludeFromCodeCoverage]
     public class LoginController : BaseController
     {
         private readonly ILoginService accountService;

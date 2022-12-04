@@ -33,7 +33,7 @@ namespace RunnersBlogMVC.Services.LoginServices
                 ModelState.AddModelError(nameof(email), "Login Failed: Invalid Email or Password");
 
             }
-            return View();
+            return View("Login");
         }
         public async Task<ActionResult> LogoutUser()
         {

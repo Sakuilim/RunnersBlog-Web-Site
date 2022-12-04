@@ -45,6 +45,7 @@ namespace RunnersBlogMVC.Services.RoleServices
                     }
                 }
             }
+            var view = View();
             return View();
         }
     }

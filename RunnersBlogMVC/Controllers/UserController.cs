@@ -5,10 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 using RunnersBlogMVC.Models;
 using RunnersBlogMVC.Services;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace RunnersBlogMVC.Controllers
 {
-    //Comment for code review
+    [ExcludeFromCodeCoverage]
     public class UserController : Controller
     {
         private readonly IBaseService<User, User> userService;

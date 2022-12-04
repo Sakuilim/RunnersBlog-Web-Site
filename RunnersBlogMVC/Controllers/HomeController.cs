@@ -5,6 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace RunnersBlogMVC.Controllers
 {
+    [ExcludeFromCodeCoverage]
     public class HomeController : Controller
     {
         public IActionResult Index()

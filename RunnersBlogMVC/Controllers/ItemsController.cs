@@ -4,10 +4,11 @@ using RunnersBlogMVC.DTO;
 using RunnersBlogMVC.Models;
 using RunnersBlogMVC.Repositories;
 using RunnersBlogMVC.Services;
+using System.Diagnostics.CodeAnalysis;
 
 namespace RunnersBlogMVC.Controllers
 {
-    //Comment for code review
+    [ExcludeFromCodeCoverage]
     public class ItemsController : BaseController
     {
         private readonly IBaseService<Item, ItemDto> itemService;

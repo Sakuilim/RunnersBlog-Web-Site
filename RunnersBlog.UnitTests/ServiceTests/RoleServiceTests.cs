@@ -27,7 +27,7 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
         }
 
         [Fact]
-        public async Task When_CreateRoleIsSuccessful_ShouldCreateRole()
+        public async Task When_CreateRoleNoRole_Should_CreateRole()
         {
             //Arrange
             var user = new User
@@ -38,7 +38,68 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             var role = UserRole.User;
 
             mockUserManager.Setup(x => x
-            .CreateAsync(
+            .FindByEmailAsync(
+                It.IsAny<string>()))
+            .Returns(Task.FromResult(It.IsAny<ApplicationUser>()));
+
+            var sut = GetSut();
+
+            //Act
+            var result = await sut.CreateRole(user.Email, role);
+
+            //Assert
+            result.Should().NotBeNull();
+            result.Should().BeOfType<ViewResult>();
+        }
+        [Fact]
+        public async Task When_CreateRoleSucessToAdd_ShouldReturnSuccess()
+        {
+            //Arrange
+            var user = new User
+            {
+                Email = "email@email.com",
+                Name = "test2"
+            };
+            var role = UserRole.User;
+
+            mockUserManager.Setup(x => x
+            .FindByEmailAsync(
+                It.IsAny<string>()))
+            .Returns(Task.FromResult(It.IsAny<ApplicationUser>()));
+
+            mockUserManager.Setup(x => x
+            .AddToRoleAsync(
+                It.IsAny<ApplicationUser>(),
+                It.IsAny<string>()))
+            .Returns(Task.FromResult(IdentityResult.Success));
+
+            var sut = GetSut();
+
+            //Act
+            var result = await sut.CreateRole(user.Email, role);
+
+            //Assert
+            result.Should().NotBeNull();
+            result.Should().BeOfType<ViewResult>();
+        }
+        [Fact]
+        public async Task When_CreateRoleFailToAdd_ShouldReturnFailure()
+        {
+            //Arrange
+            var user = new User
+            {
+                Email = "email@email.com",
+                Name = "test2"
+            };
+            var role = UserRole.User;
+
+            mockUserManager.Setup(x => x
+            .FindByEmailAsync(
+                It.IsAny<string>()))
+            .Returns(Task.FromResult(It.IsAny<ApplicationUser>()));
+
+            mockUserManager.Setup(x => x
+            .AddToRoleAsync(
                 It.IsAny<ApplicationUser>(),
                 It.IsAny<string>()))
             .Returns(Task.FromResult(IdentityResult.Failed()));
