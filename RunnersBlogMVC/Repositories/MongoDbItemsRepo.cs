@@ -35,7 +35,7 @@ namespace RunnersBlogMVC.Repositories
         {
             return await itemsCollection.Find(new BsonDocument()).ToListAsync(cancellationToken);
         }
-        public async Task UpdateItemAsync(Item item, CancellationToken cancellation)
+        public async Task UpdateItemAsync(Item item, CancellationToken cancellationToken)
         {
             var filter = filterBuilder.Eq(existingItem => existingItem.Id, item.Id);
             await itemsCollection.ReplaceOneAsync(filter, item);

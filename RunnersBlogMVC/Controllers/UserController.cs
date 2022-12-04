@@ -10,18 +10,14 @@ namespace RunnersBlogMVC.Controllers
     //Comment for code review
     public class UserController : Controller
     {
-        private UserManager<ApplicationUser> userManager;
-        private RoleManager<ApplicationRole> roleManager;
+        private readonly UserManager<ApplicationUser> userManager;
+        private readonly RoleManager<ApplicationRole> roleManager;
         public UserController(UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager)
         {
             this.userManager = userManager;
             this.roleManager = roleManager;
         }
         public IActionResult CreateUser()
-        {
-            return View();
-        }
-        public IActionResult CreateRole()
         {
             return View();
         }
@@ -67,6 +63,10 @@ namespace RunnersBlogMVC.Controllers
                 ModelState.AddModelError("Error",errorMessage: "There was an error in user creation");
             }
             return View(user);
+        }
+        public IActionResult CreateRole()
+        {
+            return View();
         }
         //Post: User/CreateRole
         [HttpPost]
