@@ -1,5 +1,8 @@
-﻿namespace RunnersBlogMVC.Settings
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace RunnersBlogMVC.Settings
 {
+    [ExcludeFromCodeCoverage]
     public class MongoDbSettings
     {
         public string? Host { get; set; }

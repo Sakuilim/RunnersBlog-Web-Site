@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
+using RunnersBlogMVC.Controllers;
 using RunnersBlogMVC.Models;
 using RunnersBlogMVC.Services;
 using System.Threading;
@@ -67,14 +68,19 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             var user = new User
             {
                 Email = "email@email.com",
-                Name = "test2"
+                Name = "test2",
+                Password= "password"
             };
 
             mockUserManager.Setup(x => x
             .CreateAsync(
                 It.IsAny<ApplicationUser>(),
-                It.IsAny<string>()))
-            .Returns(Task.FromResult(IdentityResult.Failed()));
+                user.Password))
+            .Returns(Task.FromResult(IdentityResult.Failed(new IdentityError
+            { 
+                Code = "errorCode",
+                Description = "errorDesc"
+            })));
 
             var sut = GetSut();
 
