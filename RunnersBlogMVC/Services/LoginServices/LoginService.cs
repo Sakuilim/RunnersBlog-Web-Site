@@ -1,31 +1,23 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RunnersBlogMVC.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace RunnersBlogMVC.Controllers
+namespace RunnersBlogMVC.Services.LoginServices
 {
-    public class AccountController : BaseController
+    public class LoginService : Controller, ILoginService
     {
 
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        public LoginService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
-            this._userManager = userManager;
-            this._signInManager = signInManager;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
-        public IActionResult Login()
-        {
-            return View();
-        }
-        //POST /Account/Login
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login([Required][EmailAddress] string email, [Required] string password)
+
+        public async Task<ActionResult> LoginUser([Required][EmailAddress] string email, [Required] string password)
         {
             if (ModelState.IsValid)
             {
@@ -43,12 +35,7 @@ namespace RunnersBlogMVC.Controllers
             }
             return View();
         }
-        public IActionResult AccessDenied()
-        {
-            return View();
-        }
-        [Authorize]
-        public async Task<ActionResult> Logout()
+        public async Task<ActionResult> LogoutUser()
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");

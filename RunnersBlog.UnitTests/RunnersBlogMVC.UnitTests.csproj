@@ -28,4 +28,9 @@
     <ProjectReference Include="..\RunnersBlogMVC\RunnersBlogMVC.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="RunnersBlogTests\" />
+    <Folder Include="RepositoryTests\" />
+  </ItemGroup>
+
 </Project>

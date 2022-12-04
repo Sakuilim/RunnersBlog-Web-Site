@@ -22,11 +22,11 @@ namespace RunnersBlogMVC.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Item>> DeleteItemAsync(Guid id)
         {
-            return await itemService.DeleteMiddlePage(id, cancellationToken);
+            return await itemService.MiddlePage(id, cancellationToken);
         }
         public async Task<ActionResult<Item>> UpdateItemAsync(Guid id)
         {
-            return await itemService.UpdateMiddlePage(id, cancellationToken);
+            return await itemService.MiddlePage(id, cancellationToken);
         }
         // GET /items/createItem
         [HttpGet]

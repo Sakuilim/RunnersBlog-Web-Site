@@ -6,7 +6,6 @@ using RunnersBlogMVC.Repositories;
 
 namespace RunnersBlogMVC.Services
 {
-    //Comment for Code review
     public class ItemsService : Controller, IBaseService<Item,ItemDto>
     {
         private readonly IItemsRepository repo;
@@ -78,13 +77,7 @@ namespace RunnersBlogMVC.Services
             await repo.UpdateItemAsync(updatedItem, cancellationToken);
             return RedirectToAction("GetAllItems", new RouteValueDictionary(new { Controller = "Items", Action = "GetAllItems" }));
         }
-        public async Task<ActionResult> DeleteMiddlePage(Guid id, CancellationToken cancellationToken)
-        {
-            var item = await repo.GetItemAsync(id, cancellationToken);
-
-            return View(item);
-        }
-        public async Task<ActionResult> UpdateMiddlePage(Guid id, CancellationToken cancellationToken)
+        public async Task<ActionResult> MiddlePage(Guid id, CancellationToken cancellationToken)
         {
             var item = await repo.GetItemAsync(id, cancellationToken);
 
