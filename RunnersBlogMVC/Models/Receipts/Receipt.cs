@@ -4,6 +4,6 @@
     {
         public int ReceiptID { get; init; }
 
-        public String Description { get; init; }
+        public string? Description { get; init; }
     }
 }

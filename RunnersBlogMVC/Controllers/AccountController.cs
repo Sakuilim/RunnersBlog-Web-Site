@@ -9,8 +9,8 @@ namespace RunnersBlogMVC.Controllers
     public class AccountController : BaseController
     {
 
-        private UserManager<ApplicationUser> _userManager;
-        private SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
 
         public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
@@ -18,10 +18,6 @@ namespace RunnersBlogMVC.Controllers
             this._signInManager = signInManager;
         }
         public IActionResult Login()
-        {
-            return View();
-        }
-        public IActionResult AccessDenied()
         {
             return View();
         }
@@ -45,6 +41,10 @@ namespace RunnersBlogMVC.Controllers
                 ModelState.AddModelError(nameof(email), "Login Failed: Invalid Email or Password");
 
             }
+            return View();
+        }
+        public IActionResult AccessDenied()
+        {
             return View();
         }
         [Authorize]
