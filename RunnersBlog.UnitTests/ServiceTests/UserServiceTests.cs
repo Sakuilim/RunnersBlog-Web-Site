@@ -28,7 +28,7 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             var sut = GetSut();
 
             //Act
-            var result = sut.CreateAsync(user: null, CancellationToken.None);
+            var result = sut.CreateAsync(null, CancellationToken.None);
 
             //Assert
             result.Should().NotBeNull();

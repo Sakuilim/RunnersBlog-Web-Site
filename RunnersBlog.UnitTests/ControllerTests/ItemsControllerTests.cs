@@ -16,11 +16,9 @@ namespace RunnersBlogMVC.UnitTests.ControllerTests
     public class ItemsControllerTests
     {
         private readonly Mock<IBaseService<Item, ItemDto>> mockItemService;
-        private readonly CancellationToken cancellationToken;
         public ItemsControllerTests(IBaseService<Item, ItemDto> mockItemService)
         {
             this.mockItemService = new Mock<IBaseService<Item, ItemDto>>();
-            cancellationToken = new CancellationToken();
         }
         public ItemsController GetSut()
             => new(mockItemService.Object);

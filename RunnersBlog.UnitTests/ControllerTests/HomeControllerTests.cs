@@ -34,7 +34,7 @@ namespace RunnersBlogMVC.UnitTests.ControllerTests
             result.Should().NotBeNull();
         }
 
-        public HomeController GetSut()
+        public static HomeController GetSut()
             => new();
     }
 }
