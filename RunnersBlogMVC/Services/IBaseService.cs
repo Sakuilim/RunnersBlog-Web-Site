@@ -2,7 +2,7 @@
 
 namespace RunnersBlogMVC.Services
 {
-    public interface IBaseService<T,TDto> where T : class
+    public interface IBaseService<T,TDto> where T : class?
     {
         Task<ActionResult> GetAllAsync(CancellationToken cancellationToken);
 
@@ -18,9 +18,7 @@ namespace RunnersBlogMVC.Services
         Task<ActionResult> UpdateByIdAsync(Guid id, TDto dataToUpdateWith,
             CancellationToken cancellationToken);
 
-        Task<ActionResult> DeleteMiddlePage(Guid id, 
+        Task<ActionResult> MiddlePage(Guid id, 
             CancellationToken cancellationToken);
-        Task<ActionResult> UpdateMiddlePage(Guid id,
-           CancellationToken cancellationToken);
     }
 }

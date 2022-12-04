@@ -4,10 +4,11 @@ using RunnersBlogMVC.DTO;
 using RunnersBlogMVC.Models;
 using RunnersBlogMVC.Repositories;
 using RunnersBlogMVC.Services;
+using System.Diagnostics.CodeAnalysis;
 
 namespace RunnersBlogMVC.Controllers
 {
-    //Comment for code review
+    [ExcludeFromCodeCoverage]
     public class ItemsController : BaseController
     {
         private readonly IBaseService<Item, ItemDto> itemService;
@@ -22,11 +23,11 @@ namespace RunnersBlogMVC.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Item>> DeleteItemAsync(Guid id)
         {
-            return await itemService.DeleteMiddlePage(id, cancellationToken);
+            return await itemService.MiddlePage(id, cancellationToken);
         }
         public async Task<ActionResult<Item>> UpdateItemAsync(Guid id)
         {
-            return await itemService.UpdateMiddlePage(id, cancellationToken);
+            return await itemService.MiddlePage(id, cancellationToken);
         }
         // GET /items/createItem
         [HttpGet]

@@ -1,17 +1,14 @@
 ﻿using FluentAssertions;
 using Moq;
 using RunnersBlogMVC.DTO;
+using RunnersBlogMVC.Models;
 using RunnersBlogMVC.Repositories;
 using RunnersBlogMVC.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using Xunit;
 
-namespace RunnersBlogMVC.UnitTests
+namespace RunnersBlogMVC.UnitTests.ServiceTests
 {
     public class ItemsServiceTests
     {
@@ -23,7 +20,7 @@ namespace RunnersBlogMVC.UnitTests
             mockItemsRepository = new Mock<IItemsRepository>();
         }
         [Fact]
-        public void Test1()
+        public void CreateAsync()
         {
             //Arrange
             var itemDto = new ItemDto()
@@ -41,7 +38,7 @@ namespace RunnersBlogMVC.UnitTests
             result.Should().NotBeNull();
         }
         [Fact]
-        public void Test2()
+        public void DeleteByIdAsync()
         {
             //Arrange
             var mockItemId = Guid.NewGuid();
@@ -54,7 +51,27 @@ namespace RunnersBlogMVC.UnitTests
             result.Should().NotBeNull();
         }
         [Fact]
-        public void Test3()
+        public void DeleteByIdAsync_Exists()
+        {
+            //Arrange
+            var mockItemId = Guid.NewGuid();
+
+            var sut = GetSut();
+
+            mockItemsRepository.Setup(x => x.GetItemAsync(
+                mockItemId,
+                CancellationToken.None
+                )).ReturnsAsync(new Item());
+
+            //Act
+
+            var result = sut.DeleteByIdAsync(mockItemId, cancellationToken);
+            //Assert
+
+            result.Should().NotBeNull();
+        }
+        [Fact]
+        public void GetAllAsync()
         {
             //Arrange
 
@@ -67,7 +84,7 @@ namespace RunnersBlogMVC.UnitTests
             result.Should().NotBeNull();
         }
         [Fact]
-        public void Test4()
+        public void GetByIdAsync()
         {
             //Arrange
             var mockItemId = Guid.NewGuid();
@@ -80,7 +97,7 @@ namespace RunnersBlogMVC.UnitTests
             result.Should().NotBeNull();
         }
         [Fact]
-        public void Test5()
+        public void UpdateByIdAsync()
         {
             //Arrange
             var mockItemId = Guid.NewGuid();
@@ -98,7 +115,44 @@ namespace RunnersBlogMVC.UnitTests
             //Assert
             result.Should().NotBeNull();
         }
+        [Fact]
+        public void UpdateByIdAsync_Exists()
+        {
+            //Arrange
+            var mockItemId = Guid.NewGuid();
+            var itemDto = new ItemDto()
+            {
+                Name = "Test",
+                Price = 1.00M
+            };
 
+            mockItemsRepository.Setup(x => x.GetItemAsync(
+                mockItemId,
+                CancellationToken.None)).ReturnsAsync(new Item());
+
+            var sut = GetSut();
+
+            //Act
+            var result = sut.UpdateByIdAsync(mockItemId, itemDto, cancellationToken);
+
+            //Assert
+            result.Should().NotBeNull();
+        }
+        [Fact]
+        public void MiddlePage()
+        {
+            //Arrange
+            var mockId = Guid.NewGuid();
+
+            var sut = GetSut();
+
+            //Act
+            var result = sut.MiddlePage(mockId, CancellationToken.None);
+
+            //Assert
+            result.Should().NotBeNull();
+
+        }
         public ItemsService GetSut()
              => new(mockItemsRepository.Object);
     }
