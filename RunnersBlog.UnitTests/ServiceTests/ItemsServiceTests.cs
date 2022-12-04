@@ -6,6 +6,7 @@ using RunnersBlogMVC.Repositories;
 using RunnersBlogMVC.Services;
 using System;
 using System.Threading;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace RunnersBlogMVC.UnitTests.ServiceTests
@@ -88,6 +89,26 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
         {
             //Arrange
             var mockItemId = Guid.NewGuid();
+            var sut = GetSut();
+
+            //Act
+            var result = sut.GetByIdAsync(mockItemId, cancellationToken);
+
+            //Assert
+            result.Should().NotBeNull();
+        }
+        [Fact]
+        public void GetByIdAsync_ItemNotNull()
+        {
+            //Arrange
+            var mockItemId = Guid.NewGuid();
+
+            mockItemsRepository.Setup(x => x
+            .GetItemAsync(
+                mockItemId,
+                cancellationToken))
+            .Returns(Task.FromResult(new Item()));
+
             var sut = GetSut();
 
             //Act

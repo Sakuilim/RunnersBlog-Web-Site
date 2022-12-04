@@ -1,9 +1,11 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
 using RunnersBlogMVC.Models;
+using System.Diagnostics.CodeAnalysis;
 
 namespace RunnersBlogMVC.Repositories
 {
+    [ExcludeFromCodeCoverage]
     public class MongoDbItemsRepo : IItemsRepository
     {
         private const string databaseName = "Catalog";

@@ -29,8 +29,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="RunnersBlogTests\" />
     <Folder Include="RepositoryTests\" />
+    <Folder Include="RunnersBlogTests\" />
   </ItemGroup>
 
 </Project>

@@ -42,6 +42,65 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             result.Should().NotBeNull();
         }
         [Fact]
+        public void Login_UserExistsWrongPassword()
+        {
+            //Arrange
+            var user = new User
+            {
+                Email = "email@email.com",
+                Password = "Test"
+        };
+
+            mockUserManager.Setup(x => x
+            .FindByEmailAsync(
+                It.IsAny<string>()))
+            .Returns(Task.FromResult(new ApplicationUser()));
+
+            mockSignInManager.Setup(x => x
+            .PasswordSignInAsync(
+                It.IsAny<ApplicationUser>(),
+                It.IsAny<string>(),
+                false,
+                false))
+            .Returns(Task.FromResult(SignInResult.Failed));
+
+            var sut = GetSut();
+            //Act
+            var result = sut.LoginUser(user.Email, user.Password);
+            //Assert
+            result.Should().NotBeNull();
+        }
+        [Fact]
+        public void Login_UserExistsCorrectPassword()
+        {
+            //Arrange
+            var user = new User
+            {
+                Email = "email@email.com",
+                Password = "Test"
+            };
+
+            mockUserManager.Setup(x => x
+            .FindByEmailAsync(
+                It.IsAny<string>()))
+            .Returns(Task.FromResult(new ApplicationUser()));
+
+            mockSignInManager.Setup(x => x
+            .PasswordSignInAsync(
+                It.IsAny<ApplicationUser>(),
+                It.IsAny<string>(),
+                false,
+                false))
+            .Returns(Task.FromResult(SignInResult.Success));
+
+            var sut = GetSut();
+            //Act
+            var result = sut.LoginUser(user.Email, user.Password);
+
+            //Assert
+            result.Should().NotBeNull();
+        }
+        [Fact]
         public void Logout()
         {
             //Arrange

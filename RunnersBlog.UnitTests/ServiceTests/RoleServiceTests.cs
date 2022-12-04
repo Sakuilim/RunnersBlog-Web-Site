@@ -65,7 +65,7 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             mockUserManager.Setup(x => x
             .FindByEmailAsync(
                 It.IsAny<string>()))
-            .Returns(Task.FromResult(It.IsAny<ApplicationUser>()));
+            .Returns(Task.FromResult(new ApplicationUser()));
 
             mockUserManager.Setup(x => x
             .AddToRoleAsync(
@@ -96,7 +96,7 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             mockUserManager.Setup(x => x
             .FindByEmailAsync(
                 It.IsAny<string>()))
-            .Returns(Task.FromResult(It.IsAny<ApplicationUser>()));
+            .Returns(Task.FromResult(new ApplicationUser()));
 
             mockUserManager.Setup(x => x
             .AddToRoleAsync(
