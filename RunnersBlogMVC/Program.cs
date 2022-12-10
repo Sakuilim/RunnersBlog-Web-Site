@@ -21,32 +21,13 @@ namespace RunnersBlogMVC
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
-            BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(BsonType.String));
-
             ConfigurationManager configuration = builder.Configuration;
 
-            builder.Services.AddControllersWithViews();
-
-            builder.Services.AddSwaggerGen();
-
-            builder.Services.AddSingleton<IItemsRepository, MongoDbItemsRepo>();
-            builder.Services.AddScoped<IBaseService<Item, ItemDto>, ItemsService>();
-            builder.Services.AddScoped<IBaseService<User, User>, UserService>();
-            builder.Services.AddScoped<ILoginService, LoginService>();
-            builder.Services.AddScoped<IRoleService, RoleService>();
+            ServiceCollections.SetupCollection(args, builder);
 
             var settings = configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
 
-            builder.Services.AddSingleton<IMongoClient>(serviceProvider =>
-            {
-                return new MongoClient(settings.ConnectionString);
-            });
-            builder.Services
-                .AddIdentity<ApplicationUser, ApplicationRole>()
-                .AddMongoDbStores<ApplicationUser, ApplicationRole, Guid>(
-                settings.ConnectionString, "Users"
-                );
+            ServiceCollections.SetupRepositoryCollection(args, builder, settings);
 
             var app = builder.Build();
 
