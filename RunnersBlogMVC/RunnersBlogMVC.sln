@@ -5,7 +5,9 @@ VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RunnersBlogMVC", "RunnersBlogMVC.csproj", "{D24C7F63-F785-41BC-BCDB-0DD4E91877FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunnersBlogMVC.UnitTests", "..\RunnersBlog.UnitTests\RunnersBlogMVC.UnitTests.csproj", "{58776C35-138F-4631-8F59-DA43D881DE9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RunnersBlogMVC.UnitTests", "..\RunnersBlog.UnitTests\RunnersBlogMVC.UnitTests.csproj", "{58776C35-138F-4631-8F59-DA43D881DE9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benchmark", "..\Benchmark\Benchmark.csproj", "{2D335041-9AAA-4080-A298-DCA7E7717A06}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{58776C35-138F-4631-8F59-DA43D881DE9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58776C35-138F-4631-8F59-DA43D881DE9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58776C35-138F-4631-8F59-DA43D881DE9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D335041-9AAA-4080-A298-DCA7E7717A06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D335041-9AAA-4080-A298-DCA7E7717A06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D335041-9AAA-4080-A298-DCA7E7717A06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D335041-9AAA-4080-A298-DCA7E7717A06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

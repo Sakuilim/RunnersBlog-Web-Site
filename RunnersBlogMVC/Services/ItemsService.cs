@@ -14,7 +14,7 @@ namespace RunnersBlogMVC.Services
             this.repo = repo;
         }
 
-        public async Task<ActionResult> CreateAsync(ItemDto itemDto, CancellationToken cancellationToken)
+        public async Task<IActionResult> CreateAsync(ItemDto itemDto, CancellationToken cancellationToken)
         {
             Item item = new()
             {
@@ -41,7 +41,7 @@ namespace RunnersBlogMVC.Services
             return RedirectToAction("GetAllItems", new RouteValueDictionary ( new { Controller = "Items", Action = "GetAllItems" } ));
         }
 
-        public async Task<ActionResult> GetAllAsync(CancellationToken cancellationToken)
+        public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken)
         {
             var items = await repo.GetItemsAsync(cancellationToken);
 
@@ -60,7 +60,7 @@ namespace RunnersBlogMVC.Services
             return View("Item");
         }
 
-        public async Task<ActionResult> UpdateByIdAsync(Guid id, ItemDto itemDto, CancellationToken cancellationToken)
+        public async Task<IActionResult> UpdateByIdAsync(Guid id, ItemDto itemDto, CancellationToken cancellationToken)
         {
             var existingItem = await repo.GetItemAsync(id, cancellationToken);
             if (existingItem is null)
@@ -77,7 +77,7 @@ namespace RunnersBlogMVC.Services
             await repo.UpdateItemAsync(updatedItem, cancellationToken);
             return RedirectToAction("GetAllItems", new RouteValueDictionary(new { Controller = "Items", Action = "GetAllItems" }));
         }
-        public async Task<ActionResult> MiddlePage(Guid id, CancellationToken cancellationToken)
+        public async Task<IActionResult> MiddlePage(Guid id, CancellationToken cancellationToken)
         {
             var item = await repo.GetItemAsync(id, cancellationToken);
 

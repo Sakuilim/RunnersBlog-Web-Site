@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using RunnersBlogMVC.Models;
 using RunnersBlogMVC.Services.LoginServices;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
@@ -7,14 +8,14 @@ using System.Diagnostics.CodeAnalysis;
 namespace RunnersBlogMVC.Controllers
 {
     [ExcludeFromCodeCoverage]
-    public class LoginController : BaseController
+    public class LoginController : Controller
     {
-        private readonly ILoginService accountService;
-        public LoginController(ILoginService accountService)
+        private readonly ILoginService loginService;
+        public LoginController(ILoginService loginService)
         {
-            this.accountService = accountService;
+            this.loginService = loginService;
         }
-        public IActionResult Login()
+        public IActionResult LoginUser()
         {
             return View();
         }
@@ -22,18 +23,14 @@ namespace RunnersBlogMVC.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login([Required][EmailAddress] string email, [Required] string password)
+        public async Task<IActionResult> LoginUser(LoginViewModel loginViewModel)
         {
-            return await accountService.LoginUser(email, password);
+            return await loginService.LoginUser(loginViewModel);
         }
         [Authorize]
-        public async Task<ActionResult> Logout()
+        public async Task<IActionResult> Logout()
         {
-            return await accountService.LogoutUser();
-        }
-        public IActionResult AccessDenied()
-        {
-            return View();
+            return await loginService.LogoutUser();
         }
     }
 }

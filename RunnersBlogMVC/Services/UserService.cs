@@ -14,7 +14,7 @@ namespace RunnersBlogMVC.Services
             this.userManager = userManager;
             this.roleManager = roleManager;
         }
-        public async Task<ActionResult> CreateAsync(User user, CancellationToken cancellationToken)
+        public async Task<IActionResult> CreateAsync(User user, CancellationToken cancellationToken)
         {
             if (ModelState.IsValid)
             {
@@ -60,7 +60,7 @@ namespace RunnersBlogMVC.Services
             throw new NotImplementedException();
         }
         [ExcludeFromCodeCoverage]
-        public Task<ActionResult> GetAllAsync(CancellationToken cancellationToken)
+        public Task<IActionResult> GetAllAsync(CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
@@ -70,12 +70,12 @@ namespace RunnersBlogMVC.Services
             throw new NotImplementedException();
         }
         [ExcludeFromCodeCoverage]
-        public Task<ActionResult> UpdateByIdAsync(Guid id, User dataToUpdateWith, CancellationToken cancellationToken)
+        public Task<IActionResult> UpdateByIdAsync(Guid id, User dataToUpdateWith, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
         [ExcludeFromCodeCoverage]
-        public Task<ActionResult> MiddlePage(Guid id, CancellationToken cancellationToken)
+        public Task<IActionResult> MiddlePage(Guid id, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

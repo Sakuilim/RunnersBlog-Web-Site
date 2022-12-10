@@ -1,20 +1,19 @@
 ﻿@model RunnersBlogMVC.Models.User
 
 @{
-    ViewData["Title"] = "CreateRole";
+    ViewData["Title"] = "Create Role";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Give Someone a Role</h1>
-
-<hr />
+<h1>Manage Roles of users</h1>
+@*
 <div class="row">
     <div class="col-md-4">
          @if(ViewBag.Message != null)
         {
             <div class="p-1 mb-2 bg-success text-white">@ViewBag.Message</div>
         }
-        <form asp-action="CreateRole">
+        <form asp-controller="Role" asp-action="CreateRole" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
@@ -29,7 +28,28 @@
             </div>
         </form>
     </div>
-</div>
+</div>*@
+<p>
+    Your roles are: @ViewData["Roles"]
+</p>
+<form asp-controller="Role" asp-action="CreateRole" method="post">
+    <div class="border p-3 mt-4">
+        <div asp-validation-summary="All"></div>
+        <div class="mb-3">
+            <label asp-for="Email" class="control-label"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <select asp-for="Role" asp-items="Html.GetEnumSelectList<UserRole>()">
+            <option selected="selected" value="">Please select</option>
+        </select>
+        <div>
+            <button type="submit" class="btn btn-primary" style="width:150px">Give Role</button>
+        </div>
+    </div>
+</form>
+
+
 
 
 @section Scripts {

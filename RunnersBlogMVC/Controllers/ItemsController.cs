@@ -9,7 +9,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace RunnersBlogMVC.Controllers
 {
     [ExcludeFromCodeCoverage]
-    public class ItemsController : BaseController
+    public class ItemsController : Controller
     {
         private readonly IBaseService<Item, ItemDto> itemService;
         private readonly CancellationToken cancellationToken;
@@ -21,25 +21,25 @@ namespace RunnersBlogMVC.Controllers
         // GET /items/createItem
         [HttpGet]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<Item>> DeleteItemAsync(Guid id)
+        public async Task<IActionResult> DeleteItemAsync(Guid id)
         {
             return await itemService.MiddlePage(id, cancellationToken);
         }
-        public async Task<ActionResult<Item>> UpdateItemAsync(Guid id)
+        public async Task<IActionResult> UpdateItemAsync(Guid id)
         {
             return await itemService.MiddlePage(id, cancellationToken);
         }
         // GET /items/createItem
         [HttpGet]
         [Authorize(Roles = "Admin")]
-        public ActionResult CreateItem()
+        public IActionResult CreateItem()
         {
             return View();
         }
         //GET /items/getAllItems
         [HttpGet]
         [AllowAnonymous]
-        public async Task<ActionResult> GetAllItemsAsync()
+        public async Task<IActionResult> GetAllItemsAsync()
         {
             return await itemService.GetAllAsync(cancellationToken);
 
@@ -48,14 +48,14 @@ namespace RunnersBlogMVC.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken] 
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> CreateItemAsync(ItemDto itemDto)
+        public async Task<IActionResult> CreateItemAsync(ItemDto itemDto)
         {
             return await itemService.CreateAsync(itemDto, cancellationToken);
         }
         //PUT /items/editItem/{id}
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<Item>> UpdateByIdAsync(Guid id, ItemDto itemDto)
+        public async Task<IActionResult> UpdateByIdAsync(Guid id, ItemDto itemDto)
         {
             return await itemService.UpdateByIdAsync(id, itemDto, cancellationToken);
         }

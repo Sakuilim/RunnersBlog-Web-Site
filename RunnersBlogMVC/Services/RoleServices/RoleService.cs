@@ -17,34 +17,48 @@ namespace RunnersBlogMVC.Services.RoleServices
 
         public async Task<IActionResult> CreateRole([Required][EmailAddress] string email, UserRole userRole)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                ApplicationUser existingAppUser = await userManager.FindByEmailAsync(email);
-                if (existingAppUser is not null)
+                return View();
+            }
+
+            ApplicationUser existingAppUser = await userManager.FindByEmailAsync(email);
+            if (existingAppUser == null)
+            {
+                return View();
+            }
+
+            existingAppUser.Roles.Clear();
+
+            bool userRoleExists = await roleManager.RoleExistsAsync(userRole.ToString());
+            if (!userRoleExists)
+            {
+                await roleManager.CreateAsync(new ApplicationRole() { Name = userRole.ToString() });
+            }
+
+            var result = await userManager.AddToRoleAsync(existingAppUser, userRole.ToString());
+
+            if (result.Succeeded)
+            {
+                ViewBag.Message = result;
+            }
+            else
+            {
+                foreach (IdentityError error in result.Errors)
                 {
-                    existingAppUser.Roles.Clear();
-
-                    bool userRoleExists = await roleManager.RoleExistsAsync(userRole.ToString());
-                    if (!userRoleExists)
-                    {
-                        await roleManager.CreateAsync(new ApplicationRole() { Name = userRole.ToString() });
-                    }
-
-                    var result = await userManager.AddToRoleAsync(existingAppUser, userRole.ToString());
-
-                    if (result.Succeeded)
-                    {
-                        ViewBag.Message = result;
-                    }
-                    else
-                    {
-                        foreach (IdentityError error in result.Errors)
-                        {
-                            ModelState.AddModelError("", error.Description);
-                        }
-                    }
+                    ModelState.AddModelError("", error.Description);
                 }
             }
+
+            return View();
+        }
+        public async Task<IActionResult> ShowAllRolesAsync()
+        {
+            var user = await userManager.GetUserAsync(User);
+            var roles = await userManager.GetRolesAsync(user);
+
+            ViewData["Roles"] = string.Join(", ", roles);
+
             return View();
         }
     }

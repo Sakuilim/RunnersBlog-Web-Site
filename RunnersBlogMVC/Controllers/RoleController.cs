@@ -18,13 +18,16 @@ namespace RunnersBlogMVC.Controllers
         {
             this.roleService = roleService;
         }
+        public IActionResult CreateRoleAsync()
+        {
+            return View();
+        }
         //Post: User/CreateRole
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateRole([Required][EmailAddress] string email, UserRole userRole)
         {
-            IActionResult result = email is null ? View() : await roleService.CreateRole(email, userRole);
-            return result;
+            return await roleService.CreateRole(email, userRole);
         }
     }
 }

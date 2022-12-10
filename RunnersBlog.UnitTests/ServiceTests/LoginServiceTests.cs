@@ -29,15 +29,16 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
         public void Login()
         {
             //Arrange
-            var user = new User
+
+            var loginModel = new LoginViewModel()
             {
-                Email = "email@email.com"
+                Email = "email@email.com",
+                Password = "Test"
             };
-            user.Password = "Test";
 
             var sut = GetSut();
             //Act
-            var result = sut.LoginUser(user.Email, user.Password);
+            var result = sut.LoginUser(loginModel);
             //Assert
             result.Should().NotBeNull();
         }
@@ -45,11 +46,12 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
         public void Login_UserExistsWrongPassword()
         {
             //Arrange
-            var user = new User
+            var loginModel = new LoginViewModel()
             {
                 Email = "email@email.com",
                 Password = "Test"
-        };
+            };
+
 
             mockUserManager.Setup(x => x
             .FindByEmailAsync(
@@ -66,7 +68,7 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
 
             var sut = GetSut();
             //Act
-            var result = sut.LoginUser(user.Email, user.Password);
+            var result = sut.LoginUser(loginModel);
             //Assert
             result.Should().NotBeNull();
         }
@@ -74,11 +76,12 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
         public void Login_UserExistsCorrectPassword()
         {
             //Arrange
-            var user = new User
+            var loginModel = new LoginViewModel()
             {
                 Email = "email@email.com",
                 Password = "Test"
             };
+
 
             mockUserManager.Setup(x => x
             .FindByEmailAsync(
@@ -95,7 +98,7 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
 
             var sut = GetSut();
             //Act
-            var result = sut.LoginUser(user.Email, user.Password);
+            var result = sut.LoginUser(loginModel);
 
             //Assert
             result.Should().NotBeNull();
