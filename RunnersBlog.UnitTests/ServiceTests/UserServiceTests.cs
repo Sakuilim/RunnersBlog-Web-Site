@@ -26,14 +26,20 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
         public void UserPage_Should_ReturnDefaultView()
         {
             //Arrange
+            var user = new User
+            {
+                Email = "email@email.com",
+                Name = "test2"
+            };
+
             var sut = GetSut();
 
             //Act
-            var result = sut.CreateAsync(null, CancellationToken.None);
+            var result = sut.CreateAsync(user, CancellationToken.None);
 
             //Assert
             result.Should().NotBeNull();
-            result.Should().BeOfType<Task<ActionResult>>();
+            result.Should().BeOfType<Task<IActionResult>>();
         }
 
         [Fact]
