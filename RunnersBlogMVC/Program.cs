@@ -23,7 +23,7 @@ namespace RunnersBlogMVC
             // Add services to the container.
             ConfigurationManager configuration = builder.Configuration;
 
-            ServiceCollections.SetupCollection(args, builder);
+            ServiceCollections.SetupCollection(builder);
 
             var settings = configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
 
@@ -50,6 +50,7 @@ namespace RunnersBlogMVC
             app.UseSwagger();
             app.UseSwaggerUI();
 
+            app.UseSession();
 
             app.MapControllerRoute(
                 name: "default",

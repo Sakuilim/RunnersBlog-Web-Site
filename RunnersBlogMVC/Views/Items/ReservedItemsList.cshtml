@@ -1,0 +1,48 @@
+﻿@model Item
+@{
+    ViewData["Title"] = "Items page";
+}
+<table class="table table-bordered table-striped" style="width:100%">
+<caption>Table of all available Items</caption>
+<thead>
+    <tr>
+        <th>
+            Name of Item
+        </th>
+        <th>
+            Price
+        </th>
+         <th>
+             Created By
+         </th>
+    </tr>
+</thead>
+<tbody>
+    @foreach (var obj in ViewBag.Items)
+    {
+        <tr>
+            <td>
+                @obj.Name
+            </td>
+            <td>
+                @obj.Price
+            </td>
+            <td>
+                @obj.CreatedBy
+            </td>
+            <td>
+                <div class="w-75 btn-group" role="group">
+                    <a asp-controller="Items" asp-action="CancelReservedItem" asp-route-id="@obj.Id"
+                   class="btn btn-primary mx-2"> <em class="bi bi-pencil-square"></em>Unreserve</a>
+                </div>
+            </td>
+        </tr>
+    }
+</tbody>
+</table>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,9 +1,11 @@
 ﻿using FluentAssertions;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Moq;
 using RunnersBlogMVC.DTO;
 using RunnersBlogMVC.Models;
 using RunnersBlogMVC.Repositories;
-using RunnersBlogMVC.Services;
+using RunnersBlogMVC.Services.ItemsServices;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,9 +16,11 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
     public class ItemsServiceTests
     {
         private readonly Mock<IItemsRepository> mockItemsRepository;
+        private readonly Mock<UserManager<ApplicationUser>> mockUserManager;
         public CancellationToken cancellationToken;
         public ItemsServiceTests()
         {
+            mockUserManager = new Mock<UserManager<ApplicationUser>>(Mock.Of<IUserStore<ApplicationUser>>(), null, null, null, null, null, null, null, null);
             cancellationToken = new CancellationToken();
             mockItemsRepository = new Mock<IItemsRepository>();
         }
@@ -24,6 +28,8 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
         public void CreateAsync()
         {
             //Arrange
+            var email = "test@test.com";
+
             var itemDto = new ItemDto()
             {
                 Name = "Test",
@@ -33,7 +39,7 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             var sut = GetSut();
 
             //Act
-            var result = sut.CreateAsync(itemDto, cancellationToken);
+            var result = sut.CreateAsync(email, itemDto, cancellationToken);
 
             //Assert
             result.Should().NotBeNull();
@@ -175,6 +181,7 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
 
         }
         public ItemsService GetSut()
-             => new(mockItemsRepository.Object);
+             => new(mockItemsRepository.Object,
+                    mockUserManager.Object);
     }
 }

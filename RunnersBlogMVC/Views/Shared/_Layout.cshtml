@@ -30,6 +30,12 @@
                         <li class="nav-item">
                             <a class="nav-link active" asp-area="" asp-controller="Items" asp-action="GetAllItems">Items</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" asp-area="" asp-controller="Profile" asp-action="UserProfile">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" asp-area="" asp-controller="Items" asp-action="ReservedItemsList">Basket</a>
+                        </li>
                         @*        <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
                             <div class="dropdown-menu">
@@ -42,10 +48,6 @@
                             </li>*@
                     
                     </ul>
-                    @*                    <form class="d-flex">
-                        <input class="form-control me-sm-2" type="text" placeholder="Search">
-                        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                        </form>*@
                     @{
                         if (User?.Identity?.IsAuthenticated == false)
                         {
@@ -58,7 +60,7 @@
                         }
                     }
                     @{
-                        if (User?.Identity?.IsAuthenticated ?? false && User.IsInRole("Admin"))
+                        if (User?.Identity?.IsAuthenticated != false && User.IsInRole("Admin"))
                         {
                             <form class="nav-item">
                                 <a style="float: left;" class="btn btn-light" asp-controller="Role" asp-action="CreateRole">Roles</a>

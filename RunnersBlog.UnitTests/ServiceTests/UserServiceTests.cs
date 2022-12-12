@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using RunnersBlogMVC.Controllers;
 using RunnersBlogMVC.Models;
-using RunnersBlogMVC.Services;
+using RunnersBlogMVC.Services.UserService;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
