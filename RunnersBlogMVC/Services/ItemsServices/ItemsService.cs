@@ -51,7 +51,7 @@ namespace RunnersBlogMVC.Services.ItemsServices
         {
             var items = await repo.GetItemsAsync(cancellationToken);
 
-            ViewBag.Items = items;
+            ViewBag.Items = items ?? new List<Item>();
             return View("GetItems");
         }
 
@@ -126,9 +126,9 @@ namespace RunnersBlogMVC.Services.ItemsServices
 
             var currentUser = await userManager.FindByEmailAsync(email);
 
-            var filteredItems = items.Where(x => x.ReservedBy == currentUser.Id);
+            var filteredItems = items.Where(x => (x.ReservedBy == currentUser.Id && x.ItemAvailabilityStatus == ItemStatus.Reserved.ToString()));
 
-            ViewBag.Items = filteredItems;
+            ViewBag.Items = filteredItems ?? new List<Item>();
             return View("ReservedItemsList");
         }
         public async Task<IActionResult> CancelReservedItem(string email, Guid id, CancellationToken cancellationToken)
@@ -150,6 +150,32 @@ namespace RunnersBlogMVC.Services.ItemsServices
             {
                 ItemAvailabilityStatus = ItemStatus.Available.ToString(),
                 ReservedBy = Guid.Empty
+            };
+
+            await repo.UpdateItemAsync(updatedItem, cancellationToken);
+
+            ViewBag.Items = filteredItems;
+
+            return RedirectToAction("ReservedItemsList", new RouteValueDictionary(new { Controller = "Items", Action = "ReservedItemsList" }));
+        }
+        public async Task<IActionResult> BuyReservedItem(string email, Guid id, CancellationToken cancellationToken)
+        {
+            var currentUser = await userManager.FindByEmailAsync(email);
+
+            var items = await repo.GetItemsAsync(cancellationToken);
+
+            var filteredItems = items.Where(x => x.ReservedBy == currentUser.Id);
+
+            var existingItem = await repo.GetItemAsync(id, cancellationToken);
+
+            if (existingItem is null)
+            {
+                return NotFound();
+            }
+
+            Item updatedItem = existingItem with
+            {
+                ItemAvailabilityStatus = ItemStatus.Sold.ToString()
             };
 
             await repo.UpdateItemAsync(updatedItem, cancellationToken);

@@ -3,6 +3,7 @@ using RunnersBlogMVC.Controllers;
 using RunnersBlogMVC.DTO;
 using RunnersBlogMVC.Models;
 using RunnersBlogMVC.Services;
+using RunnersBlogMVC.Services.ItemsServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +16,10 @@ namespace RunnersBlogMVC.UnitTests.ControllerTests
 {
     public class ItemsControllerTests
     {
-        private readonly Mock<IBaseService<Item, ItemDto>> mockItemService;
-        public ItemsControllerTests(IBaseService<Item, ItemDto> mockItemService)
+        private readonly Mock<IItemsService> mockItemService;
+        public ItemsControllerTests(Mock<IItemsService> mockItemService)
         {
-            this.mockItemService = new Mock<IBaseService<Item, ItemDto>>();
+            this.mockItemService = new Mock<IItemsService>();
         }
         public ItemsController GetSut()
             => new(mockItemService.Object);

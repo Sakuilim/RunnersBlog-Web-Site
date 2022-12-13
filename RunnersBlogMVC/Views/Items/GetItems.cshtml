@@ -13,19 +13,16 @@
 </div>
 <div class="container p-3">
     <div class="row pt-4">
-        <div class="col-6">
-            <h2 class="text-primary">List of Running Shoes</h2>
-        </div>
         <form class="d-flex">
-            <input class="form-control me-sm-2" type="text" placeholder="Search">
+            <input style="align-content: flex-end" class="form-control me-sm-2" type="text" placeholder="Search">
             <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
         </form>
           @{
-           if (User?.Identity?.IsAuthenticated ?? false)
+           if (User?.Identity?.IsAuthenticated == true)
            {
         <div class="col-6 text-end">
            <a asp-controller="Items" asp-action="CreateItem" class="btn btn-primary">
-                <em class="bi bi-bag-plus-fill"></em> &nbsp; Create New Shoe
+                <em class="bi bi-bag-plus-fill"></em> &nbsp; Sell Your Item
            </a>
         </div>
            }
@@ -60,20 +57,23 @@
                     @obj.Price
                 </td>
                 @{
-                    if (User?.Identity?.IsAuthenticated != false)
+                    if (User?.Identity?.IsAuthenticated == true)
                     {
-                        <td>
-                            <div class="w-75 btn-group" role="group">
-                                <a asp-controller="Items" asp-action="UpdateItem" asp-route-id="@obj.Id"
+                        if (User.IsInRole("Admin"))
+                        {
+                            <td>
+                                <div class="w-75 btn-group" role="group">
+                                    <a asp-controller="Items" asp-action="UpdateItem" asp-route-id="@obj.Id"
                            class="btn btn-primary mx-2"> <em class="bi bi-pencil-square"></em>Edit</a>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="w-75 btn-group" role="group">
-                                <a asp-controller="Items" asp-action="DeleteItem" asp-route-id="@obj.Id"
+                                </div>
+                            </td>
+                            <td>
+                                <div class="w-75 btn-group" role="group">
+                                    <a asp-controller="Items" asp-action="DeleteItem" asp-route-id="@obj.Id"
                            class="btn btn-primary mx-2"> <em class="bi bi-trash3"></em>Delete</a>
-                            </div>
-                        </td>
+                                </div>
+                            </td>
+                        }
                         <td>
                             @obj.Id
                         </td>

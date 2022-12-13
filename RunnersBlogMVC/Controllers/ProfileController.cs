@@ -23,6 +23,10 @@ namespace RunnersBlogMVC.Controllers
         public async Task<IActionResult> UserProfileAsync()
         {
             var email = HttpContext.User.Claims.Where(c => c.Type.Contains("emailaddress"))?.FirstOrDefault()?.Value;
+            if(email is null)
+            {
+                return RedirectToAction("LoginUser", new RouteValueDictionary(new { Controller = "Login", Action = "LoginUser" }));
+            }
             return await profileService.UserProfileAsync(email, cancellationToken);
         }
     }

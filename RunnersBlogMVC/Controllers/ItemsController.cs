@@ -48,7 +48,7 @@ namespace RunnersBlogMVC.Controllers
         //POST /createItem/Item/{id}
         [HttpPost]
         [ValidateAntiForgeryToken] 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,User")]
         public async Task<IActionResult> CreateItemAsync(ItemDto itemDto)
         {
             var email = HttpContext.User.Claims.Where(c => c.Type.Contains("emailaddress"))?.FirstOrDefault()?.Value;
@@ -79,6 +79,10 @@ namespace RunnersBlogMVC.Controllers
         public async Task<IActionResult> ReserveItemAsync(Guid id)
         {
             var email = HttpContext.User.Claims.Where(c => c.Type.Contains("emailaddress"))?.FirstOrDefault()?.Value;
+            if (email is null)
+            {
+                return RedirectToAction("LoginUser", new RouteValueDictionary(new { Controller = "Login", Action = "LoginUser" }));
+            }
             return await itemService.ReserveItemAsync(email, id, cancellationToken);
         }
         [HttpGet]
@@ -86,6 +90,10 @@ namespace RunnersBlogMVC.Controllers
         public async Task<IActionResult> ReservedItemsListAsync()
         {
             var email = HttpContext.User.Claims.Where(c => c.Type.Contains("emailaddress"))?.FirstOrDefault()?.Value;
+            if (email is null)
+            {
+                return RedirectToAction("LoginUser", new RouteValueDictionary(new { Controller = "Login", Action = "LoginUser" }));
+            }
             return await itemService.ReservedItemsListAsync(email, cancellationToken);
         }
         [HttpGet]
@@ -93,7 +101,18 @@ namespace RunnersBlogMVC.Controllers
         public async Task<IActionResult> CancelReservedItemAsync(Guid id)
         {
             var email = HttpContext.User.Claims.Where(c => c.Type.Contains("emailaddress"))?.FirstOrDefault()?.Value;
+            if (email is null)
+            {
+                return RedirectToAction("LoginUser", new RouteValueDictionary(new { Controller = "Login", Action = "LoginUser" }));
+            }
             return await itemService.CancelReservedItem(email, id, cancellationToken);
+        }
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> BuyReservedItemAsync(Guid id)
+        {
+            var email = HttpContext.User.Claims.Where(c => c.Type.Contains("emailaddress"))?.FirstOrDefault()?.Value;
+            return await itemService.BuyReservedItem(email, id, cancellationToken);
         }
     }
 }

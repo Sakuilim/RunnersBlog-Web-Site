@@ -16,5 +16,6 @@ namespace RunnersBlogMVC.Services.ItemsServices
         public Task<IActionResult> ReserveItemAsync(string email, Guid id, CancellationToken cancellationToken);
         public Task<IActionResult> ReservedItemsListAsync(string email, CancellationToken cancellationToken);
         public Task<IActionResult> CancelReservedItem(string email, Guid id, CancellationToken cancellationToken);
+        public Task<IActionResult> BuyReservedItem(string email, Guid id, CancellationToken cancellationToken);
     }
 }

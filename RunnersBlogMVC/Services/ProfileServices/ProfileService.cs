@@ -25,7 +25,7 @@ namespace RunnersBlogMVC.Services.ProfileServices
 
             filteredItems = filteredItems.Where(x => x.ItemAvailabilityStatus == ItemStatus.Sold.ToString());
 
-            ViewBag.Items = filteredItems;
+            ViewBag.Items = filteredItems ?? new List<Item>();
             return View("UserProfile");
         }
     }

@@ -1,10 +1,9 @@
 ﻿@model Item
 @{
-    ViewData["Title"] = "Items page";
+    ViewData["Title"] = "Profile";
 }
-<h>
-    History
-</h>
+<h1>@ViewData["Title"]</h1>
+
 <table class="table table-bordered table-striped" style="width:100%">
     <caption>Table of all available Items</caption>
     <thead>
@@ -17,6 +16,9 @@
             </th>
             <th>
                 Created By
+            </th>
+            <th>
+                Status
             </th>
         </tr>
     </thead>
@@ -34,10 +36,7 @@
                     @obj.CreatedBy
                 </td>
                 <td>
-                    <div class="w-75 btn-group" role="group">
-                        <a asp-controller="Items" asp-action="CancelReservedItem" asp-route-id="@obj.Id"
-                       class="btn btn-primary mx-2"> <em class="bi bi-pencil-square"></em>Unreserve</a>
-                    </div>
+                    @obj.ItemAvailabilityStatus
                 </td>
             </tr>
         }
