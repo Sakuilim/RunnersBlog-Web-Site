@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RunnersBlogMVC.Services.ProfileServices;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 
 namespace RunnersBlogMVC.Controllers
 {
+    [ExcludeFromCodeCoverage]
     public class ProfileController : Controller
     {
         private readonly IProfileService profileService;

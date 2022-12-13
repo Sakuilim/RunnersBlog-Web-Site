@@ -1,5 +1,4 @@
-﻿using RunnersBlogMVC.DTO;
-using RunnersBlogMVC.Models;
+﻿using RunnersBlogMVC.Models;
 using RunnersBlogMVC.Repositories;
 using RunnersBlogMVC.Services.LoginServices;
 using RunnersBlogMVC.Services.RoleServices;
@@ -7,11 +6,12 @@ using MongoDB.Driver;
 using RunnersBlogMVC.Settings;
 using RunnersBlogMVC.Services.ItemsServices;
 using RunnersBlogMVC.Services.UserService;
-using RunnersBlogMVC.Common;
 using RunnersBlogMVC.Services.ProfileServices;
+using System.Diagnostics.CodeAnalysis;
 
 namespace RunnersBlogMVC
 {
+    [ExcludeFromCodeCoverage]
     public static class ServiceCollections
     {
         public static void SetupCollection(WebApplicationBuilder builder)
@@ -33,7 +33,6 @@ namespace RunnersBlogMVC
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<ILoginService, LoginService>();
             builder.Services.AddScoped<IRoleService, RoleService>();
-            builder.Services.AddScoped<IOrderHelper, OrderHelper>();
 
             builder.Services.ConfigureApplicationCookie(options =>
             {

@@ -36,6 +36,11 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
                 Price = 1.00M
             };
 
+            mockUserManager.Setup(x => x
+            .FindByEmailAsync(
+                It.IsAny<string>()))
+            .Returns(Task.FromResult(new ApplicationUser()));
+
             var sut = GetSut();
 
             //Act
@@ -179,6 +184,100 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             //Assert
             result.Should().NotBeNull();
 
+        }
+        [Fact]
+        public void GetOrderedItems()
+        {
+            //Arrange
+            var sut = GetSut();
+
+            //Act
+            var result = sut.GetOrderedItemsAsync("Price", cancellationToken);
+
+            //Assert
+            result.Should().NotBeNull();
+        }
+        [Fact]
+        public void ReserveItem()
+        {
+            //Arrange
+            var email = "test@test.com";
+
+            var mockGuid = Guid.NewGuid();
+
+            mockUserManager.Setup(x => x
+            .FindByEmailAsync(
+                It.IsAny<string>()))
+            .Returns(Task.FromResult(new ApplicationUser()));
+
+            var sut = GetSut();
+
+            //Act
+            var result = sut.ReserveItemAsync(email, mockGuid, cancellationToken);
+
+            //Assert
+            result.Should().NotBeNull();
+        }
+        [Fact]
+        public void ReservedItemsList()
+        {
+            //Arrange
+            var email = "test@test.com";
+
+            mockUserManager.Setup(x => x
+            .FindByEmailAsync(
+                It.IsAny<string>()))
+            .Returns(Task.FromResult(new ApplicationUser()));
+
+            var sut = GetSut();
+
+            //Act
+            var result = sut.ReservedItemsListAsync(email, cancellationToken);
+
+            //Assert
+            result.Should().NotBeNull();
+        }
+        [Fact]
+        public void CancelReservedItem()
+        {
+            //Arrange
+            var email = "test@test.com";
+
+            var mockGuid = Guid.NewGuid();
+
+            mockUserManager.Setup(x => x
+            .FindByEmailAsync(
+                It.IsAny<string>()))
+            .Returns(Task.FromResult(new ApplicationUser()));
+
+            var sut = GetSut();
+
+            //Act
+            var result = sut.CancelReservedItem(email, mockGuid, cancellationToken);
+
+            //Assert
+            result.Should().NotBeNull();
+        }
+        [Fact]
+        public void BuyReservedItem()
+        {
+            //Arrange
+            var email = "test@test.com";
+
+            var mockGuid = Guid.NewGuid();
+
+            mockUserManager.Setup(x => x
+            .FindByEmailAsync(
+                It.IsAny<string>()))
+            .Returns(Task.FromResult(new ApplicationUser()));
+
+            var sut = GetSut();
+
+            //Act
+            var result = sut.BuyReservedItem(email, mockGuid, cancellationToken);
+
+            //Assert
+            result.Should().NotBeNull();
         }
         public ItemsService GetSut()
              => new(mockItemsRepository.Object,

@@ -28,7 +28,7 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
 
         }
         [Fact]
-        public void Test1()
+        public void UserProfile()
         {
             //Arrange
             var email = "test@test.com";

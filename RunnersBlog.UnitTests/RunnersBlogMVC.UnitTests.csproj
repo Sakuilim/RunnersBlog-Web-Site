@@ -29,6 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Common\" />
     <Folder Include="RepositoryTests\" />
     <Folder Include="RunnersBlogTests\" />
   </ItemGroup>
