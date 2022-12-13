@@ -6,7 +6,7 @@ namespace RunnersBlogMVC.Services.LoginServices
 {
     public interface ILoginService
     {
-        public Task<IActionResult> LoginUser(LoginViewModel loginViewModel);
+        public Task<IActionResult> LoginUser([Required] LoginViewModel loginViewModel);
         public Task<IActionResult> LogoutUser();
     }
 }

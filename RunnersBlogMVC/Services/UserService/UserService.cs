@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using RunnersBlogMVC.Models;
 using System.Diagnostics.CodeAnalysis;
 
-namespace RunnersBlogMVC.Services
+namespace RunnersBlogMVC.Services.UserService
 {
-    public class UserService : Controller, IBaseService<User, User>
+    public class UserService : Controller, IUserService
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly RoleManager<ApplicationRole> roleManager;

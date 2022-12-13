@@ -1,8 +1,20 @@
-﻿
+﻿@model User
 @{
     ViewData["Title"] = "Login";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<h1>@ViewData["Title"]</h1>
+<h2>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#showPass').click(function()
+            {
+                $('#txtPassword').attr('type', $(this).is(':checked') ? 'text' : 'password');
+            });
+        });
+    </script>
+</h2>
+
 
 <h1>Login</h1>
 <h1 class="bg-info text-white"</h1>
@@ -10,14 +22,26 @@
 
 <form method="post">
     <div class="col-md-4">
-        <div class="col-md-4">
-            <label>Email</label>
-            <input name="email" class="form-control" />
+        <div class="form-group">
+            <label asp-for="Email" class="control-label"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
         </div>
-        <div class="col-md-4">
-            <label>Password</label>
-            <input name="password" class="form-control" />
+        <div class="form-group">
+            <label asp-for="Password" class="control-label"></label>
+            <input id="txtPassword" type="password" asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div>
+            <input type="checkbox" id="showPass" />Show Password
         </div>
         <button type="submit" class="btn btn-primary" style="width:150px">Login</button>
     </div>
 </form>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

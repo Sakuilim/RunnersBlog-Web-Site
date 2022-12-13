@@ -1,9 +1,11 @@
 ﻿using FluentAssertions;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Moq;
 using RunnersBlogMVC.DTO;
 using RunnersBlogMVC.Models;
 using RunnersBlogMVC.Repositories;
-using RunnersBlogMVC.Services;
+using RunnersBlogMVC.Services.ItemsServices;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,9 +16,11 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
     public class ItemsServiceTests
     {
         private readonly Mock<IItemsRepository> mockItemsRepository;
+        private readonly Mock<UserManager<ApplicationUser>> mockUserManager;
         public CancellationToken cancellationToken;
         public ItemsServiceTests()
         {
+            mockUserManager = new Mock<UserManager<ApplicationUser>>(Mock.Of<IUserStore<ApplicationUser>>(), null, null, null, null, null, null, null, null);
             cancellationToken = new CancellationToken();
             mockItemsRepository = new Mock<IItemsRepository>();
         }
@@ -24,16 +28,23 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
         public void CreateAsync()
         {
             //Arrange
+            var email = "test@test.com";
+
             var itemDto = new ItemDto()
             {
                 Name = "Test",
                 Price = 1.00M
             };
 
+            mockUserManager.Setup(x => x
+            .FindByEmailAsync(
+                It.IsAny<string>()))
+            .Returns(Task.FromResult(new ApplicationUser()));
+
             var sut = GetSut();
 
             //Act
-            var result = sut.CreateAsync(itemDto, cancellationToken);
+            var result = sut.CreateAsync(email, itemDto, cancellationToken);
 
             //Assert
             result.Should().NotBeNull();
@@ -174,7 +185,102 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             result.Should().NotBeNull();
 
         }
+        [Fact]
+        public void GetOrderedItems()
+        {
+            //Arrange
+            var sut = GetSut();
+
+            //Act
+            var result = sut.GetOrderedItemsAsync("Price", cancellationToken);
+
+            //Assert
+            result.Should().NotBeNull();
+        }
+        [Fact]
+        public void ReserveItem()
+        {
+            //Arrange
+            var email = "test@test.com";
+
+            var mockGuid = Guid.NewGuid();
+
+            mockUserManager.Setup(x => x
+            .FindByEmailAsync(
+                It.IsAny<string>()))
+            .Returns(Task.FromResult(new ApplicationUser()));
+
+            var sut = GetSut();
+
+            //Act
+            var result = sut.ReserveItemAsync(email, mockGuid, cancellationToken);
+
+            //Assert
+            result.Should().NotBeNull();
+        }
+        [Fact]
+        public void ReservedItemsList()
+        {
+            //Arrange
+            var email = "test@test.com";
+
+            mockUserManager.Setup(x => x
+            .FindByEmailAsync(
+                It.IsAny<string>()))
+            .Returns(Task.FromResult(new ApplicationUser()));
+
+            var sut = GetSut();
+
+            //Act
+            var result = sut.ReservedItemsListAsync(email, cancellationToken);
+
+            //Assert
+            result.Should().NotBeNull();
+        }
+        [Fact]
+        public void CancelReservedItem()
+        {
+            //Arrange
+            var email = "test@test.com";
+
+            var mockGuid = Guid.NewGuid();
+
+            mockUserManager.Setup(x => x
+            .FindByEmailAsync(
+                It.IsAny<string>()))
+            .Returns(Task.FromResult(new ApplicationUser()));
+
+            var sut = GetSut();
+
+            //Act
+            var result = sut.CancelReservedItem(email, mockGuid, cancellationToken);
+
+            //Assert
+            result.Should().NotBeNull();
+        }
+        [Fact]
+        public void BuyReservedItem()
+        {
+            //Arrange
+            var email = "test@test.com";
+
+            var mockGuid = Guid.NewGuid();
+
+            mockUserManager.Setup(x => x
+            .FindByEmailAsync(
+                It.IsAny<string>()))
+            .Returns(Task.FromResult(new ApplicationUser()));
+
+            var sut = GetSut();
+
+            //Act
+            var result = sut.BuyReservedItem(email, mockGuid, cancellationToken);
+
+            //Assert
+            result.Should().NotBeNull();
+        }
         public ItemsService GetSut()
-             => new(mockItemsRepository.Object);
+             => new(mockItemsRepository.Object,
+                    mockUserManager.Object);
     }
 }

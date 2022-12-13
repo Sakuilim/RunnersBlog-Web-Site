@@ -1,32 +1,48 @@
-﻿using RunnersBlogMVC.DTO;
-using RunnersBlogMVC.Models;
+﻿using RunnersBlogMVC.Models;
 using RunnersBlogMVC.Repositories;
 using RunnersBlogMVC.Services.LoginServices;
 using RunnersBlogMVC.Services.RoleServices;
-using RunnersBlogMVC.Services;
 using MongoDB.Driver;
 using RunnersBlogMVC.Settings;
+using RunnersBlogMVC.Services.ItemsServices;
+using RunnersBlogMVC.Services.UserService;
+using RunnersBlogMVC.Services.ProfileServices;
+using System.Diagnostics.CodeAnalysis;
 
 namespace RunnersBlogMVC
 {
+    [ExcludeFromCodeCoverage]
     public static class ServiceCollections
     {
-        public static IServiceCollection SetupCollection(string[] args, WebApplicationBuilder builder)
+        public static void SetupCollection(WebApplicationBuilder builder)
         {
+            builder.Services.AddMvc(options =>
+            {
+                options.MaxModelBindingRecursionDepth = 64;
+            });
+
+            builder.Services.AddSession();
+
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddSingleton<IItemsRepository, MongoDbItemsRepo>();
-            builder.Services.AddScoped<IBaseService<Item, ItemDto>, ItemsService>();
-            builder.Services.AddScoped<IBaseService<User, User>, UserService>();
+            builder.Services.AddScoped<IItemsService, ItemsService>();
+            builder.Services.AddScoped<IProfileService, ProfileService>();
+            builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<ILoginService, LoginService>();
             builder.Services.AddScoped<IRoleService, RoleService>();
 
-            return builder.Services;
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.AccessDeniedPath = new PathString("/Home/AccessDenied");
+            });
+
+            builder.Services.AddHttpContextAccessor();
         }
 
-        public static IServiceCollection SetupRepositoryCollection(string[] args, WebApplicationBuilder builder, MongoDbSettings settings)
+        public static void SetupRepositoryCollection(string[] args, WebApplicationBuilder builder, MongoDbSettings settings)
         {
             builder.Services.AddSingleton<IMongoClient>(serviceProvider =>
             {
@@ -37,8 +53,6 @@ namespace RunnersBlogMVC
                 .AddMongoDbStores<ApplicationUser, ApplicationRole, Guid>(
                 settings.ConnectionString, "Users"
                 );
-
-            return builder.Services;
         }
     }
 }

@@ -24,7 +24,7 @@ namespace RunnersBlogMVC.Controllers
         }
         //Post: User/CreateRole
         [HttpPost]
-        //[Authorize(Roles = "Admin")]
+       // [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateRole([Required][EmailAddress] string email, UserRole userRole)
         {
             return await roleService.CreateRole(email, userRole);

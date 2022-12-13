@@ -23,7 +23,7 @@ namespace RunnersBlogMVC.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> LoginUser(LoginViewModel loginViewModel)
+        public async Task<IActionResult> LoginUser([Required]LoginViewModel loginViewModel)
         {
             return await loginService.LoginUser(loginViewModel);
         }

@@ -4,7 +4,7 @@ using Moq;
 using RunnersBlogMVC.DTO;
 using RunnersBlogMVC.Models;
 using RunnersBlogMVC.Repositories;
-using RunnersBlogMVC.Services;
+using RunnersBlogMVC.Services.ItemsServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
