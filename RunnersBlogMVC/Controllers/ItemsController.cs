@@ -52,6 +52,10 @@ namespace RunnersBlogMVC.Controllers
         public async Task<IActionResult> CreateItemAsync(ItemDto itemDto)
         {
             var email = HttpContext.User.Claims.Where(c => c.Type.Contains("emailaddress"))?.FirstOrDefault()?.Value;
+            if (email is null)
+            {
+                return RedirectToAction("LoginUser", new RouteValueDictionary(new { Controller = "Login", Action = "LoginUser" }));
+            }
             return await itemService.CreateAsync(email, itemDto, cancellationToken);
         }
         //PUT /items/editItem/{id}
@@ -112,6 +116,10 @@ namespace RunnersBlogMVC.Controllers
         public async Task<IActionResult> BuyReservedItemAsync(Guid id)
         {
             var email = HttpContext.User.Claims.Where(c => c.Type.Contains("emailaddress"))?.FirstOrDefault()?.Value;
+            if (email is null)
+            {
+                return RedirectToAction("LoginUser", new RouteValueDictionary(new { Controller = "Login", Action = "LoginUser" }));
+            }
             return await itemService.BuyReservedItem(email, id, cancellationToken);
         }
     }
