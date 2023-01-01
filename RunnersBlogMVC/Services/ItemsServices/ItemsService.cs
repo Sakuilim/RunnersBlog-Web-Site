@@ -78,6 +78,8 @@ namespace RunnersBlogMVC.Services.ItemsServices
             {
                 Name = itemDto.Name,
                 Price = itemDto.Price,
+                Description = itemDto.Description,
+                ItemAvailabilityStatus = itemDto.ItemAvailabilityStatus.ToString()
             };
 
             await repo.UpdateItemAsync(updatedItem, cancellationToken);
@@ -131,7 +133,7 @@ namespace RunnersBlogMVC.Services.ItemsServices
             ViewBag.Items = filteredItems ?? new List<Item>();
             return View("ReservedItemsList");
         }
-        public async Task<IActionResult> CancelReservedItem(string email, Guid id, CancellationToken cancellationToken)
+        public async Task<IActionResult> CancelReservedItemAsync(string email, Guid id, CancellationToken cancellationToken)
         {
             var currentUser = await userManager.FindByEmailAsync(email);
 
@@ -158,7 +160,7 @@ namespace RunnersBlogMVC.Services.ItemsServices
 
             return RedirectToAction("ReservedItemsList", new RouteValueDictionary(new { Controller = "Items", Action = "ReservedItemsList" }));
         }
-        public async Task<IActionResult> BuyReservedItem(string email, Guid id, CancellationToken cancellationToken)
+        public async Task<IActionResult> BuyReservedItemAsync(string email, Guid id, CancellationToken cancellationToken)
         {
             var currentUser = await userManager.FindByEmailAsync(email);
 
@@ -183,6 +185,15 @@ namespace RunnersBlogMVC.Services.ItemsServices
             ViewBag.Items = filteredItems;
 
             return RedirectToAction("ReservedItemsList", new RouteValueDictionary(new { Controller = "Items", Action = "ReservedItemsList" }));
+        }
+        public async Task<IActionResult> SearchItemAsync(string? searchBy, CancellationToken cancellationToken)
+        {
+            var items = await repo.GetItemsAsync(cancellationToken);
+
+            var filtereditems = items.Where(x => x.Name.Contains(searchBy));
+
+            ViewBag.Items = filtereditems;
+            return View("GetItems");
         }
     }
 }

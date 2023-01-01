@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using RunnersBlogMVC.Models.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace RunnersBlogMVC.DTO
 {
@@ -9,5 +10,9 @@ namespace RunnersBlogMVC.DTO
         [Required]
         [Range(1, 1000)]
         public decimal Price { get; init; }
+        [Required]
+        public string? Description { get; init; }
+        [Required]
+        public ItemStatus ItemAvailabilityStatus { get; init;  }
     }
 }

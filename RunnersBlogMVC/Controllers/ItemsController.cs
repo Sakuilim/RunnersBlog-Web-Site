@@ -32,7 +32,7 @@ namespace RunnersBlogMVC.Controllers
         }
         // GET /items/createItem
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,User")]
         public IActionResult CreateItem()
         {
             return View();
@@ -47,7 +47,7 @@ namespace RunnersBlogMVC.Controllers
         }
         //POST /createItem/Item/{id}
         [HttpPost]
-        [ValidateAntiForgeryToken] 
+        [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin,User")]
         public async Task<IActionResult> CreateItemAsync(ItemDto itemDto)
         {
@@ -109,7 +109,7 @@ namespace RunnersBlogMVC.Controllers
             {
                 return RedirectToAction("LoginUser", new RouteValueDictionary(new { Controller = "Login", Action = "LoginUser" }));
             }
-            return await itemService.CancelReservedItem(email, id, cancellationToken);
+            return await itemService.CancelReservedItemAsync(email, id, cancellationToken);
         }
         [HttpGet]
         [AllowAnonymous]
@@ -120,7 +120,13 @@ namespace RunnersBlogMVC.Controllers
             {
                 return RedirectToAction("LoginUser", new RouteValueDictionary(new { Controller = "Login", Action = "LoginUser" }));
             }
-            return await itemService.BuyReservedItem(email, id, cancellationToken);
+            return await itemService.BuyReservedItemAsync(email, id, cancellationToken);
+        }
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> SearchItemAsync(string searchBy)
+        {
+            return await itemService.SearchItemAsync(searchBy, cancellationToken);
         }
     }
 }

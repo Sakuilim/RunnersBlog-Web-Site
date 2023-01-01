@@ -26,7 +26,7 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             mockSignInManager = new Mock<SignInManager<ApplicationUser>>(mockUserManager.Object, Mock.Of<IHttpContextAccessor>(), Mock.Of<IUserClaimsPrincipalFactory<ApplicationUser>>(), null, null, null, null);
         }
         [Fact]
-        public void Login()
+        public void Login_EmailDoesntExist()
         {
             //Arrange
 
@@ -104,7 +104,7 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             result.Should().NotBeNull();
         }
         [Fact]
-        public void Logout()
+        public void Logout_ShouldReturnLogout()
         {
             //Arrange
             var sut = GetSut();

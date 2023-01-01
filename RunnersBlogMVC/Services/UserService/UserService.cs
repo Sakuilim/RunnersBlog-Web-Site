@@ -23,6 +23,13 @@ namespace RunnersBlogMVC.Services.UserService
                     UserName = user.Name,
                     Email = user.Email
                 };
+                var checkIfUserExists = await userManager.FindByEmailAsync(user.Email);
+
+                if (checkIfUserExists != null)
+                {
+                    ModelState.AddModelError("Error", errorMessage: "This email already exists");
+                }
+
 
                 IdentityResult result = await userManager.CreateAsync(appUser, user.Password);
 
