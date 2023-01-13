@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RunnersBlogMVC.Controllers;
-using RunnersBlogMVC.DTO;
-using RunnersBlogMVC.Models;
-using RunnersBlogMVC.Models.Enums;
-using RunnersBlogMVC.Repositories;
+using DataAccessLayer.Controllers;
+using DataAccessLayer.DTO;
+using DataAccessLayer.Models;
+using DataAccessLayer.Models.Enums;
+using DataAccessLayer.Repositories;
 using System.Security.Claims;
 
-namespace RunnersBlogMVC.Services.ItemsServices
+namespace DataAccessLayer.Services.ItemsServices
 {
     public class ItemsService : Controller, IItemsService
     {

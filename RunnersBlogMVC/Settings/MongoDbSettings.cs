@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace RunnersBlogMVC.Settings
+namespace DataAccessLayer.Settings
 {
     [ExcludeFromCodeCoverage]
     public class MongoDbSettings

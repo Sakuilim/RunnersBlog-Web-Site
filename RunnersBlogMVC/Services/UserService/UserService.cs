@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RunnersBlogMVC.Models;
+using DataAccessLayer.Models;
 using System.Diagnostics.CodeAnalysis;
 
-namespace RunnersBlogMVC.Services.UserService
+namespace DataAccessLayer.Services.UserService
 {
     public class UserService : Controller, IUserService
     {

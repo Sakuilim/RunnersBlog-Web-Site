@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace RunnersBlogMVC.Services.ProfileServices
+namespace DataAccessLayer.Services.ProfileServices
 {
     public interface IProfileService
     {

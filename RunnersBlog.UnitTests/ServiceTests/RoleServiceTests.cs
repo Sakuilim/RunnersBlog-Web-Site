@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using RunnersBlogMVC.Models;
-using RunnersBlogMVC.Services;
-using RunnersBlogMVC.Services.RoleServices;
+using DataAccessLayer.Models;
+using DataAccessLayer.Services;
+using DataAccessLayer.Services.RoleServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace RunnersBlogMVC.UnitTests.ServiceTests
+namespace DataAccessLayer.UnitTests.ServiceTests
 {
     public class RoleServiceTests
     {

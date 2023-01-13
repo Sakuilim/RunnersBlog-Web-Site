@@ -2,13 +2,13 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RunnersBlogMVC.Models;
-using RunnersBlogMVC.Services.RoleServices;
+using DataAccessLayer.Models;
+using DataAccessLayer.Services.RoleServices;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Diagnostics.CodeAnalysis;
 
-namespace RunnersBlogMVC.Controllers
+namespace DataAccessLayer.Controllers
 {
     [ExcludeFromCodeCoverage]
     public class RoleController : Controller

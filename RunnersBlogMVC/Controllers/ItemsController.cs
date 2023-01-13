@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using RunnersBlogMVC.DTO;
-using RunnersBlogMVC.Models;
-using RunnersBlogMVC.Repositories;
-using RunnersBlogMVC.Services;
-using RunnersBlogMVC.Services.ItemsServices;
+using DataAccessLayer.DTO;
+using DataAccessLayer.Models;
+using DataAccessLayer.Repositories;
+using DataAccessLayer.Services;
+using DataAccessLayer.Services.ItemsServices;
 using System.Diagnostics.CodeAnalysis;
 
-namespace RunnersBlogMVC.Controllers
+namespace DataAccessLayer.Controllers
 {
     [ExcludeFromCodeCoverage]
     public class ItemsController : Controller

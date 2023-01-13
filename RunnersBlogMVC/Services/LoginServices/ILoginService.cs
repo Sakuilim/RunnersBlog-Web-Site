@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RunnersBlogMVC.Models;
+using DataAccessLayer.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace RunnersBlogMVC.Services.LoginServices
+namespace DataAccessLayer.Services.LoginServices
 {
     public interface ILoginService
     {

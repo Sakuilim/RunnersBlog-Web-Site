@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RunnersBlogMVC.Models;
+using DataAccessLayer.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace RunnersBlogMVC.Services.RoleServices
+namespace DataAccessLayer.Services.RoleServices
 {
     public interface IRoleService
     {

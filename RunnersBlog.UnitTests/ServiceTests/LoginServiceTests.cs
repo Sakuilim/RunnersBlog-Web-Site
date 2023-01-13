@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Moq;
-using RunnersBlogMVC.Models;
-using RunnersBlogMVC.Repositories;
-using RunnersBlogMVC.Services.LoginServices;
+using DataAccessLayer.Models;
+using DataAccessLayer.Repositories;
+using DataAccessLayer.Services.LoginServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace RunnersBlogMVC.UnitTests.ServiceTests
+namespace DataAccessLayer.UnitTests.ServiceTests
 {
     public class LoginServiceTests
     {

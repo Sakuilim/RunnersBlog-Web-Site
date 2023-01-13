@@ -1,9 +1,9 @@
 ﻿using Moq;
-using RunnersBlogMVC.Controllers;
-using RunnersBlogMVC.DTO;
-using RunnersBlogMVC.Models;
-using RunnersBlogMVC.Services;
-using RunnersBlogMVC.Services.ItemsServices;
+using DataAccessLayer.Controllers;
+using DataAccessLayer.DTO;
+using DataAccessLayer.Models;
+using DataAccessLayer.Services;
+using DataAccessLayer.Services.ItemsServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace RunnersBlogMVC.UnitTests.ControllerTests
+namespace DataAccessLayer.UnitTests.ControllerTests
 {
     public class ItemsControllerTests
     {

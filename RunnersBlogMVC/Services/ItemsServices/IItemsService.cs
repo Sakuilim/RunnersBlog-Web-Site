@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RunnersBlogMVC.DTO;
-using RunnersBlogMVC.Models;
+using DataAccessLayer.DTO;
+using DataAccessLayer.Models;
 
-namespace RunnersBlogMVC.Services.ItemsServices
+namespace DataAccessLayer.Services.ItemsServices
 {
     public interface IItemsService
     {

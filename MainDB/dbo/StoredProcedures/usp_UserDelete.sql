@@ -1,8 +1,8 @@
-CREATE PROCEDURE [dbo].[usp_Get]
+CREATE PROCEDURE [dbo].[usp_UserDelete]
   @id int
 AS
 BEGIN
   delete
-  from dbo.[USER]
+  from dbo.[User]
   where Id = @id
 END

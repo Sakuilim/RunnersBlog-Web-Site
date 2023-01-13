@@ -2,13 +2,13 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RunnersBlogMVC.Models;
-using RunnersBlogMVC.Services;
-using RunnersBlogMVC.Services.UserService;
+using DataAccessLayer.Models;
+using DataAccessLayer.Services;
+using DataAccessLayer.Services.UserService;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 
-namespace RunnersBlogMVC.Controllers
+namespace DataAccessLayer.Controllers
 {
     [ExcludeFromCodeCoverage]
     public class UserController : Controller

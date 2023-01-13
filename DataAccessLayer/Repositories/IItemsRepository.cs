@@ -1,6 +1,6 @@
-﻿using RunnersBlogMVC.Models;
+﻿using DataAccessLayer.Models.Items;
 
-namespace RunnersBlogMVC.Repositories
+namespace DataAccessLayer.Repositories
 {
     public interface IItemsRepository
     {

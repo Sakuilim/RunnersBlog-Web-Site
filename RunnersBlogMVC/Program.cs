@@ -2,16 +2,16 @@
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
-using RunnersBlogMVC.DTO;
-using RunnersBlogMVC.Models;
-using RunnersBlogMVC.Repositories;
-using RunnersBlogMVC.Services;
-using RunnersBlogMVC.Services.LoginServices;
-using RunnersBlogMVC.Services.RoleServices;
-using RunnersBlogMVC.Settings;
+using DataAccessLayer.DTO;
+using DataAccessLayer.Models;
+using DataAccessLayer.Repositories;
+using DataAccessLayer.Services;
+using DataAccessLayer.Services.LoginServices;
+using DataAccessLayer.Services.RoleServices;
+using DataAccessLayer.Settings;
 using System.Diagnostics.CodeAnalysis;
 
-namespace RunnersBlogMVC
+namespace DataAccessLayer
 {
     [ExcludeFromCodeCoverage]
     internal static class Program

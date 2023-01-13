@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RunnersBlogMVC.Models;
-using RunnersBlogMVC.Models.Enums;
-using RunnersBlogMVC.Repositories;
+using DataAccessLayer.Models;
+using DataAccessLayer.Models.Enums;
+using DataAccessLayer.Repositories;
 
-namespace RunnersBlogMVC.Services.ProfileServices
+namespace DataAccessLayer.Services.ProfileServices
 {
     public class ProfileService : Controller, IProfileService
     {

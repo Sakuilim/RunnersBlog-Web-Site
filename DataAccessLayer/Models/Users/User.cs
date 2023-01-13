@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace RunnersBlogMVC.Models
+namespace DataAccessLayer.Models
 {
     public class User
     {

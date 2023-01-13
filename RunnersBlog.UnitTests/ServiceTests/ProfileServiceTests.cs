@@ -1,10 +1,10 @@
 ﻿using FluentAssertions;
 using Microsoft.AspNetCore.Identity;
 using Moq;
-using RunnersBlogMVC.Models;
-using RunnersBlogMVC.Repositories;
-using RunnersBlogMVC.Services.LoginServices;
-using RunnersBlogMVC.Services.ProfileServices;
+using DataAccessLayer.Models;
+using DataAccessLayer.Repositories;
+using DataAccessLayer.Services.LoginServices;
+using DataAccessLayer.Services.ProfileServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace RunnersBlogMVC.UnitTests.ServiceTests
+namespace DataAccessLayer.UnitTests.ServiceTests
 {
     public class ProfileServiceTests
     {

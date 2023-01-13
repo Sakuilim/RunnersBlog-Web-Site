@@ -3,6 +3,6 @@ CREATE PROCEDURE [dbo].[usp_UserGet]
 AS
 BEGIN
   SELECT Id, Name, Email
-  from dbo.[USER]
+  from dbo.[User]
   where Id = @id
 END

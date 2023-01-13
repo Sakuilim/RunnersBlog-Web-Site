@@ -2,14 +2,14 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using RunnersBlogMVC.Controllers;
-using RunnersBlogMVC.Models;
-using RunnersBlogMVC.Services.UserService;
+using DataAccessLayer.Controllers;
+using DataAccessLayer.Models;
+using DataAccessLayer.Services.UserService;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace RunnersBlogMVC.UnitTests.ServiceTests
+namespace DataAccessLayer.UnitTests.ServiceTests
 {
     public class UserServiceTests
     {

@@ -3,16 +3,16 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using RunnersBlogMVC.DTO;
-using RunnersBlogMVC.Models;
-using RunnersBlogMVC.Repositories;
-using RunnersBlogMVC.Services.ItemsServices;
+using DataAccessLayer.DTO;
+using DataAccessLayer.Models;
+using DataAccessLayer.Repositories;
+using DataAccessLayer.Services.ItemsServices;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace RunnersBlogMVC.UnitTests.ServiceTests
+namespace DataAccessLayer.UnitTests.ServiceTests
 {
     public class ItemsServiceTests
     {

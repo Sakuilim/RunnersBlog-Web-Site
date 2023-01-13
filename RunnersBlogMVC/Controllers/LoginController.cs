@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using RunnersBlogMVC.Models;
-using RunnersBlogMVC.Services.LoginServices;
+using DataAccessLayer.Models;
+using DataAccessLayer.Services.LoginServices;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 
-namespace RunnersBlogMVC.Controllers
+namespace DataAccessLayer.Controllers
 {
     [ExcludeFromCodeCoverage]
     public class LoginController : Controller

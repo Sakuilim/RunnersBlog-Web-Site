@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using RunnersBlogMVC.Services.ProfileServices;
+using DataAccessLayer.Services.ProfileServices;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 
-namespace RunnersBlogMVC.Controllers
+namespace DataAccessLayer.Controllers
 {
     [ExcludeFromCodeCoverage]
     public class ProfileController : Controller

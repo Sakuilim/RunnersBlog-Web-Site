@@ -1,21 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <StartupObject></StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Models\Receipts\**" />
-    <Content Remove="Models\Receipts\**" />
-    <EmbeddedResource Remove="Models\Receipts\**" />
-    <None Remove="Models\Receipts\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AspNetCore.Identity.MongoDbCore" Version="3.1.2" />
+    <PackageReference Include="Dapper" Version="2.0.123" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.8" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
@@ -31,8 +25,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.3" />
-    <PackageReference Include="MongoDB.Driver" Version="2.15.0" />
-    <PackageReference Include="NBomber" Version="3.3.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.3.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.17.0" />
@@ -40,10 +32,16 @@
 
   <ItemGroup>
     <Folder Include="Common\" />
-    <Folder Include="Repositories\DataTools\" />
-    <Folder Include="Repositories\Queries\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\Users\Marius Milius\source\MainRepo\RunnersBlog-Web-Site\RunnersBlogMVC\.editorconfig" />
+  </ItemGroup>
 
 </Project>

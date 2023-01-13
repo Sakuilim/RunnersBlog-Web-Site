@@ -1,15 +1,15 @@
-﻿using RunnersBlogMVC.Models;
-using RunnersBlogMVC.Repositories;
-using RunnersBlogMVC.Services.LoginServices;
-using RunnersBlogMVC.Services.RoleServices;
+﻿using DataAccessLayer.Models;
+using DataAccessLayer.Repositories;
+using DataAccessLayer.Services.LoginServices;
+using DataAccessLayer.Services.RoleServices;
 using MongoDB.Driver;
-using RunnersBlogMVC.Settings;
-using RunnersBlogMVC.Services.ItemsServices;
-using RunnersBlogMVC.Services.UserService;
-using RunnersBlogMVC.Services.ProfileServices;
+using DataAccessLayer.Settings;
+using DataAccessLayer.Services.ItemsServices;
+using DataAccessLayer.Services.UserService;
+using DataAccessLayer.Services.ProfileServices;
 using System.Diagnostics.CodeAnalysis;
 
-namespace RunnersBlogMVC
+namespace DataAccessLayer
 {
     [ExcludeFromCodeCoverage]
     public static class ServiceCollections

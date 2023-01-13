@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel.DataCollection;
-using RunnersBlogMVC.Controllers;
-using RunnersBlogMVC.Models;
+using DataAccessLayer.Controllers;
+using DataAccessLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace RunnersBlogMVC.UnitTests.ControllerTests
+namespace DataAccessLayer.UnitTests.ControllerTests
 {
     public class HomeControllerTests
     {
