@@ -17,13 +17,13 @@ namespace DataAccessLayer.UnitTests.ServiceTests
 {
     public class RoleServiceTests
     {
-        private readonly Mock<UserManager<ApplicationUser>> mockUserManager;
-        private readonly Mock<RoleManager<ApplicationRole>> mockRoleManager;
+        private readonly Mock<UserManager<User>> mockUserManager;
+        private readonly Mock<RoleManager<IdentityRole>> mockRoleManager;
 
         public RoleServiceTests()
         {
-            mockUserManager = new Mock<UserManager<ApplicationUser>>(Mock.Of<IUserStore<ApplicationUser>>(), null, null, null, null, null, null, null, null);
-            mockRoleManager = new Mock<RoleManager<ApplicationRole>>(Mock.Of<IRoleStore<ApplicationRole>>(), null, null, null, null);
+            mockUserManager = new Mock<UserManager<User>>(Mock.Of<IUserStore<User>>(), null, null, null, null, null, null, null, null);
+            mockRoleManager = new Mock<RoleManager<IdentityRole>>(Mock.Of<IRoleStore<IdentityRole>>(), null, null, null, null);
         }
 
         [Fact]
@@ -40,7 +40,7 @@ namespace DataAccessLayer.UnitTests.ServiceTests
             mockUserManager.Setup(x => x
             .FindByEmailAsync(
                 It.IsAny<string>()))
-            .Returns(Task.FromResult(It.IsAny<ApplicationUser>()));
+            .Returns(Task.FromResult(It.IsAny<User>()));
 
             var sut = GetSut();
 
@@ -65,11 +65,11 @@ namespace DataAccessLayer.UnitTests.ServiceTests
             mockUserManager.Setup(x => x
             .FindByEmailAsync(
                 It.IsAny<string>()))
-            .Returns(Task.FromResult(new ApplicationUser()));
+            .Returns(Task.FromResult(new User()));
 
             mockUserManager.Setup(x => x
             .AddToRoleAsync(
-                It.IsAny<ApplicationUser>(),
+                It.IsAny<User>(),
                 It.IsAny<string>()))
             .Returns(Task.FromResult(IdentityResult.Success));
 
@@ -96,11 +96,11 @@ namespace DataAccessLayer.UnitTests.ServiceTests
             mockUserManager.Setup(x => x
             .FindByEmailAsync(
                 It.IsAny<string>()))
-            .Returns(Task.FromResult(new ApplicationUser()));
+            .Returns(Task.FromResult(new User()));
 
             mockUserManager.Setup(x => x
             .AddToRoleAsync(
-                It.IsAny<ApplicationUser>(),
+                It.IsAny<User>(),
                 It.IsAny<string>()))
             .Returns(Task.FromResult(IdentityResult.Failed()));
 

@@ -8,10 +8,10 @@ namespace DataAccessLayer.Services.LoginServices
     public class LoginService : Controller, ILoginService
     {
 
-        private readonly UserManager<ApplicationUser> _userManager; 
-        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<User> _userManager; 
+        private readonly SignInManager<User> _signInManager;
 
-        public LoginService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        public LoginService(UserManager<User> userManager, SignInManager<User> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -21,7 +21,7 @@ namespace DataAccessLayer.Services.LoginServices
         {
             if (ModelState.IsValid)
             {
-                ApplicationUser appUser = await _userManager.FindByEmailAsync(loginViewModel.Email);
+                User appUser = await _userManager.FindByEmailAsync(loginViewModel.Email);
                 if (appUser != null)
                 {
                     Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(appUser, loginViewModel.Password, false, false);

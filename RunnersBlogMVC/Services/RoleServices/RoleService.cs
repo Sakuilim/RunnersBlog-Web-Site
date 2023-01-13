@@ -7,9 +7,9 @@ namespace DataAccessLayer.Services.RoleServices
 {
     public class RoleService : Controller, IRoleService
     {
-        private readonly UserManager<ApplicationUser> userManager;
-        private readonly RoleManager<ApplicationRole> roleManager;
-        public RoleService(UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager)
+        private readonly UserManager<User> userManager;
+        private readonly RoleManager<IdentityRole> roleManager;
+        public RoleService(UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
         {
             this.userManager = userManager;
             this.roleManager = roleManager;
@@ -22,18 +22,18 @@ namespace DataAccessLayer.Services.RoleServices
                 return View();
             }
 
-            ApplicationUser existingAppUser = await userManager.FindByEmailAsync(email);
+            User existingAppUser = await userManager.FindByEmailAsync(email);
             if (existingAppUser == null)
             {
                 return View();
             }
 
-            existingAppUser.Roles.Clear();
+            existingAppUser.Role = null;
 
             bool userRoleExists = await roleManager.RoleExistsAsync(userRole.ToString());
             if (!userRoleExists)
             {
-                await roleManager.CreateAsync(new ApplicationRole() { Name = userRole.ToString() });
+                await roleManager.CreateAsync(new IdentityRole() { Name = userRole.ToString() });
             }
 
             var result = await userManager.AddToRoleAsync(existingAppUser, userRole.ToString());

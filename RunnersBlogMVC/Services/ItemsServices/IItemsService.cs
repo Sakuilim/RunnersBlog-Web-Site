@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using DataAccessLayer.DTO;
-using DataAccessLayer.Models;
+using DataAccessLayer.Models.Items;
 
 namespace DataAccessLayer.Services.ItemsServices
 {

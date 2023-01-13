@@ -3,14 +3,15 @@ using Microsoft.AspNetCore.Mvc;
 using DataAccessLayer.Models;
 using DataAccessLayer.Models.Enums;
 using DataAccessLayer.Repositories;
+using DataAccessLayer.Models.Items;
 
 namespace DataAccessLayer.Services.ProfileServices
 {
     public class ProfileService : Controller, IProfileService
     {
         private readonly IItemsRepository repo;
-        private readonly UserManager<ApplicationUser> userManager;
-        public ProfileService(IItemsRepository repo, UserManager<ApplicationUser> userManager)
+        private readonly UserManager<User> userManager;
+        public ProfileService(IItemsRepository repo, UserManager<User> userManager)
         {
             this.repo = repo;
             this.userManager = userManager;

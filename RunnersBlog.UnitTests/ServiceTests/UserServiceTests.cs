@@ -13,13 +13,13 @@ namespace DataAccessLayer.UnitTests.ServiceTests
 {
     public class UserServiceTests
     {
-        private readonly Mock<UserManager<ApplicationUser>> mockUserManager;
-        private readonly Mock<RoleManager<ApplicationRole>> mockRoleManager;
+        private readonly Mock<UserManager<User>> mockUserManager;
+        private readonly Mock<RoleManager<IdentityRole>> mockRoleManager;
 
         public UserServiceTests()
         {
-            mockUserManager = new Mock<UserManager<ApplicationUser>>(Mock.Of<IUserStore<ApplicationUser>>(), null, null, null, null, null, null, null, null);
-            mockRoleManager = new Mock<RoleManager<ApplicationRole>>(Mock.Of<IRoleStore<ApplicationRole>>(), null, null, null, null);
+            mockUserManager = new Mock<UserManager<User>>(Mock.Of<IUserStore<User>>(), null, null, null, null, null, null, null, null);
+            mockRoleManager = new Mock<RoleManager<IdentityRole>>(Mock.Of<IRoleStore<IdentityRole>>(), null, null, null, null);
         }
 
         [Fact]
@@ -54,7 +54,7 @@ namespace DataAccessLayer.UnitTests.ServiceTests
 
             mockUserManager.Setup(x => x
             .CreateAsync(
-                It.IsAny<ApplicationUser>(),
+                It.IsAny<User>(),
                 It.IsAny<string>()))
             .Returns(Task.FromResult(IdentityResult.Success));
 
@@ -80,7 +80,7 @@ namespace DataAccessLayer.UnitTests.ServiceTests
 
             mockUserManager.Setup(x => x
             .CreateAsync(
-                It.IsAny<ApplicationUser>(),
+                It.IsAny<User>(),
                 user.Password))
             .Returns(Task.FromResult(IdentityResult.Failed(new IdentityError
             { 

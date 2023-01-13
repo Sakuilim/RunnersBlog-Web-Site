@@ -1,19 +1,18 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using DataAccessLayer.Controllers;
 using DataAccessLayer.DTO;
-using DataAccessLayer.Models;
 using DataAccessLayer.Models.Enums;
 using DataAccessLayer.Repositories;
-using System.Security.Claims;
+using DataAccessLayer.Models.Items;
+using DataAccessLayer.Models;
 
 namespace DataAccessLayer.Services.ItemsServices
 {
     public class ItemsService : Controller, IItemsService
     {
         private readonly IItemsRepository repo;
-        private readonly UserManager<ApplicationUser> userManager;
-        public ItemsService(IItemsRepository repo, UserManager<ApplicationUser> userManager)
+        private readonly UserManager<User> userManager;
+        public ItemsService(IItemsRepository repo, UserManager<User> userManager)
         {
             this.repo = repo;
             this.userManager = userManager;

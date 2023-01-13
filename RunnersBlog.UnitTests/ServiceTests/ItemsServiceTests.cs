@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -11,17 +10,18 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
+using DataAccessLayer.Models.Items;
 
 namespace DataAccessLayer.UnitTests.ServiceTests
 {
     public class ItemsServiceTests
     {
         private readonly Mock<IItemsRepository> mockItemsRepository;
-        private readonly Mock<UserManager<ApplicationUser>> mockUserManager;
+        private readonly Mock<UserManager<User>> mockUserManager;
         public CancellationToken cancellationToken;
         public ItemsServiceTests()
         {
-            mockUserManager = new Mock<UserManager<ApplicationUser>>(Mock.Of<IUserStore<ApplicationUser>>(), null, null, null, null, null, null, null, null);
+            mockUserManager = new Mock<UserManager<User>>(Mock.Of<IUserStore<User>>(), null, null, null, null, null, null, null, null);
             cancellationToken = new CancellationToken();
             mockItemsRepository = new Mock<IItemsRepository>();
         }
@@ -40,7 +40,7 @@ namespace DataAccessLayer.UnitTests.ServiceTests
             mockUserManager.Setup(x => x
             .FindByEmailAsync(
                 It.IsAny<string>()))
-            .Returns(Task.FromResult(new ApplicationUser()));
+            .Returns(Task.FromResult(new User()));
 
             var sut = GetSut();
 
@@ -224,7 +224,7 @@ namespace DataAccessLayer.UnitTests.ServiceTests
             mockUserManager.Setup(x => x
             .FindByEmailAsync(
                 It.IsAny<string>()))
-            .Returns(Task.FromResult(new ApplicationUser()));
+            .Returns(Task.FromResult(new User()));
 
             var sut = GetSut();
 
@@ -246,7 +246,7 @@ namespace DataAccessLayer.UnitTests.ServiceTests
             mockUserManager.Setup(x => x
             .FindByEmailAsync(
                 It.IsAny<string>()))
-            .Returns(Task.FromResult(new ApplicationUser()));
+            .Returns(Task.FromResult(new User()));
 
             var sut = GetSut();
 
@@ -270,7 +270,7 @@ namespace DataAccessLayer.UnitTests.ServiceTests
             mockUserManager.Setup(x => x
             .FindByEmailAsync(
                 It.IsAny<string>()))
-            .Returns(Task.FromResult(new ApplicationUser()));
+            .Returns(Task.FromResult(new User()));
 
             var sut = GetSut();
 
@@ -294,12 +294,12 @@ namespace DataAccessLayer.UnitTests.ServiceTests
             mockUserManager.Setup(x => x
             .FindByEmailAsync(
                 It.IsAny<string>()))
-            .Returns(Task.FromResult(new ApplicationUser()));
+            .Returns(Task.FromResult(new User()));
 
             var sut = GetSut();
 
             //Act
-            var result = sut.BuyReservedItem(email, mockGuid, cancellationToken);
+            var result = sut.BuyReservedItemAsync(email, mockGuid, cancellationToken);
 
             //Assert
             mockUserManager.Verify(x => x.FindByEmailAsync(It.IsAny<string>()), Times.Once);

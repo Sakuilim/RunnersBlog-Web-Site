@@ -1,9 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System.ComponentModel.DataAnnotations;
 
 namespace DataAccessLayer.Models
 {
-    public class User
+    public class User : IdentityUser
     {
         public Guid Id { get; set; } = Guid.NewGuid();
         [EmailAddress]

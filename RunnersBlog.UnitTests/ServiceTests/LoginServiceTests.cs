@@ -17,13 +17,13 @@ namespace DataAccessLayer.UnitTests.ServiceTests
 {
     public class LoginServiceTests
     {
-        private readonly Mock<UserManager<ApplicationUser>> mockUserManager;
-        private readonly Mock<SignInManager<ApplicationUser>> mockSignInManager;
+        private readonly Mock<UserManager<User>> mockUserManager;
+        private readonly Mock<SignInManager<User>> mockSignInManager;
 
         public LoginServiceTests()
         {
-            mockUserManager = new Mock<UserManager<ApplicationUser>>(Mock.Of<IUserStore<ApplicationUser>>(), null, null, null, null, null, null, null, null);
-            mockSignInManager = new Mock<SignInManager<ApplicationUser>>(mockUserManager.Object, Mock.Of<IHttpContextAccessor>(), Mock.Of<IUserClaimsPrincipalFactory<ApplicationUser>>(), null, null, null, null);
+            mockUserManager = new Mock<UserManager<User>>(Mock.Of<IUserStore<User>>(), null, null, null, null, null, null, null, null);
+            mockSignInManager = new Mock<SignInManager<User>>(mockUserManager.Object, Mock.Of<IHttpContextAccessor>(), Mock.Of<IUserClaimsPrincipalFactory<User>>(), null, null, null, null);
         }
         [Fact]
         public void Login_EmailDoesntExist()
@@ -56,11 +56,11 @@ namespace DataAccessLayer.UnitTests.ServiceTests
             mockUserManager.Setup(x => x
             .FindByEmailAsync(
                 It.IsAny<string>()))
-            .Returns(Task.FromResult(new ApplicationUser()));
+            .Returns(Task.FromResult(new User()));
 
             mockSignInManager.Setup(x => x
             .PasswordSignInAsync(
-                It.IsAny<ApplicationUser>(),
+                It.IsAny<User>(),
                 It.IsAny<string>(),
                 false,
                 false))
@@ -86,11 +86,11 @@ namespace DataAccessLayer.UnitTests.ServiceTests
             mockUserManager.Setup(x => x
             .FindByEmailAsync(
                 It.IsAny<string>()))
-            .Returns(Task.FromResult(new ApplicationUser()));
+            .Returns(Task.FromResult(new User()));
 
             mockSignInManager.Setup(x => x
             .PasswordSignInAsync(
-                It.IsAny<ApplicationUser>(),
+                It.IsAny<User>(),
                 It.IsAny<string>(),
                 false,
                 false))

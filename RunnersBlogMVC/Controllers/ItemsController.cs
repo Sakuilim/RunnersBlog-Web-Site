@@ -1,11 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using DataAccessLayer.DTO;
-using DataAccessLayer.Models;
-using DataAccessLayer.Repositories;
-using DataAccessLayer.Services;
 using DataAccessLayer.Services.ItemsServices;
 using System.Diagnostics.CodeAnalysis;
+using DataAccessLayer.Models.Items;
 
 namespace DataAccessLayer.Controllers
 {
