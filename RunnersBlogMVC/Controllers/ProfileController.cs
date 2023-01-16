@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using DataAccessLayer.Services.ProfileServices;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
+using RunnersBlogMVC.Services.ProfileServices;
 
 namespace DataAccessLayer.Controllers
 {

@@ -13,7 +13,9 @@ public class UserData : IUserData
     }
 
     public Task<IEnumerable<User>> GetUsers()
-    => _db.LoadData<User, dynamic>("dbo.usp_UserGetAll", new { });
+    => _db.LoadData<User, dynamic>(
+        "dbo.usp_UserGetAll",
+        new { });
 
     public async Task<User?> GetUser(int id)
     {
@@ -23,13 +25,18 @@ public class UserData : IUserData
         return results.FirstOrDefault();
     }
 
-    public Task InsertUser(User user) =>
-        _db.SaveData("dbo.usp_UserInsert", new { user.Name, user.Email, user.Password, user.Role });
+    public Task InsertUser(User user)
+    => _db.SaveData(
+            "dbo.usp_UserInsert",
+            new { user.Name, user.Email, user.Password, user.Role });
 
-    public Task UpdateUser(User user) =>
-        _db.SaveData("dbo.usp_UserUpdate", user);
+    public Task UpdateUser(User user) 
+    => _db.SaveData(
+            "dbo.usp_UserUpdate",
+            user);
 
-    public Task DeleteUser(int id) =>
-        _db.SaveData("dbo.usp_UserDelete", new { Id = id });
+    public Task DeleteUser(int id) 
+    => _db.SaveData("dbo.usp_UserDelete",
+            new { Id = id });
 
 }

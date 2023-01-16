@@ -5,8 +5,9 @@ using DataAccessLayer.Models.Enums;
 using DataAccessLayer.Repositories;
 using DataAccessLayer.Models.Items;
 using DataAccessLayer.Models;
+using RunnersBlogMVC.Services.ItemsServices;
 
-namespace DataAccessLayer.Services.ItemsServices
+namespace RunnersBlogMVC.Services.ItemsServices
 {
     public class ItemsService : Controller, IItemsService
     {

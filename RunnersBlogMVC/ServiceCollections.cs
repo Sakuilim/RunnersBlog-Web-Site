@@ -1,12 +1,11 @@
-﻿using DataAccessLayer.Services.LoginServices;
-using DataAccessLayer.Services.RoleServices;
-using DataAccessLayer.Settings;
-using DataAccessLayer.Services.ItemsServices;
-using DataAccessLayer.Services.UserService;
-using DataAccessLayer.Services.ProfileServices;
+﻿using RunnersBlogMVC.Services.LoginServices;
+using RunnersBlogMVC.Services.RoleServices;
+using RunnersBlogMVC.Services.ItemsServices;
+using RunnersBlogMVC.Services.UserService;
 using System.Diagnostics.CodeAnalysis;
+using RunnersBlogMVC.Services.ProfileServices;
 
-namespace DataAccessLayer
+namespace RunnersBlogMVC
 {
     [ExcludeFromCodeCoverage]
     public static class ServiceCollections
@@ -36,11 +35,6 @@ namespace DataAccessLayer
             });
 
             builder.Services.AddHttpContextAccessor();
-        }
-
-        public static void SetupRepositoryCollection(string[] args, WebApplicationBuilder builder, MongoDbSettings settings)
-        {
-
         }
     }
 }

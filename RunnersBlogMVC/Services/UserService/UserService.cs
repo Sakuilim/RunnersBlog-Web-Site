@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using DataAccessLayer.Models;
 using System.Diagnostics.CodeAnalysis;
 
-namespace DataAccessLayer.Services.UserService
+namespace RunnersBlogMVC.Services.UserService
 {
     public class UserService : Controller, IUserService
     {

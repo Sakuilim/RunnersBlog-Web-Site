@@ -3,17 +3,11 @@ using Microsoft.AspNetCore.Identity;
 using Moq;
 using DataAccessLayer.Models;
 using DataAccessLayer.Repositories;
-using DataAccessLayer.Services.LoginServices;
-using DataAccessLayer.Services.ProfileServices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using Xunit;
+using RunnersBlogMVC.Services.ProfileServices;
 
-namespace DataAccessLayer.UnitTests.ServiceTests
+namespace RunnersBlogMVC.UnitTests.ServiceTests
 {
     public class ProfileServiceTests
     {

@@ -1,7 +1,6 @@
-﻿using DataAccessLayer.Settings;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 
-namespace DataAccessLayer
+namespace RunnersBlogMVC
 {
     [ExcludeFromCodeCoverage]
     internal static class Program
@@ -14,10 +13,6 @@ namespace DataAccessLayer
             ConfigurationManager configuration = builder.Configuration;
 
             ServiceCollections.SetupCollection(builder);
-
-            var settings = configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
-
-            ServiceCollections.SetupRepositoryCollection(args, builder, settings);
 
             var app = builder.Build();
 

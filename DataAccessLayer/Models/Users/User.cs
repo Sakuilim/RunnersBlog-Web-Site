@@ -5,7 +5,7 @@ namespace DataAccessLayer.Models
 {
     public class User : IdentityUser
     {
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public int Id { get; set; }
         [EmailAddress]
         [Required(ErrorMessage = "Sorry the Email is invalid")]
         public string? Email { get; set; }

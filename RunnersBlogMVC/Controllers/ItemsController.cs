@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using DataAccessLayer.DTO;
-using DataAccessLayer.Services.ItemsServices;
 using System.Diagnostics.CodeAnalysis;
 using DataAccessLayer.Models.Items;
+using RunnersBlogMVC.Services.ItemsServices;
 
 namespace DataAccessLayer.Controllers
 {

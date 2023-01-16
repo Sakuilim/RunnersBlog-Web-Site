@@ -5,7 +5,7 @@ using DataAccessLayer.Models.Enums;
 using DataAccessLayer.Repositories;
 using DataAccessLayer.Models.Items;
 
-namespace DataAccessLayer.Services.ProfileServices
+namespace RunnersBlogMVC.Services.ProfileServices
 {
     public class ProfileService : Controller, IProfileService
     {

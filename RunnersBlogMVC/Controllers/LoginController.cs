@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using DataAccessLayer.Models;
-using DataAccessLayer.Services.LoginServices;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
+using RunnersBlogMVC.Services.LoginServices;
 
 namespace DataAccessLayer.Controllers
 {

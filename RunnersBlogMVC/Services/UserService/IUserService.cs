@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using DataAccessLayer.Models;
 
-namespace DataAccessLayer.Services.UserService
+namespace RunnersBlogMVC.Services.UserService
 {
     public interface IUserService
     {

@@ -1,15 +1,8 @@
 ﻿using FluentAssertions;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel.DataCollection;
 using DataAccessLayer.Controllers;
-using DataAccessLayer.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
-namespace DataAccessLayer.UnitTests.ControllerTests
+namespace RunnersBlogMVC.UnitTests.ControllerTests
 {
     public class HomeControllerTests
     {

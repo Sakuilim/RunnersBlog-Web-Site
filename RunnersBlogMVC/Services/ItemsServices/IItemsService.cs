@@ -2,7 +2,7 @@
 using DataAccessLayer.DTO;
 using DataAccessLayer.Models.Items;
 
-namespace DataAccessLayer.Services.ItemsServices
+namespace RunnersBlogMVC.Services.ItemsServices
 {
     public interface IItemsService
     {

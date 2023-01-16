@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using DataAccessLayer.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace DataAccessLayer.Services.LoginServices
+namespace RunnersBlogMVC.Services.LoginServices
 {
     public class LoginService : Controller, ILoginService
     {

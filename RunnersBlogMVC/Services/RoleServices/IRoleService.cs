@@ -2,7 +2,7 @@
 using DataAccessLayer.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace DataAccessLayer.Services.RoleServices
+namespace RunnersBlogMVC.Services.RoleServices
 {
     public interface IRoleService
     {

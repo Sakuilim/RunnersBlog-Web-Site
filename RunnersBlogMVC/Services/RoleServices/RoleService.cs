@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using DataAccessLayer.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace DataAccessLayer.Services.RoleServices
+namespace RunnersBlogMVC.Services.RoleServices
 {
     public class RoleService : Controller, IRoleService
     {

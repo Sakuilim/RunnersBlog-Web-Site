@@ -1,18 +1,8 @@
-﻿using Moq;
-using DataAccessLayer.Controllers;
-using DataAccessLayer.DTO;
-using DataAccessLayer.Models;
-using DataAccessLayer.Services;
-using DataAccessLayer.Services.ItemsServices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using Xunit;
+﻿using DataAccessLayer.Controllers;
+using Moq;
+using RunnersBlogMVC.Services.ItemsServices;
 
-namespace DataAccessLayer.UnitTests.ControllerTests
+namespace RunnersBlogMVC.UnitTests.ControllerTests
 {
     public class ItemsControllerTests
     {

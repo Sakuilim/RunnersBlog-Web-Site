@@ -5,14 +5,14 @@ using Moq;
 using DataAccessLayer.DTO;
 using DataAccessLayer.Models;
 using DataAccessLayer.Repositories;
-using DataAccessLayer.Services.ItemsServices;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 using DataAccessLayer.Models.Items;
+using RunnersBlogMVC.Services.ItemsServices;
 
-namespace DataAccessLayer.UnitTests.ServiceTests
+namespace RunnersBlogMVC.UnitTests.ServiceTests
 {
     public class ItemsServiceTests
     {

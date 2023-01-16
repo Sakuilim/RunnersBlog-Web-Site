@@ -3,17 +3,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Moq;
 using DataAccessLayer.Models;
-using DataAccessLayer.Repositories;
-using DataAccessLayer.Services.LoginServices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
+using RunnersBlogMVC.Services.LoginServices;
 
-namespace DataAccessLayer.UnitTests.ServiceTests
+namespace RunnersBlogMVC.UnitTests.ServiceTests
 {
     public class LoginServiceTests
     {
@@ -51,7 +45,6 @@ namespace DataAccessLayer.UnitTests.ServiceTests
                 Email = "email@email.com",
                 Password = "Test"
             };
-
 
             mockUserManager.Setup(x => x
             .FindByEmailAsync(
