@@ -28,7 +28,7 @@ namespace RunnersBlogMVC.Services.ItemsServices
                 Name = itemDto.Name,
                 Price = itemDto.Price,
                 CreatedDate = DateTimeOffset.UtcNow,
-                CreatedBy = currentUser.UserName
+                CreatedBy = currentUser?.UserName
             };
             await repo.CreateItemAsync(item, cancellationToken);
 
@@ -108,12 +108,12 @@ namespace RunnersBlogMVC.Services.ItemsServices
             var existingItem = await repo.GetItemAsync(id, cancellationToken);
 
             existingItem.ItemAvailabilityStatus = ItemStatus.Reserved.ToString();
-            existingItem.ReservedBy = currentUser.Id;
+            existingItem.ReservedBy = currentUser.UserId;
 
             Item updatedItem = existingItem with
             {
                 ItemAvailabilityStatus = existingItem.ItemAvailabilityStatus,
-                ReservedBy = currentUser.Id
+                ReservedBy = currentUser.UserId
             };
 
             await repo.UpdateItemAsync(updatedItem, cancellationToken);
@@ -128,7 +128,7 @@ namespace RunnersBlogMVC.Services.ItemsServices
 
             var currentUser = await userManager.FindByEmailAsync(email);
 
-            var filteredItems = items.Where(x => (x.ReservedBy == currentUser.Id && x.ItemAvailabilityStatus == ItemStatus.Reserved.ToString()));
+            var filteredItems = items.Where(x => (x.ReservedBy == currentUser.UserId && x.ItemAvailabilityStatus == ItemStatus.Reserved.ToString()));
 
             ViewBag.Items = filteredItems ?? new List<Item>();
             return View("ReservedItemsList");
@@ -139,7 +139,7 @@ namespace RunnersBlogMVC.Services.ItemsServices
 
             var items = await repo.GetItemsAsync(cancellationToken);
 
-            var filteredItems = items.Where(x => x.ReservedBy == currentUser.Id);
+            var filteredItems = items.Where(x => x.ReservedBy == currentUser.UserId);
 
             var existingItem = await repo.GetItemAsync(id, cancellationToken);
 
@@ -166,7 +166,7 @@ namespace RunnersBlogMVC.Services.ItemsServices
 
             var items = await repo.GetItemsAsync(cancellationToken);
 
-            var filteredItems = items.Where(x => x.ReservedBy == currentUser.Id);
+            var filteredItems = items.Where(x => x.ReservedBy == currentUser.UserId);
 
             var existingItem = await repo.GetItemAsync(id, cancellationToken);
 
@@ -192,7 +192,7 @@ namespace RunnersBlogMVC.Services.ItemsServices
 
             var filtereditems = items.Where(x => x.Name.Contains(searchBy));
 
-            ViewBag.Items = filtereditems;
+            ViewBag.Items = filtereditems.FirstOrDefault();
             return View("GetItems");
         }
     }

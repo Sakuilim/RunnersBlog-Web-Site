@@ -49,7 +49,7 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             mockUserManager.Setup(x => x
             .FindByEmailAsync(
                 It.IsAny<string>()))
-            .Returns(Task.FromResult(new User()));
+            .ReturnsAsync(new User());
 
             mockSignInManager.Setup(x => x
             .PasswordSignInAsync(
@@ -79,7 +79,7 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             mockUserManager.Setup(x => x
             .FindByEmailAsync(
                 It.IsAny<string>()))
-            .Returns(Task.FromResult(new User()));
+            .ReturnsAsync(new User());
 
             mockSignInManager.Setup(x => x
             .PasswordSignInAsync(

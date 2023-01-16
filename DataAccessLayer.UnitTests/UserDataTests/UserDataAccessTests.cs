@@ -21,7 +21,7 @@ namespace DataAccessLayer.UnitTests.UserDataTests
             var sut = GetSut();
             var fakeUser = new User
             {
-                Id = 123,
+                UserId = 123,
                 Email = "email@email.com",
                 Name = "test2"
             };
@@ -38,7 +38,7 @@ namespace DataAccessLayer.UnitTests.UserDataTests
             .ReturnsAsync(fakeEnumerable);
 
             //Act
-            var result = await sut.GetUser(fakeUser.Id);
+            var result = await sut.GetUser(fakeUser.UserId);
             //Assert
             result.Should().NotBeNull();
             result.Should().Be(fakeUser);
@@ -52,7 +52,7 @@ namespace DataAccessLayer.UnitTests.UserDataTests
             var fakeUser = new User();
 
             //Act
-            var result = await sut.GetUser(fakeUser.Id);
+            var result = await sut.GetUser(fakeUser.UserId);
 
             //Assert
             result.Should().BeNull();

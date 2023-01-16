@@ -22,7 +22,7 @@ namespace RunnersBlogMVC.Services.RoleServices
                 return View();
             }
 
-            User existingAppUser = await userManager.FindByEmailAsync(email);
+            User? existingAppUser = await userManager.FindByEmailAsync(email);
             if (existingAppUser == null)
             {
                 return View();
@@ -46,7 +46,7 @@ namespace RunnersBlogMVC.Services.RoleServices
             {
                 foreach (IdentityError error in result.Errors)
                 {
-                    ModelState.AddModelError("", error.Description);
+                    ModelState?.AddModelError("", error.Description);
                 }
             }
 

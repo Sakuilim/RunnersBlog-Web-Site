@@ -34,7 +34,7 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             mockUserManager.Setup(x => x
             .FindByEmailAsync(
                 It.IsAny<string>()))
-            .Returns(Task.FromResult(It.IsAny<User>()));
+            .ReturnsAsync(It.IsAny<User>());
 
             var sut = GetSut();
 
@@ -59,13 +59,13 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             mockUserManager.Setup(x => x
             .FindByEmailAsync(
                 It.IsAny<string>()))
-            .Returns(Task.FromResult(new User()));
+            .ReturnsAsync(new User());
 
             mockUserManager.Setup(x => x
             .AddToRoleAsync(
                 It.IsAny<User>(),
                 It.IsAny<string>()))
-            .Returns(Task.FromResult(IdentityResult.Success));
+            .ReturnsAsync(IdentityResult.Success);
 
             var sut = GetSut();
 
@@ -90,13 +90,13 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             mockUserManager.Setup(x => x
             .FindByEmailAsync(
                 It.IsAny<string>()))
-            .Returns(Task.FromResult(new User()));
+            .ReturnsAsync(new User());
 
             mockUserManager.Setup(x => x
             .AddToRoleAsync(
                 It.IsAny<User>(),
                 It.IsAny<string>()))
-            .Returns(Task.FromResult(IdentityResult.Failed()));
+            .ReturnsAsync(IdentityResult.Failed());
 
             var sut = GetSut();
 
