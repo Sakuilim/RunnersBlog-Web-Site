@@ -24,7 +24,7 @@ namespace RunnersBlogMVC.Services.ItemsServices
             var currentUser = await userManager.FindByEmailAsync(email);
             Item item = new()
             {
-                Id = Guid.NewGuid(),
+                Id = 123,
                 Name = itemDto.Name,
                 Price = itemDto.Price,
                 CreatedDate = DateTimeOffset.UtcNow,
@@ -151,7 +151,7 @@ namespace RunnersBlogMVC.Services.ItemsServices
             Item updatedItem = existingItem with
             {
                 ItemAvailabilityStatus = ItemStatus.Available.ToString(),
-                ReservedBy = Guid.Empty
+                ReservedBy = -1
             };
 
             await repo.UpdateItemAsync(updatedItem, cancellationToken);
