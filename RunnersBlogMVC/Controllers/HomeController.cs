@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RunnersBlogMVC.Models;
+using DataAccessLayer.Models;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 

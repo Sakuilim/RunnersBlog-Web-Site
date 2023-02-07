@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using RunnersBlogMVC.Services.ProfileServices;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
+using RunnersBlogMVC.Services.ProfileServices;
 
 namespace RunnersBlogMVC.Controllers
 {
@@ -14,7 +14,7 @@ namespace RunnersBlogMVC.Controllers
         public ProfileController(IProfileService profileService)
         {
             this.profileService = profileService;
-            cancellationToken= new CancellationToken();
+            cancellationToken = new CancellationToken();
         }
         public IActionResult UserProfile()
         {
@@ -25,7 +25,7 @@ namespace RunnersBlogMVC.Controllers
         public async Task<IActionResult> UserProfileAsync()
         {
             var email = HttpContext.User.Claims.Where(c => c.Type.Contains("emailaddress"))?.FirstOrDefault()?.Value;
-            if(email is null)
+            if (email is null)
             {
                 return RedirectToAction("LoginUser", new RouteValueDictionary(new { Controller = "Login", Action = "LoginUser" }));
             }

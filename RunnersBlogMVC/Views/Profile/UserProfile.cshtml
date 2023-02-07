@@ -1,4 +1,5 @@
-﻿@model Item
+﻿@using DataAccessLayer.Models.Items;
+@model Item
 @{
     ViewData["Title"] = "Profile";
 }
@@ -31,6 +32,9 @@
                 </td>
                 <td>
                     @obj.Price
+                </td>
+                <td>
+                    @obj.Description
                 </td>
                 <td>
                     @obj.CreatedBy

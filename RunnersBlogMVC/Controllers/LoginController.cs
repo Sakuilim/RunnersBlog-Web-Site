@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using RunnersBlogMVC.Models;
-using RunnersBlogMVC.Services.LoginServices;
+using DataAccessLayer.Models;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
+using RunnersBlogMVC.Services.LoginServices;
 
 namespace RunnersBlogMVC.Controllers
 {
@@ -23,7 +23,7 @@ namespace RunnersBlogMVC.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> LoginUser([Required]LoginViewModel loginViewModel)
+        public async Task<IActionResult> LoginUser([Required] LoginViewModel loginViewModel)
         {
             return await loginService.LoginUser(loginViewModel);
         }

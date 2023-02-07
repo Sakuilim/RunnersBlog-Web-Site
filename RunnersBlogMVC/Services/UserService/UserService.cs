@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RunnersBlogMVC.Models;
+using DataAccessLayer.Models;
 using System.Diagnostics.CodeAnalysis;
 
 namespace RunnersBlogMVC.Services.UserService
 {
     public class UserService : Controller, IUserService
     {
-        private readonly UserManager<ApplicationUser> userManager;
-        private readonly RoleManager<ApplicationRole> roleManager;
-        public UserService(UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager)
+        private readonly UserManager<User> userManager;
+        private readonly RoleManager<IdentityRole> roleManager;
+        public UserService(UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
         {
             this.userManager = userManager;
             this.roleManager = roleManager;
@@ -18,11 +18,18 @@ namespace RunnersBlogMVC.Services.UserService
         {
             if (ModelState.IsValid)
             {
-                ApplicationUser appUser = new()
+                User appUser = new()
                 {
-                    UserName = user.Name,
+                    Name = user.Name,
                     Email = user.Email
                 };
+                var checkIfUserExists = await userManager.FindByEmailAsync(user.Email);
+
+                if (checkIfUserExists != null)
+                {
+                    ModelState.AddModelError("Error", errorMessage: "This email already exists");
+                }
+
 
                 IdentityResult result = await userManager.CreateAsync(appUser, user.Password);
 
@@ -31,7 +38,7 @@ namespace RunnersBlogMVC.Services.UserService
                 bool userRoleExists = await roleManager.RoleExistsAsync("User");
                 if (!userRoleExists)
                 {
-                    await roleManager.CreateAsync(new ApplicationRole() { Name = "User" });
+                    await roleManager.CreateAsync(new IdentityRole() { Name = "User" });
                 }
 
                 await userManager.AddToRoleAsync(appUser, UserRole.User.ToString());

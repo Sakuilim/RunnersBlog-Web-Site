@@ -1,6 +1,6 @@
-﻿@using RunnersBlogMVC.DTO
-@using RunnersBlogMVC.Models
-@using RunnersBlogMVC.Models.Enums;
+﻿@using DataAccessLayer.DTO
+@using DataAccessLayer.Models
+@using DataAccessLayer.Models.Enums;
 @model Item
 @{
     ViewData["Title"] = "Edit";
@@ -10,10 +10,6 @@
 </h1>
 <form asp-controller="Items" asp-action="UpdateById" asp-route-id="@Model.Id"  method="post">
     <div class="border p-3 mt-4">
-        <div class="row pb-2">
-            <h2 class="text-primary">Edit shoes</h2>
-            <hr />
-        </div>
         <div asp-validation-summary="All"></div>
         <div class="mb-3">
             <label asp-for="Name" class="control-label"></label>
@@ -25,9 +21,16 @@
             <input asp-for="Price" class="form-control" value="@Model.Price"/>
             <span asp-validation-for="Price" class="text-danger"></span>
         </div>
+        <div class="mb-3">
+            <label asp-for="Description" class="control-label"></label>
+            <input asp-for="Description" class="form-control" value="@Model.Description" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div>
         <select asp-for="ItemAvailabilityStatus" asp-items="Html.GetEnumSelectList<ItemStatus>()">
             <option selected="selected" value="">Please select</option>
         </select>
+        </div>
         <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
         <a asp-controller="Items" asp-action="GetAllItems" class="btn btn-secondary" style="width:150px">
             Back to List

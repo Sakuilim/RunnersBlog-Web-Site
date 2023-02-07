@@ -1,13 +1,6 @@
 ﻿using FluentAssertions;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel.DataCollection;
-using RunnersBlogMVC.Controllers;
-using RunnersBlogMVC.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
+using RunnersBlogMVC.Controllers;
 
 namespace RunnersBlogMVC.UnitTests.ControllerTests
 {

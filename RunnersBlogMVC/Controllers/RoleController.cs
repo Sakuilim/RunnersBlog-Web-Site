@@ -1,12 +1,8 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using RunnersBlogMVC.Models;
-using RunnersBlogMVC.Services.RoleServices;
+﻿using Microsoft.AspNetCore.Mvc;
+using DataAccessLayer.Models;
 using System.ComponentModel.DataAnnotations;
-using System.Data;
 using System.Diagnostics.CodeAnalysis;
+using RunnersBlogMVC.Services.RoleServices;
 
 namespace RunnersBlogMVC.Controllers
 {
@@ -24,7 +20,7 @@ namespace RunnersBlogMVC.Controllers
         }
         //Post: User/CreateRole
         [HttpPost]
-       // [Authorize(Roles = "Admin")]
+        // [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateRole([Required][EmailAddress] string email, UserRole userRole)
         {
             return await roleService.CreateRole(email, userRole);

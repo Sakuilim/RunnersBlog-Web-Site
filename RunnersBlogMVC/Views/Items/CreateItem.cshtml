@@ -1,4 +1,4 @@
-﻿@using RunnersBlogMVC.DTO
+﻿@using DataAccessLayer.DTO
 @model ItemDto
 @{
     ViewData["Title"] = "Create";
@@ -22,6 +22,11 @@
             <label asp-for="Price" class="control-label"></label>
             <input asp-for="Price" class="form-control" />
             <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Description" class="control-label"></label>
+            <input asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-primary" style="width:150px">Create Item</button>
         <a asp-controller="Items" asp-action="GetAllItems" class="btn btn-secondary" style="width:150px">

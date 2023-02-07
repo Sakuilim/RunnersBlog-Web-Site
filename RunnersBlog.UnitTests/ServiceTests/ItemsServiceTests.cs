@@ -1,31 +1,32 @@
 ﻿using FluentAssertions;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Moq;
-using RunnersBlogMVC.DTO;
-using RunnersBlogMVC.Models;
-using RunnersBlogMVC.Repositories;
-using RunnersBlogMVC.Services.ItemsServices;
+using DataAccessLayer.DTO;
+using DataAccessLayer.Models;
+using DataAccessLayer.Repositories;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
+using DataAccessLayer.Models.Items;
+using RunnersBlogMVC.Services.ItemsServices;
 
 namespace RunnersBlogMVC.UnitTests.ServiceTests
 {
     public class ItemsServiceTests
     {
         private readonly Mock<IItemsRepository> mockItemsRepository;
-        private readonly Mock<UserManager<ApplicationUser>> mockUserManager;
+        private readonly Mock<UserManager<User>> mockUserManager;
         public CancellationToken cancellationToken;
         public ItemsServiceTests()
         {
-            mockUserManager = new Mock<UserManager<ApplicationUser>>(Mock.Of<IUserStore<ApplicationUser>>(), null, null, null, null, null, null, null, null);
+            mockUserManager = new Mock<UserManager<User>>(Mock.Of<IUserStore<User>>(), null, null, null, null, null, null, null, null);
             cancellationToken = new CancellationToken();
             mockItemsRepository = new Mock<IItemsRepository>();
         }
         [Fact]
-        public void CreateAsync()
+        public void WhenItemIsCorrect_CreateAsync_ShouldReturnSuccess()
         {
             //Arrange
             var email = "test@test.com";
@@ -39,7 +40,7 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             mockUserManager.Setup(x => x
             .FindByEmailAsync(
                 It.IsAny<string>()))
-            .Returns(Task.FromResult(new ApplicationUser()));
+            .ReturnsAsync(new User());
 
             var sut = GetSut();
 
@@ -47,7 +48,10 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             var result = sut.CreateAsync(email, itemDto, cancellationToken);
 
             //Assert
+            mockUserManager.Verify(x => x.FindByEmailAsync(It.IsAny<string>()), Times.Once);
             result.Should().NotBeNull();
+            result.Should().BeOfType<Task<IActionResult>>();
+            result.Should().BeAssignableTo<Task>();
         }
         [Fact]
         public void DeleteByIdAsync()
@@ -79,8 +83,11 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
 
             var result = sut.DeleteByIdAsync(mockItemId, cancellationToken);
             //Assert
-
+            mockItemsRepository.Verify(x => x.GetItemAsync(mockItemId,
+                CancellationToken.None), Times.Once);
             result.Should().NotBeNull();
+            result.Should().BeOfType<Task<ActionResult<Item>>>();
+            result.Should().BeAssignableTo<Task>();
         }
         [Fact]
         public void GetAllAsync()
@@ -126,7 +133,11 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             var result = sut.GetByIdAsync(mockItemId, cancellationToken);
 
             //Assert
+            mockItemsRepository.Verify(x => x.GetItemAsync(mockItemId,
+                cancellationToken), Times.Once);
             result.Should().NotBeNull();
+            result.Should().BeOfType<Task<ActionResult<Item>>>();
+            result.Should().BeAssignableTo<Task>();
         }
         [Fact]
         public void UpdateByIdAsync()
@@ -160,7 +171,8 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
 
             mockItemsRepository.Setup(x => x.GetItemAsync(
                 mockItemId,
-                CancellationToken.None)).ReturnsAsync(new Item());
+                CancellationToken.None))
+            .ReturnsAsync(new Item());
 
             var sut = GetSut();
 
@@ -168,7 +180,11 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             var result = sut.UpdateByIdAsync(mockItemId, itemDto, cancellationToken);
 
             //Assert
+            mockItemsRepository.Verify(x => x.GetItemAsync(mockItemId,
+                CancellationToken.None), Times.Once);
             result.Should().NotBeNull();
+            result.Should().BeOfType<Task<IActionResult>>();
+            result.Should().BeAssignableTo<Task>();
         }
         [Fact]
         public void MiddlePage()
@@ -208,7 +224,7 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             mockUserManager.Setup(x => x
             .FindByEmailAsync(
                 It.IsAny<string>()))
-            .Returns(Task.FromResult(new ApplicationUser()));
+            .ReturnsAsync(new User());
 
             var sut = GetSut();
 
@@ -216,7 +232,10 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             var result = sut.ReserveItemAsync(email, mockGuid, cancellationToken);
 
             //Assert
+            mockUserManager.Verify(x => x.FindByEmailAsync(It.IsAny<string>()), Times.Once);
             result.Should().NotBeNull();
+            result.Should().BeOfType<Task<IActionResult>>();
+            result.Should().BeAssignableTo<Task>();
         }
         [Fact]
         public void ReservedItemsList()
@@ -227,7 +246,7 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             mockUserManager.Setup(x => x
             .FindByEmailAsync(
                 It.IsAny<string>()))
-            .Returns(Task.FromResult(new ApplicationUser()));
+            .ReturnsAsync(new User());
 
             var sut = GetSut();
 
@@ -235,7 +254,10 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             var result = sut.ReservedItemsListAsync(email, cancellationToken);
 
             //Assert
+            mockUserManager.Verify(x => x.FindByEmailAsync(It.IsAny<string>()), Times.Once);
             result.Should().NotBeNull();
+            result.Should().BeOfType<Task<IActionResult>>();
+            result.Should().BeAssignableTo<Task>();
         }
         [Fact]
         public void CancelReservedItem()
@@ -248,15 +270,18 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             mockUserManager.Setup(x => x
             .FindByEmailAsync(
                 It.IsAny<string>()))
-            .Returns(Task.FromResult(new ApplicationUser()));
+            .ReturnsAsync(new User());
 
             var sut = GetSut();
 
             //Act
-            var result = sut.CancelReservedItem(email, mockGuid, cancellationToken);
+            var result = sut.CancelReservedItemAsync(email, mockGuid, cancellationToken);
 
             //Assert
+            mockUserManager.Verify(x => x.FindByEmailAsync(It.IsAny<string>()), Times.Once);
             result.Should().NotBeNull();
+            result.Should().BeOfType<Task<IActionResult>>();
+            result.Should().BeAssignableTo<Task>();
         }
         [Fact]
         public void BuyReservedItem()
@@ -269,15 +294,18 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             mockUserManager.Setup(x => x
             .FindByEmailAsync(
                 It.IsAny<string>()))
-            .Returns(Task.FromResult(new ApplicationUser()));
+            .ReturnsAsync(new User());
 
             var sut = GetSut();
 
             //Act
-            var result = sut.BuyReservedItem(email, mockGuid, cancellationToken);
+            var result = sut.BuyReservedItemAsync(email, mockGuid, cancellationToken);
 
             //Assert
+            mockUserManager.Verify(x => x.FindByEmailAsync(It.IsAny<string>()), Times.Once);
             result.Should().NotBeNull();
+            result.Should().BeOfType<Task<IActionResult>>();
+            result.Should().BeAssignableTo<Task>();
         }
         public ItemsService GetSut()
              => new(mockItemsRepository.Object,

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RunnersBlogMVC.DTO;
-using RunnersBlogMVC.Models;
+using DataAccessLayer.DTO;
+using DataAccessLayer.Models.Items;
 
 namespace RunnersBlogMVC.Services.ItemsServices
 {
@@ -15,7 +15,8 @@ namespace RunnersBlogMVC.Services.ItemsServices
         public Task<IActionResult> GetOrderedItemsAsync(string orderedBy, CancellationToken cancellationToken);
         public Task<IActionResult> ReserveItemAsync(string email, Guid id, CancellationToken cancellationToken);
         public Task<IActionResult> ReservedItemsListAsync(string email, CancellationToken cancellationToken);
-        public Task<IActionResult> CancelReservedItem(string email, Guid id, CancellationToken cancellationToken);
-        public Task<IActionResult> BuyReservedItem(string email, Guid id, CancellationToken cancellationToken);
+        public Task<IActionResult> CancelReservedItemAsync(string email, Guid id, CancellationToken cancellationToken);
+        public Task<IActionResult> BuyReservedItemAsync(string email, Guid id, CancellationToken cancellationToken);
+        public Task<IActionResult> SearchItemAsync(string searchBy, CancellationToken cancellationToken);
     }
 }

@@ -1,15 +1,4 @@
-﻿using MongoDB.Bson;
-using MongoDB.Bson.Serialization;
-using MongoDB.Bson.Serialization.Serializers;
-using MongoDB.Driver;
-using RunnersBlogMVC.DTO;
-using RunnersBlogMVC.Models;
-using RunnersBlogMVC.Repositories;
-using RunnersBlogMVC.Services;
-using RunnersBlogMVC.Services.LoginServices;
-using RunnersBlogMVC.Services.RoleServices;
-using RunnersBlogMVC.Settings;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace RunnersBlogMVC
 {
@@ -24,10 +13,6 @@ namespace RunnersBlogMVC
             ConfigurationManager configuration = builder.Configuration;
 
             ServiceCollections.SetupCollection(builder);
-
-            var settings = configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
-
-            ServiceCollections.SetupRepositoryCollection(args, builder, settings);
 
             var app = builder.Build();
 

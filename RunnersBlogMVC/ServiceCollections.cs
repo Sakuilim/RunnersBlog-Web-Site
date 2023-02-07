@@ -1,13 +1,7 @@
-﻿using RunnersBlogMVC.Models;
-using RunnersBlogMVC.Repositories;
+﻿using System.Diagnostics.CodeAnalysis;
+using DataAccessLayer.Models;
+using Microsoft.AspNetCore.Identity;
 using RunnersBlogMVC.Services.LoginServices;
-using RunnersBlogMVC.Services.RoleServices;
-using MongoDB.Driver;
-using RunnersBlogMVC.Settings;
-using RunnersBlogMVC.Services.ItemsServices;
-using RunnersBlogMVC.Services.UserService;
-using RunnersBlogMVC.Services.ProfileServices;
-using System.Diagnostics.CodeAnalysis;
 
 namespace RunnersBlogMVC
 {
@@ -23,16 +17,19 @@ namespace RunnersBlogMVC
 
             builder.Services.AddSession();
 
+            builder.Services.AddIdentity<User, IdentityRole>();
+
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddSingleton<IItemsRepository, MongoDbItemsRepo>();
-            builder.Services.AddScoped<IItemsService, ItemsService>();
-            builder.Services.AddScoped<IProfileService, ProfileService>();
-            builder.Services.AddScoped<IUserService, UserService>();
+            //builder.Services.AddScoped<ISqlDataAccess, SqlDataAccess>();
+            //builder.Services.AddScoped<IUserData, UserData>();
+            //builder.Services.AddScoped<IItemsService, ItemsService>();
+            //builder.Services.AddScoped<IProfileService, ProfileService>();
+            //builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<ILoginService, LoginService>();
-            builder.Services.AddScoped<IRoleService, RoleService>();
+            //builder.Services.AddScoped<IRoleService, RoleService>();
 
             builder.Services.ConfigureApplicationCookie(options =>
             {
@@ -40,19 +37,6 @@ namespace RunnersBlogMVC
             });
 
             builder.Services.AddHttpContextAccessor();
-        }
-
-        public static void SetupRepositoryCollection(string[] args, WebApplicationBuilder builder, MongoDbSettings settings)
-        {
-            builder.Services.AddSingleton<IMongoClient>(serviceProvider =>
-            {
-                return new MongoClient(settings.ConnectionString);
-            });
-            builder.Services
-                .AddIdentity<ApplicationUser, ApplicationRole>()
-                .AddMongoDbStores<ApplicationUser, ApplicationRole, Guid>(
-                settings.ConnectionString, "Users"
-                );
         }
     }
 }
