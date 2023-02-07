@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using RunnersBlogMVC.Services.LoginServices;
 
-namespace DataAccessLayer.Controllers
+namespace RunnersBlogMVC.Controllers
 {
     [ExcludeFromCodeCoverage]
     public class LoginController : Controller
@@ -23,7 +23,7 @@ namespace DataAccessLayer.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> LoginUser([Required]LoginViewModel loginViewModel)
+        public async Task<IActionResult> LoginUser([Required] LoginViewModel loginViewModel)
         {
             return await loginService.LoginUser(loginViewModel);
         }

@@ -5,7 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using DataAccessLayer.Models.Items;
 using RunnersBlogMVC.Services.ItemsServices;
 
-namespace DataAccessLayer.Controllers
+namespace RunnersBlogMVC.Controllers
 {
     [ExcludeFromCodeCoverage]
     public class ItemsController : Controller

@@ -1,13 +1,10 @@
-﻿using AspNetCore.Identity.MongoDbCore.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using DataAccessLayer.Models;
-using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using RunnersBlogMVC.Services.UserService;
 
-namespace DataAccessLayer.Controllers
+namespace RunnersBlogMVC.Controllers
 {
     [ExcludeFromCodeCoverage]
     public class UserController : Controller
@@ -23,7 +20,7 @@ namespace DataAccessLayer.Controllers
         }
         //Post : User/CreateUser
         [AllowAnonymous]
-        [HttpPost]  
+        [HttpPost]
         public async Task<IActionResult> CreateUser(User user)
         {
             return await userService.CreateAsync(user, CancellationToken.None);

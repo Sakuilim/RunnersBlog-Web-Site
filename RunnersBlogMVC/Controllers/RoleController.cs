@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using RunnersBlogMVC.Services.RoleServices;
 
-namespace DataAccessLayer.Controllers
+namespace RunnersBlogMVC.Controllers
 {
     [ExcludeFromCodeCoverage]
     public class RoleController : Controller
@@ -20,7 +20,7 @@ namespace DataAccessLayer.Controllers
         }
         //Post: User/CreateRole
         [HttpPost]
-       // [Authorize(Roles = "Admin")]
+        // [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateRole([Required][EmailAddress] string email, UserRole userRole)
         {
             return await roleService.CreateRole(email, userRole);

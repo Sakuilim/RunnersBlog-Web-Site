@@ -1,5 +1,5 @@
-﻿using DataAccessLayer.Controllers;
-using Moq;
+﻿using Moq;
+using RunnersBlogMVC.Controllers;
 using RunnersBlogMVC.Services.ItemsServices;
 
 namespace RunnersBlogMVC.UnitTests.ControllerTests

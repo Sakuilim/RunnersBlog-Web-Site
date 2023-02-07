@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using RunnersBlogMVC.Services.ProfileServices;
 
-namespace DataAccessLayer.Controllers
+namespace RunnersBlogMVC.Controllers
 {
     [ExcludeFromCodeCoverage]
     public class ProfileController : Controller
@@ -14,7 +14,7 @@ namespace DataAccessLayer.Controllers
         public ProfileController(IProfileService profileService)
         {
             this.profileService = profileService;
-            cancellationToken= new CancellationToken();
+            cancellationToken = new CancellationToken();
         }
         public IActionResult UserProfile()
         {
@@ -25,7 +25,7 @@ namespace DataAccessLayer.Controllers
         public async Task<IActionResult> UserProfileAsync()
         {
             var email = HttpContext.User.Claims.Where(c => c.Type.Contains("emailaddress"))?.FirstOrDefault()?.Value;
-            if(email is null)
+            if (email is null)
             {
                 return RedirectToAction("LoginUser", new RouteValueDictionary(new { Controller = "Login", Action = "LoginUser" }));
             }

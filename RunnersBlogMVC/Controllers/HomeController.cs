@@ -3,7 +3,7 @@ using DataAccessLayer.Models;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
-namespace DataAccessLayer.Controllers
+namespace RunnersBlogMVC.Controllers
 {
     [ExcludeFromCodeCoverage]
     public class HomeController : Controller

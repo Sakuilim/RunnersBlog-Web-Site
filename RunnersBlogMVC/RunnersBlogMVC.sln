@@ -11,7 +11,7 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "MainDB", "..\MainDB\MainDB.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "..\DataAccessLayer\DataAccessLayer.csproj", "{4E569FB3-8889-4729-AD4A-0673AE5414E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer.UnitTests", "..\DataAccessLayer.UnitTests\DataAccessLayer.UnitTests.csproj", "{69383E50-B28C-4583-9CB4-E422BB716706}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer.UnitTests", "..\DataAccessLayer.UnitTests\DataAccessLayer.UnitTests.csproj", "{69383E50-B28C-4583-9CB4-E422BB716706}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{847C1658-80A1-437D-BB51-6A04EB6B011A}"
 EndProject

@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
-using DataAccessLayer.Controllers;
 using Xunit;
+using RunnersBlogMVC.Controllers;
 
 namespace RunnersBlogMVC.UnitTests.ControllerTests
 {
