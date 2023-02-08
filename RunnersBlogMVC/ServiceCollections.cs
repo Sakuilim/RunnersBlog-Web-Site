@@ -1,42 +1,56 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using DataAccessLayer.Models;
-using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using RunnersBlogMVC.Services.LoginServices;
+using Microsoft.AspNetCore.Identity;
+using DataAccessLayer.Models;
+using RunnersBlogMVC.Data;
+using DataAccessLayer.Repositories.DataAccess;
+using DataAccessLayer.Data;
+using RunnersBlogMVC.Services.ItemsServices;
+using RunnersBlogMVC.Services.ProfileServices;
+using RunnersBlogMVC.Services.UserService;
+using RunnersBlogMVC.Services.RoleServices;
+using DataAccessLayer.Repositories;
 
 namespace RunnersBlogMVC
 {
     [ExcludeFromCodeCoverage]
     public static class ServiceCollections
     {
-        public static void SetupCollection(WebApplicationBuilder builder)
+        public static void SetupCollection(IServiceCollection services, IConfiguration configuration)
         {
-            builder.Services.AddMvc(options =>
-            {
-                options.MaxModelBindingRecursionDepth = 64;
-            });
+            services.AddDbContext<ApplicationDbContext>(options =>
+                    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-            builder.Services.AddSession();
+            services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = false)
+                    .AddRoles<IdentityRole>()
+                    .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            builder.Services.AddIdentity<User, IdentityRole>();
+            services.AddRazorPages();
 
-            builder.Services.AddControllersWithViews();
+            services.AddSession();
 
-            builder.Services.AddSwaggerGen();
+            services.AddControllersWithViews();
 
-            //builder.Services.AddScoped<ISqlDataAccess, SqlDataAccess>();
-            //builder.Services.AddScoped<IUserData, UserData>();
-            //builder.Services.AddScoped<IItemsService, ItemsService>();
-            //builder.Services.AddScoped<IProfileService, ProfileService>();
-            //builder.Services.AddScoped<IUserService, UserService>();
-            builder.Services.AddScoped<ILoginService, LoginService>();
-            //builder.Services.AddScoped<IRoleService, RoleService>();
+            services.AddSwaggerGen();
 
-            builder.Services.ConfigureApplicationCookie(options =>
+            services.AddScoped<ISqlDataAccess, SqlDataAccess>()
+                    .AddScoped<IUserData, UserData>();
+
+            services.AddScoped<IItemsRepository, ItemsRepository>()
+                    .AddScoped<IItemsService, ItemsService>();
+
+            services.AddScoped<IProfileService, ProfileService>()
+                    .AddScoped<IUserService, UserService>()
+                    .AddScoped<ILoginService, LoginService>()
+                    .AddScoped<IRoleService, RoleService>();
+
+            services.ConfigureApplicationCookie(options =>
             {
                 options.AccessDeniedPath = new PathString("/Home/AccessDenied");
             });
 
-            builder.Services.AddHttpContextAccessor();
+            services.AddHttpContextAccessor();
         }
     }
 }
