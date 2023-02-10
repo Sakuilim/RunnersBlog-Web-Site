@@ -12,7 +12,7 @@ namespace RunnersBlogMVC
             // Add services to the container.
             ConfigurationManager configuration = builder.Configuration;
 
-            ServiceCollections.SetupCollection(builder);
+            ServiceCollections.SetupCollection(builder.Services, configuration);
 
             var app = builder.Build();
 
