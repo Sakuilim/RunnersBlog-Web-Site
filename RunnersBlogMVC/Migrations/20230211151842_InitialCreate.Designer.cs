@@ -12,7 +12,7 @@ using RunnersBlogMVC.Data;
 namespace RunnersBlogMVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230210085102_InitialCreate")]
+    [Migration("20230211151842_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

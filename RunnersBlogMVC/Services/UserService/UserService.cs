@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using DataAccessLayer.Models;
 using System.Diagnostics.CodeAnalysis;
+using DataAccessLayer.DTO;
+using DataAccessLayer.Models.Items;
 
 namespace RunnersBlogMVC.Services.UserService
 {
@@ -18,11 +20,8 @@ namespace RunnersBlogMVC.Services.UserService
         {
             if (ModelState.IsValid)
             {
-                User appUser = new()
-                {
-                    Name = user.Name,
-                    Email = user.Email
-                };
+                user.UserName = user.Name;
+
                 var checkIfUserExists = await userManager.FindByEmailAsync(user.Email);
 
                 if (checkIfUserExists != null)
@@ -31,9 +30,9 @@ namespace RunnersBlogMVC.Services.UserService
                 }
 
 
-                IdentityResult result = await userManager.CreateAsync(appUser, user.Password);
+                IdentityResult result = await userManager.CreateAsync(user, user.Password);
 
-                appUser.SecurityStamp = Guid.NewGuid().ToString();
+                user.SecurityStamp = Guid.NewGuid().ToString();
 
                 bool userRoleExists = await roleManager.RoleExistsAsync("User");
                 if (!userRoleExists)
@@ -41,7 +40,7 @@ namespace RunnersBlogMVC.Services.UserService
                     await roleManager.CreateAsync(new IdentityRole() { Name = "User" });
                 }
 
-                await userManager.AddToRoleAsync(appUser, UserRole.User.ToString());
+                await userManager.AddToRoleAsync(user, UserRole.User.ToString());
 
                 if (result.Succeeded)
                 {
