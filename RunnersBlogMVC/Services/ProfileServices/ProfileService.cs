@@ -22,7 +22,7 @@ namespace RunnersBlogMVC.Services.ProfileServices
 
             var currentUser = await userManager.FindByEmailAsync(email);
 
-            var filteredItems = items.Where(x => x.ReservedBy == currentUser?.UserId);
+            var filteredItems = items.Where(x => x.ReservedBy == currentUser?.Id);
 
             filteredItems = filteredItems.Where(x => x.ItemAvailabilityStatus == ItemStatus.Sold.ToString());
 

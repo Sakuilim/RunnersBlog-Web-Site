@@ -20,7 +20,6 @@ namespace RunnersBlogMVC.Services.UserService
         {
             if (ModelState.IsValid)
             {
-                user.UserName = user.Name;
 
                 var checkIfUserExists = await userManager.FindByEmailAsync(user.Email);
 
@@ -29,10 +28,7 @@ namespace RunnersBlogMVC.Services.UserService
                     ModelState.AddModelError("Error", errorMessage: "This email already exists");
                 }
 
-
-                IdentityResult result = await userManager.CreateAsync(user, user.Password);
-
-                user.SecurityStamp = Guid.NewGuid().ToString();
+                IdentityResult result = await userManager.CreateAsync(user);
 
                 bool userRoleExists = await roleManager.RoleExistsAsync("User");
                 if (!userRoleExists)

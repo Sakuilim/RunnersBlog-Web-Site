@@ -21,9 +21,9 @@ namespace DataAccessLayer.UnitTests.UserDataTests
             var sut = GetSut();
             var fakeUser = new User
             {
-                UserId = 123,
+                Id = "123",
                 Email = "email@email.com",
-                Name = "test2"
+                UserName = "test2"
             };
             var fakeEnumerable = new List<User>
             {
@@ -64,9 +64,9 @@ namespace DataAccessLayer.UnitTests.UserDataTests
             var sut = GetSut();
             var fakeUser = new User
             {
-                UserId = 123,
+                Id = "123",
                 Email = "email@email.com",
-                Name = "test2"
+                UserName = "test2"
             };
             var fakeEnumerable = new List<User>
             {
@@ -81,7 +81,7 @@ namespace DataAccessLayer.UnitTests.UserDataTests
             .ReturnsAsync(fakeEnumerable);
 
             //Act
-            var result = await sut.GetUser(fakeUser.UserId);
+            var result = await sut.GetUser(fakeUser.Id);
             //Assert
             result.Should().NotBeNull();
             result.Should().Be(fakeUser);
@@ -95,7 +95,7 @@ namespace DataAccessLayer.UnitTests.UserDataTests
             var fakeUser = new User();
 
             //Act
-            var result = await sut.GetUser(fakeUser.UserId);
+            var result = await sut.GetUser(fakeUser.Id);
 
             //Assert
             result.Should().BeNull();
@@ -108,9 +108,9 @@ namespace DataAccessLayer.UnitTests.UserDataTests
             var sut = GetSut();
             var fakeUser = new User
             {
-                UserId = 123,
+                Id = "123",
                 Email = "email@email.com",
-                Name = "test2"
+                UserName = "test2"
             };
 
             //Act
@@ -149,9 +149,9 @@ namespace DataAccessLayer.UnitTests.UserDataTests
             var sut = GetSut();
             var fakeUser = new User
             {
-                UserId = 123,
+                Id = "123",
                 Email = "email@email.com",
-                Name = "test2"
+                UserName = "test2"
             };
 
             //Act
@@ -172,13 +172,13 @@ namespace DataAccessLayer.UnitTests.UserDataTests
             var sut = GetSut();
             var fakeUser = new User
             {
-                UserId = 123,
+                Id = "123",
                 Email = "email@email.com",
-                Name = "test2"
+                UserName = "test2"
             };
 
             //Act
-            await sut.DeleteUser(fakeUser.UserId);
+            await sut.DeleteUser(fakeUser.Id);
 
             //Assert
             mockSqlDataAccess.Verify(x => x.SaveData(
@@ -196,7 +196,7 @@ namespace DataAccessLayer.UnitTests.UserDataTests
             var fakeUser = new User();
 
             //Act
-            await sut.DeleteUser(fakeUser.UserId);
+            await sut.DeleteUser(fakeUser.Id);
 
             //Assert
             mockSqlDataAccess.Verify(x => x.SaveData(

@@ -17,7 +17,7 @@ public class UserData : IUserData
         "dbo.usp_UserGetAll",
         new { });
 
-    public async Task<User?> GetUser(int id)
+    public async Task<User?> GetUser(string id)
     {
         var results = await _db.LoadData<User, dynamic>(
             "dbo.usp_UserGet",
@@ -28,14 +28,14 @@ public class UserData : IUserData
     public Task InsertUser(User user)
     => _db.SaveData(
             "dbo.usp_UserInsert",
-            new { user.Name, user.Email, user.Password, user.Role });
+            new { user.UserName, user.Email, user.Password, user.Role });
 
     public Task UpdateUser(User user) 
     => _db.SaveData(
             "dbo.usp_UserUpdate",
             user);
 
-    public Task DeleteUser(int id) 
+    public Task DeleteUser(string id) 
     => _db.SaveData("dbo.usp_UserDelete",
             new { Id = id });
 

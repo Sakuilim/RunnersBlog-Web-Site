@@ -28,7 +28,7 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             var user = new User
             {
                 Email = "email@email.com",
-                Name = "test2"
+                UserName = "test2"
             };
 
             var sut = GetSut();
@@ -48,7 +48,7 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             var user = new User
             {
                 Email = "email@email.com",
-                Name = "test2"
+                UserName = "test2"
             };
 
             mockUserManager.Setup(x => x
@@ -73,7 +73,7 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             var user = new User
             {
                 Email = "email@email.com",
-                Name = "test2",
+                UserName = "test2",
                 Password= "password"
             };
 

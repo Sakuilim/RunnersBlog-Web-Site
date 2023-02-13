@@ -11,5 +11,5 @@ public record Item
     public DateTimeOffset CreatedDate { get; init; }
     public string CreatedBy { get; init; }
     public string ItemAvailabilityStatus { get; set; } = ItemStatus.Available.ToString();
-    public int ReservedBy { get; set; }
+    public string ReservedBy { get; set; }
 }

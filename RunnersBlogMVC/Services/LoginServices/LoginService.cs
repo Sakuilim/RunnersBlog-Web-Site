@@ -24,7 +24,8 @@ namespace RunnersBlogMVC.Services.LoginServices
                 User appUser = await _userManager.FindByEmailAsync(loginViewModel.Email);
                 if (appUser != null)
                 {
-                    Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(appUser, loginViewModel.Password, false, false);
+                    var result = await _signInManager.PasswordSignInAsync(appUser.UserName, loginViewModel.Password, false, lockoutOnFailure: false);
+
                     if (result.Succeeded)
                     {
                         return RedirectToAction("Index", "Home");

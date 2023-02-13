@@ -27,7 +27,7 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             var user = new User
             {
                 Email = "email@email.com",
-                Name = "test2"
+                UserName = "test2"
             };
             var role = UserRole.User;
 
@@ -52,7 +52,7 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             var user = new User
             {
                 Email = "email@email.com",
-                Name = "test2"
+                UserName = "test2"
             };
             var role = UserRole.User;
 
@@ -83,7 +83,7 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             var user = new User
             {
                 Email = "email@email.com",
-                Name = "test2"
+                UserName = "test2"
             };
             var role = UserRole.User;
 
