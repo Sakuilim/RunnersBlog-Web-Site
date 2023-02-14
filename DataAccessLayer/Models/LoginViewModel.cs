@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 
@@ -11,5 +12,6 @@ public class LoginViewModel
     public string? Email { get; set; }
 
     [Required]
+    [PasswordPropertyText]
     public string? Password { get; set; }
 }

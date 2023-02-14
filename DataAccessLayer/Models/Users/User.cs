@@ -8,6 +8,7 @@ namespace DataAccessLayer.Models
     {
         [EnumDataType(typeof(UserRole))]
         public string Role { get; set; } = UserRole.User.ToString();
+        [NotMapped]
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }

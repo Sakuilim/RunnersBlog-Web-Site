@@ -12,7 +12,7 @@ using RunnersBlogMVC.Data;
 namespace RunnersBlogMVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230213163218_InitialCreate")]
+    [Migration("20230214192737_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -57,10 +57,6 @@ namespace RunnersBlogMVC.Migrations
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
