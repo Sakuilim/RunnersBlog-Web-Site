@@ -28,7 +28,7 @@ namespace RunnersBlogMVC.Services.UserService
                     ModelState.AddModelError("Error", errorMessage: "This email already exists");
                 }
 
-                IdentityResult result = await userManager.CreateAsync(user);
+                IdentityResult result = await userManager.CreateAsync(user, user.Password);
 
                 bool userRoleExists = await roleManager.RoleExistsAsync("User");
                 if (!userRoleExists)
