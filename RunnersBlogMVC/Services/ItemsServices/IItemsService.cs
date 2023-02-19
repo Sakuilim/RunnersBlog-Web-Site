@@ -11,7 +11,7 @@ namespace RunnersBlogMVC.Services.ItemsServices
         public Task<IActionResult> GetAllAsync(CancellationToken cancellationToken);
         public Task<ActionResult<Item>> GetByIdAsync(Guid id, CancellationToken cancellationToken);
         public Task<IActionResult> UpdateByIdAsync(Guid id, ItemDto itemDto, CancellationToken cancellationToken);
-        public Task<IActionResult> MiddlePage(Guid id, CancellationToken cancellationToken);
+        public Task<IActionResult> MiddlePageAsync(Guid id, CancellationToken cancellationToken);
         public Task<IActionResult> GetOrderedItemsAsync(string orderedBy, CancellationToken cancellationToken);
         public Task<IActionResult> ReserveItemAsync(string email, Guid id, CancellationToken cancellationToken);
         public Task<IActionResult> ReservedItemsListAsync(string email, CancellationToken cancellationToken);

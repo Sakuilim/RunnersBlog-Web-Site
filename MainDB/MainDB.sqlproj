@@ -60,14 +60,15 @@
     <Folder Include="dbo\StoredProcedures" />
     <Folder Include="dbo\Functions" />
     <Folder Include="dbo\Tables" />
+    <Folder Include="dbo\StoredProcedures\ItemQueries" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="dbo\Tables\User.sql" />
-    <Build Include="dbo\StoredProcedures\usp_UserGetAll.sql" />
-    <Build Include="dbo\StoredProcedures\usp_UserGet.sql" />
-    <Build Include="dbo\StoredProcedures\usp_UserDelete.sql" />
-    <Build Include="dbo\StoredProcedures\usp_UserInsert.sql" />
-    <Build Include="dbo\StoredProcedures\usp_UserUpdate.sql" />
+    <Build Include="dbo\StoredProcedures\ItemQueries\usp_ItemDelete.sql" />
+    <Build Include="dbo\StoredProcedures\ItemQueries\usp_ItemGet.sql" />
+    <Build Include="dbo\StoredProcedures\ItemQueries\usp_ItemGetAll.sql" />
+    <Build Include="dbo\StoredProcedures\ItemQueries\usp_ItemInsert.sql" />
+    <Build Include="dbo\StoredProcedures\ItemQueries\usp_ItemUpdate.sql" />
+    <Build Include="dbo\Tables\Item.sql" />
   </ItemGroup>
   <Import Condition="'$(NetCoreBuild)' == 'true'" Project="$(NETCoreTargetsPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
@@ -81,5 +82,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="MainDB.publish.xml" />
+    <None Include="MainDB_1.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="MainDB.refactorlog" />
   </ItemGroup>
 </Project>

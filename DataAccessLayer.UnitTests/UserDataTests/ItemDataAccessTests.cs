@@ -1,5 +1,6 @@
 using DataAccessLayer.Data;
 using DataAccessLayer.Models;
+using DataAccessLayer.Models.Items;
 using DataAccessLayer.Repositories.DataAccess;
 using FluentAssertions;
 using Moq;
@@ -7,10 +8,10 @@ using Xunit;
 
 namespace DataAccessLayer.UnitTests.UserDataTests
 {
-    public class UserDataAccessTests
+    public class ItemDataAccessTests
     {
         private readonly Mock<ISqlDataAccess> mockSqlDataAccess;
-        public UserDataAccessTests()
+        public ItemDataAccessTests()
         {
             mockSqlDataAccess = new Mock<ISqlDataAccess>();
         }
@@ -19,26 +20,24 @@ namespace DataAccessLayer.UnitTests.UserDataTests
         {
             //Arrange
             var sut = GetSut();
-            var fakeUser = new User
+            var fakeUser = new Item
             {
-                Id = "123",
-                Email = "email@email.com",
-                UserName = "test2"
+                Id = Guid.NewGuid()
             };
-            var fakeEnumerable = new List<User>
+            var fakeEnumerable = new List<Item>
             {
                 fakeUser
             };
 
             mockSqlDataAccess.Setup(x => x
-            .LoadData<User, dynamic>(
+            .LoadData<Item, dynamic>(
                 It.IsAny<string>(),
                 It.IsAny<object>(),
                 It.IsAny<string>()))
             .ReturnsAsync(fakeEnumerable);
 
             //Act
-            var result = await sut.GetUsers();
+            var result = await sut.GetItems();
             //Assert
             result.Should().NotBeNull();
             result.First().Should().Be(fakeUser);
@@ -51,7 +50,7 @@ namespace DataAccessLayer.UnitTests.UserDataTests
             var sut = GetSut();
 
             //Act
-            var result = await sut.GetUsers();
+            var result = await sut.GetItems();
 
             //Assert
             result.Should().BeEmpty();
@@ -62,26 +61,24 @@ namespace DataAccessLayer.UnitTests.UserDataTests
         {
             //Arrange
             var sut = GetSut();
-            var fakeUser = new User
+            var fakeUser = new Item
             {
-                Id = "123",
-                Email = "email@email.com",
-                UserName = "test2"
+                Id = Guid.NewGuid(),
             };
-            var fakeEnumerable = new List<User>
+            var fakeEnumerable = new List<Item>
             {
                 fakeUser
             };
 
             mockSqlDataAccess.Setup(x => x
-            .LoadData<User, dynamic>(
+            .LoadData<Item, dynamic>(
                 It.IsAny<string>(),
                 It.IsAny<object>(),
                 It.IsAny<string>()))
             .ReturnsAsync(fakeEnumerable);
 
             //Act
-            var result = await sut.GetUser(fakeUser.Id);
+            var result = await sut.GetItem(fakeUser.Id);
             //Assert
             result.Should().NotBeNull();
             result.Should().Be(fakeUser);
@@ -92,10 +89,10 @@ namespace DataAccessLayer.UnitTests.UserDataTests
         {
             //Arrange
             var sut = GetSut();
-            var fakeUser = new User();
+            var fakeItem = new Item();
 
             //Act
-            var result = await sut.GetUser(fakeUser.Id);
+            var result = await sut.GetItem(fakeItem.Id);
 
             //Assert
             result.Should().BeNull();
@@ -106,15 +103,13 @@ namespace DataAccessLayer.UnitTests.UserDataTests
         {
             //Arrange
             var sut = GetSut();
-            var fakeUser = new User
+            var fakeUser = new Item
             {
-                Id = "123",
-                Email = "email@email.com",
-                UserName = "test2"
+                Id = Guid.NewGuid()
             };
 
             //Act
-            await sut.InsertUser(fakeUser);
+            await sut.InsertItem(fakeUser);
 
             //Assert
             mockSqlDataAccess.Verify(x => x.SaveData(
@@ -129,10 +124,10 @@ namespace DataAccessLayer.UnitTests.UserDataTests
         {
             //Arrange
             var sut = GetSut();
-            var fakeUser = new User();
+            var fakeItem = new Item();
 
             //Act
-            await sut.InsertUser(fakeUser);
+            await sut.InsertItem(fakeItem);
 
             //Assert
             mockSqlDataAccess.Verify(x => x.SaveData(
@@ -147,20 +142,18 @@ namespace DataAccessLayer.UnitTests.UserDataTests
         {
             //Arrange
             var sut = GetSut();
-            var fakeUser = new User
+            var fakeItem = new Item
             {
-                Id = "123",
-                Email = "email@email.com",
-                UserName = "test2"
+                Id = Guid.NewGuid()
             };
 
             //Act
-            await sut.UpdateUser(fakeUser);
+            await sut.UpdateItem(fakeItem);
 
             //Assert
             mockSqlDataAccess.Verify(x => x.SaveData(
                 It.IsAny<string>(),
-                fakeUser,
+                fakeItem,
                 It.IsAny<string>()),
                 Times.Once);
 
@@ -170,15 +163,13 @@ namespace DataAccessLayer.UnitTests.UserDataTests
         {
             //Arrange
             var sut = GetSut();
-            var fakeUser = new User
+            var fakeItem = new Item
             {
-                Id = "123",
-                Email = "email@email.com",
-                UserName = "test2"
+                Id = Guid.NewGuid()
             };
 
             //Act
-            await sut.DeleteUser(fakeUser.Id);
+            await sut.DeleteItem(fakeItem.Id);
 
             //Assert
             mockSqlDataAccess.Verify(x => x.SaveData(
@@ -193,10 +184,10 @@ namespace DataAccessLayer.UnitTests.UserDataTests
         {
             //Arrange
             var sut = GetSut();
-            var fakeUser = new User();
+            var fakeItem = new Item();
 
             //Act
-            await sut.DeleteUser(fakeUser.Id);
+            await sut.DeleteItem(fakeItem.Id);
 
             //Assert
             mockSqlDataAccess.Verify(x => x.SaveData(
@@ -207,7 +198,7 @@ namespace DataAccessLayer.UnitTests.UserDataTests
 
         }
 
-        public UserData GetSut()
+        public ItemsData GetSut()
             => new(mockSqlDataAccess.Object);
     }
 }

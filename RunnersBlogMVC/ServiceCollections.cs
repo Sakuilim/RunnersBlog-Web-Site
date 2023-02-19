@@ -20,7 +20,7 @@ namespace RunnersBlogMVC
         public static void SetupCollection(IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                    options.UseSqlServer(configuration.GetConnectionString("IdentityDBConnection")));
+                    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = false)
                     .AddRoles<IdentityRole>()
@@ -35,10 +35,9 @@ namespace RunnersBlogMVC
             services.AddSwaggerGen();
 
             services.AddScoped<ISqlDataAccess, SqlDataAccess>()
-                    .AddScoped<IUserData, UserData>();
+                    .AddScoped<IItemsData, ItemsData>();
 
-            services.AddScoped<IItemsRepository, ItemsRepository>()
-                    .AddScoped<IItemsService, ItemsService>();
+            services.AddScoped<IItemsService, ItemsService>();
 
             services.AddScoped<IProfileService, ProfileService>()
                     .AddScoped<IUserService, UserService>()

@@ -4,21 +4,22 @@ using DataAccessLayer.Models;
 using DataAccessLayer.Models.Enums;
 using DataAccessLayer.Repositories;
 using DataAccessLayer.Models.Items;
+using DataAccessLayer.Data;
 
 namespace RunnersBlogMVC.Services.ProfileServices
 {
     public class ProfileService : Controller, IProfileService
     {
-        private readonly IItemsRepository repo;
+        private readonly IItemsData repo;
         private readonly UserManager<User> userManager;
-        public ProfileService(IItemsRepository repo, UserManager<User> userManager)
+        public ProfileService(IItemsData repo, UserManager<User> userManager)
         {
             this.repo = repo;
             this.userManager = userManager;
         }
         public async Task<IActionResult> UserProfileAsync(string email, CancellationToken cancellationToken)
         {
-            var items = await repo.GetItemsAsync(cancellationToken);
+            var items = await repo.GetItems();
 
             var currentUser = await userManager.FindByEmailAsync(email);
 

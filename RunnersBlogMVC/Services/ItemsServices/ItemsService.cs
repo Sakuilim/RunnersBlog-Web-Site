@@ -6,14 +6,15 @@ using DataAccessLayer.Repositories;
 using DataAccessLayer.Models.Items;
 using DataAccessLayer.Models;
 using RunnersBlogMVC.Services.ItemsServices;
+using DataAccessLayer.Data;
 
 namespace RunnersBlogMVC.Services.ItemsServices
 {
     public class ItemsService : Controller, IItemsService
     {
-        private readonly IItemsRepository repo;
+        private readonly IItemsData repo;
         private readonly UserManager<User> userManager;
-        public ItemsService(IItemsRepository repo, UserManager<User> userManager)
+        public ItemsService(IItemsData repo, UserManager<User> userManager)
         {
             this.repo = repo;
             this.userManager = userManager;
@@ -24,32 +25,32 @@ namespace RunnersBlogMVC.Services.ItemsServices
             var currentUser = await userManager.FindByEmailAsync(email);
             Item item = new()
             {
-                Id = 123,
+                Id = Guid.NewGuid(),
                 Name = itemDto.Name,
                 Price = itemDto.Price,
                 CreatedDate = DateTimeOffset.UtcNow,
                 CreatedBy = currentUser?.UserName
             };
-            await repo.CreateItemAsync(item, cancellationToken);
+            await repo.InsertItem(item);
 
             return RedirectToAction("GetAllItems", new RouteValueDictionary(new { Controller = "Items", Action = "GetAllItems" }));
         }
 
         public async Task<ActionResult<Item>> DeleteByIdAsync(Guid id, CancellationToken cancellationToken)
         {
-            var existingItem = await repo.GetItemAsync(id, cancellationToken);
+            var existingItem = await repo.GetItem(id);
             if (existingItem is null)
             {
                 return NotFound();
             }
 
-            await repo.DeleteItemAsync(id, cancellationToken);
+            await repo.DeleteItem(id);
             return RedirectToAction("GetAllItems", new RouteValueDictionary(new { Controller = "Items", Action = "GetAllItems" }));
         }
 
         public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken)
         {
-            var items = await repo.GetItemsAsync(cancellationToken);
+            var items = await repo.GetItems();
 
             ViewBag.Items = items ?? new List<Item>();
             return View("GetItems");
@@ -57,7 +58,7 @@ namespace RunnersBlogMVC.Services.ItemsServices
 
         public async Task<ActionResult<Item>> GetByIdAsync(Guid id, CancellationToken cancellationToken)
         {
-            var item = await repo.GetItemAsync(id, cancellationToken);
+            var item = await repo.GetItem(id);
 
             if (item is null)
             {
@@ -68,7 +69,7 @@ namespace RunnersBlogMVC.Services.ItemsServices
 
         public async Task<IActionResult> UpdateByIdAsync(Guid id, ItemDto itemDto, CancellationToken cancellationToken)
         {
-            var existingItem = await repo.GetItemAsync(id, cancellationToken);
+            var existingItem = await repo.GetItem(id);
             if (existingItem is null)
             {
                 return NotFound();
@@ -82,18 +83,18 @@ namespace RunnersBlogMVC.Services.ItemsServices
                 ItemAvailabilityStatus = itemDto.ItemAvailabilityStatus.ToString()
             };
 
-            await repo.UpdateItemAsync(updatedItem, cancellationToken);
+            await repo.UpdateItem(updatedItem);
             return RedirectToAction("GetAllItems", new RouteValueDictionary(new { Controller = "Items", Action = "GetAllItems" }));
         }
-        public async Task<IActionResult> MiddlePage(Guid id, CancellationToken cancellationToken)
+        public async Task<IActionResult> MiddlePageAsync(Guid id, CancellationToken cancellationToken)
         {
-            var item = await repo.GetItemAsync(id, cancellationToken);
+            var item = await repo.GetItem(id);
 
             return View(item);
         }
         public async Task<IActionResult> GetOrderedItemsAsync(string orderedBy, CancellationToken cancellationToken)
         {
-            var items = await repo.GetItemsAsync(cancellationToken);
+            var items = await repo.GetItems();
 
             items = items.OrderBy(x => x.Price).ToList();
 
@@ -104,8 +105,8 @@ namespace RunnersBlogMVC.Services.ItemsServices
         {
             var currentUser = await userManager.FindByEmailAsync(email);
 
-            var items = await repo.GetItemsAsync(cancellationToken);
-            var existingItem = await repo.GetItemAsync(id, cancellationToken);
+            var items = await repo.GetItems();
+            var existingItem = await repo.GetItem(id);
 
             existingItem.ItemAvailabilityStatus = ItemStatus.Reserved.ToString();
             existingItem.ReservedBy = currentUser.Id;
@@ -116,7 +117,7 @@ namespace RunnersBlogMVC.Services.ItemsServices
                 ReservedBy = currentUser.Id
             };
 
-            await repo.UpdateItemAsync(updatedItem, cancellationToken);
+            await repo.UpdateItem(updatedItem);
 
             ViewBag.Items = items;
 
@@ -124,7 +125,7 @@ namespace RunnersBlogMVC.Services.ItemsServices
         }
         public async Task<IActionResult> ReservedItemsListAsync(string email, CancellationToken cancellationToken)
         {
-            var items = await repo.GetItemsAsync(cancellationToken);
+            var items = await repo.GetItems();
 
             var currentUser = await userManager.FindByEmailAsync(email);
 
@@ -137,11 +138,11 @@ namespace RunnersBlogMVC.Services.ItemsServices
         {
             var currentUser = await userManager.FindByEmailAsync(email);
 
-            var items = await repo.GetItemsAsync(cancellationToken);
+            var items = await repo.GetItems();
 
             var filteredItems = items.Where(x => x.ReservedBy == currentUser.Id);
 
-            var existingItem = await repo.GetItemAsync(id, cancellationToken);
+            var existingItem = await repo.GetItem(id);
 
             if (existingItem is null)
             {
@@ -154,7 +155,7 @@ namespace RunnersBlogMVC.Services.ItemsServices
                 ReservedBy = "-1"
             };
 
-            await repo.UpdateItemAsync(updatedItem, cancellationToken);
+            await repo.UpdateItem(updatedItem);
 
             ViewBag.Items = filteredItems;
 
@@ -164,11 +165,11 @@ namespace RunnersBlogMVC.Services.ItemsServices
         {
             var currentUser = await userManager.FindByEmailAsync(email);
 
-            var items = await repo.GetItemsAsync(cancellationToken);
+            var items = await repo.GetItems();
 
             var filteredItems = items.Where(x => x.ReservedBy == currentUser.Id);
 
-            var existingItem = await repo.GetItemAsync(id, cancellationToken);
+            var existingItem = await repo.GetItem(id);
 
             if (existingItem is null)
             {
@@ -180,7 +181,7 @@ namespace RunnersBlogMVC.Services.ItemsServices
                 ItemAvailabilityStatus = ItemStatus.Sold.ToString()
             };
 
-            await repo.UpdateItemAsync(updatedItem, cancellationToken);
+            await repo.UpdateItem(updatedItem);
 
             ViewBag.Items = filteredItems;
 
@@ -188,7 +189,7 @@ namespace RunnersBlogMVC.Services.ItemsServices
         }
         public async Task<IActionResult> SearchItemAsync(string? searchBy, CancellationToken cancellationToken)
         {
-            var items = await repo.GetItemsAsync(cancellationToken);
+            var items = await repo.GetItems();
 
             var filtereditems = items.Where(x => x.Name.Contains(searchBy));
 
