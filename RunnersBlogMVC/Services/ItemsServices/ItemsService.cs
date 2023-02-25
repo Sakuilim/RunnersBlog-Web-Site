@@ -187,7 +187,7 @@ namespace RunnersBlogMVC.Services.ItemsServices
 
             return RedirectToAction("ReservedItemsList", new RouteValueDictionary(new { Controller = "Items", Action = "ReservedItemsList" }));
         }
-        public async Task<IActionResult> SearchItemAsync(string? searchBy, CancellationToken cancellationToken)
+        public async Task<IActionResult> SearchItemAsync(string searchBy, CancellationToken cancellationToken)
         {
             var items = await repo.GetItems();
 

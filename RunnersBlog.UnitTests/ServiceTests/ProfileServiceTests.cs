@@ -6,18 +6,19 @@ using DataAccessLayer.Repositories;
 using System.Threading;
 using Xunit;
 using RunnersBlogMVC.Services.ProfileServices;
+using DataAccessLayer.Data;
 
 namespace RunnersBlogMVC.UnitTests.ServiceTests
 {
     public class ProfileServiceTests
     {
-        private readonly Mock<IItemsRepository> mockRepo;
+        private readonly Mock<IItemsData> mockRepo;
         private readonly Mock<UserManager<User>> mockUserManager;
         public CancellationToken cancellationToken;
         public ProfileServiceTests()
         {
             mockUserManager = new Mock<UserManager<User>>(Mock.Of<IUserStore<User>>(), null, null, null, null, null, null, null, null);
-            this.mockRepo = new Mock<IItemsRepository>();
+            this.mockRepo = new Mock<IItemsData>();
             cancellationToken = new CancellationToken();
 
         }

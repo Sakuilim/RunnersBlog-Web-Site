@@ -4,26 +4,26 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using DataAccessLayer.DTO;
 using DataAccessLayer.Models;
-using DataAccessLayer.Repositories;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 using DataAccessLayer.Models.Items;
 using RunnersBlogMVC.Services.ItemsServices;
+using DataAccessLayer.Data;
 
 namespace RunnersBlogMVC.UnitTests.ServiceTests
 {
     public class ItemsServiceTests
     {
-        private readonly Mock<IItemsRepository> mockItemsRepository;
+        private readonly Mock<IItemsData> mockItemsRepository;
         private readonly Mock<UserManager<User>> mockUserManager;
         public CancellationToken cancellationToken;
         public ItemsServiceTests()
         {
             mockUserManager = new Mock<UserManager<User>>(Mock.Of<IUserStore<User>>(), null, null, null, null, null, null, null, null);
             cancellationToken = new CancellationToken();
-            mockItemsRepository = new Mock<IItemsRepository>();
+            mockItemsRepository = new Mock<IItemsData>();
         }
         [Fact]
         public void WhenItemIsCorrect_CreateAsync_ShouldReturnSuccess()
@@ -74,17 +74,16 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
 
             var sut = GetSut();
 
-            mockItemsRepository.Setup(x => x.GetItemAsync(
-                mockItemId,
-                CancellationToken.None
+            mockItemsRepository.Setup(x => x.GetItem(
+                mockItemId
                 )).ReturnsAsync(new Item());
 
             //Act
 
             var result = sut.DeleteByIdAsync(mockItemId, cancellationToken);
             //Assert
-            mockItemsRepository.Verify(x => x.GetItemAsync(mockItemId,
-                CancellationToken.None), Times.Once);
+            mockItemsRepository.Verify(x => x.GetItem(mockItemId
+                ), Times.Once);
             result.Should().NotBeNull();
             result.Should().BeOfType<Task<ActionResult<Item>>>();
             result.Should().BeAssignableTo<Task>();
@@ -121,11 +120,9 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             //Arrange
             var mockItemId = Guid.NewGuid();
 
-            mockItemsRepository.Setup(x => x
-            .GetItemAsync(
-                mockItemId,
-                cancellationToken))
-            .Returns(Task.FromResult(new Item()));
+            mockItemsRepository.Setup(x => x.GetItem(
+                mockItemId))
+            .ReturnsAsync(new Item());
 
             var sut = GetSut();
 
@@ -133,8 +130,7 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             var result = sut.GetByIdAsync(mockItemId, cancellationToken);
 
             //Assert
-            mockItemsRepository.Verify(x => x.GetItemAsync(mockItemId,
-                cancellationToken), Times.Once);
+            mockItemsRepository.Verify(x => x.GetItem(mockItemId), Times.Once);
             result.Should().NotBeNull();
             result.Should().BeOfType<Task<ActionResult<Item>>>();
             result.Should().BeAssignableTo<Task>();
@@ -169,9 +165,8 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
                 Price = 1.00M
             };
 
-            mockItemsRepository.Setup(x => x.GetItemAsync(
-                mockItemId,
-                CancellationToken.None))
+            mockItemsRepository.Setup(x => x.GetItem(
+                mockItemId))
             .ReturnsAsync(new Item());
 
             var sut = GetSut();
@@ -180,8 +175,7 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             var result = sut.UpdateByIdAsync(mockItemId, itemDto, cancellationToken);
 
             //Assert
-            mockItemsRepository.Verify(x => x.GetItemAsync(mockItemId,
-                CancellationToken.None), Times.Once);
+            mockItemsRepository.Verify(x => x.GetItem(mockItemId), Times.Once);
             result.Should().NotBeNull();
             result.Should().BeOfType<Task<IActionResult>>();
             result.Should().BeAssignableTo<Task>();
@@ -195,7 +189,7 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             var sut = GetSut();
 
             //Act
-            var result = sut.MiddlePage(mockId, CancellationToken.None);
+            var result = sut.MiddlePageAsync(mockId, CancellationToken.None);
 
             //Assert
             result.Should().NotBeNull();

@@ -16,7 +16,7 @@ public class ItemsData : IItemsData
     => await _db.LoadData<Item, dynamic>(
         "dbo.usp_ItemGetAll",
         new { });
-    public async Task<Item?> GetItem(Guid id)
+    public async Task<Item> GetItem(Guid id)
     {
         var results = await _db.LoadData<Item, dynamic>(
             "dbo.usp_ItemGet",

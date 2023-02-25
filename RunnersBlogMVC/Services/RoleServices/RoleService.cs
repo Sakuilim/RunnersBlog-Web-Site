@@ -22,13 +22,11 @@ namespace RunnersBlogMVC.Services.RoleServices
                 return View();
             }
 
-            User? existingAppUser = await userManager.FindByEmailAsync(email);
+            User existingAppUser = await userManager.FindByEmailAsync(email);
             if (existingAppUser == null)
             {
                 return View();
             }
-
-            existingAppUser.Role = null;
 
             bool userRoleExists = await roleManager.RoleExistsAsync(userRole.ToString());
             if (!userRoleExists)

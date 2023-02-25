@@ -53,7 +53,8 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
 
             mockUserManager.Setup(x => x
             .CreateAsync(
-                It.IsAny<User>()))
+                It.IsAny<User>(),
+                user.Password))
             .Returns(Task.FromResult(IdentityResult.Success));
 
             var sut = GetSut();
@@ -78,7 +79,8 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
 
             mockUserManager.Setup(x => x
             .CreateAsync(
-                It.IsAny<User>()))
+                It.IsAny<User>(),
+                user.Password))
             .Returns(Task.FromResult(IdentityResult.Failed(new IdentityError
             { 
                 Code = "errorCode",
