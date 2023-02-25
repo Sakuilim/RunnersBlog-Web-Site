@@ -11,6 +11,7 @@ using Xunit;
 using DataAccessLayer.Models.Items;
 using RunnersBlogMVC.Services.ItemsServices;
 using DataAccessLayer.Data;
+using System.Collections.Generic;
 
 namespace RunnersBlogMVC.UnitTests.ServiceTests
 {
@@ -220,6 +221,14 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
                 It.IsAny<string>()))
             .ReturnsAsync(new User());
 
+            mockItemsRepository.Setup(x => x
+                .GetItems())
+            .ReturnsAsync(new List<Item>());
+
+            mockItemsRepository.Setup(x => x
+                .GetItem(mockGuid))
+            .ReturnsAsync(new Item());
+
             var sut = GetSut();
 
             //Act
@@ -232,7 +241,7 @@ namespace RunnersBlogMVC.UnitTests.ServiceTests
             result.Should().BeAssignableTo<Task>();
         }
         [Fact]
-        public void ReservedItemsList()
+        public void ReservedItemsList_Should_ReturnReservedItemsList()
         {
             //Arrange
             var email = "test@test.com";

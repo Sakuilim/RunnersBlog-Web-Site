@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "..\DataA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer.UnitTests", "..\DataAccessLayer.UnitTests\DataAccessLayer.UnitTests.csproj", "{69383E50-B28C-4583-9CB4-E422BB716706}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{847C1658-80A1-437D-BB51-6A04EB6B011A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RunnersBlogMVC.UnitTests", "RunnersBlogMVC.UnitTests", "{847C1658-80A1-437D-BB51-6A04EB6B011A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{B5781D70-781F-4417-9F53-43BF3C8F341B}"
 EndProject
