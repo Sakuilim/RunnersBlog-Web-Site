@@ -1,41 +1,29 @@
-﻿using Dapper;
-using Microsoft.Data.SqlClient;
+﻿using DataAccessLayer.Wrappers;
 using Microsoft.Extensions.Configuration;
-using System.Data;
 
 namespace DataAccessLayer.Repositories.DataAccess;
 
 public class SqlDataAccess : ISqlDataAccess
 {
     private readonly IConfiguration _configuration;
-    public SqlDataAccess(IConfiguration configuration)
+    private readonly ISqlConnectionWrapper _sqlConnectionWrapper;
+    public SqlDataAccess(IConfiguration configuration, ISqlConnectionWrapper sqlConnectionWrapper)
     {
         _configuration = configuration;
+        _sqlConnectionWrapper = sqlConnectionWrapper;
     }
 
-    public async Task<IEnumerable<T>> LoadData<T, U>(
+    public async Task<IEnumerable<T>> LoadData<T>(
         string storedProcedure,
-        U parameters,
-        string connectionId = "Default")
+        T parameters)
     {
-        using IDbConnection connection = new SqlConnection(_configuration.GetConnectionString(connectionId));
-
-        return await connection.QueryAsync<T>(
-            storedProcedure,
-            parameters,
-            commandType: CommandType.StoredProcedure);
+        return await _sqlConnectionWrapper.ExecuteReaderSPAsync(storedProcedure, parameters);
     }
 
     public async Task SaveData<T>(
         string storedProcedure,
-        T parameters,
-        string connectionId = "Default")
+        T parameters)
     {
-        using IDbConnection connection = new SqlConnection(_configuration.GetConnectionString(connectionId));
-
-        await connection.ExecuteAsync(
-            storedProcedure,
-            parameters,
-            commandType: CommandType.StoredProcedure);
+        await _sqlConnectionWrapper.ExecuteWriterSPAsync(storedProcedure, parameters);
     }
 }

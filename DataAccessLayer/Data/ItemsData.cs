@@ -13,12 +13,12 @@ public class ItemsData : IItemsData
         _db = db;
     }
     public async Task<IEnumerable<Item>> GetItems()
-    => await _db.LoadData<Item, dynamic>(
+    => await _db.LoadData<Item>(
         "dbo.usp_ItemGetAll",
         new { });
     public async Task<Item> GetItem(Guid id)
     {
-        var results = await _db.LoadData<Item, dynamic>(
+        var results = await _db.LoadData<Item>(
             "dbo.usp_ItemGet",
             new { Id = id });
         return results.FirstOrDefault();

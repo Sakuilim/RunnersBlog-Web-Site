@@ -2,6 +2,7 @@
 using DataAccessLayer.Models.Items;
 using DataAccessLayer.Repositories.DataAccess;
 using FluentAssertions;
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Moq;
 using Moq.Dapper;
@@ -14,8 +15,10 @@ namespace DataAccessLayer.UnitTests.DataAcessTests
     {
         private readonly Mock<IConfiguration> configuration = new Mock<IConfiguration>();
         private readonly Mock<IDbConnection> mockDbConnection;
+        private readonly Mock<SqlConnection> mockSqlConnection;
         public SqlDataAccessTests()
         {
+            mockSqlConnection = new Mock<SqlConnection>();
             configuration.Setup(x => x.GetConnectionString(It.IsAny<string>())).Returns(It.IsAny<string>());
             mockDbConnection = new Mock<IDbConnection>(); 
         }
@@ -29,6 +32,8 @@ namespace DataAccessLayer.UnitTests.DataAcessTests
             {
                 new Item()
             };
+
+            mockSqlConnection.Setup(x => x.)
 
             mockDbConnection.SetupDapperAsync(x => x.QueryAsync<Item>(
                 It.IsAny<string>(),
