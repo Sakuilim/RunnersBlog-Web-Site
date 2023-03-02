@@ -6,13 +6,17 @@ namespace DataAccessLayer.Wrappers
 {
     public class SqlConnectionWrapper : ISqlConnectionWrapper
     {
-        private readonly SqlConnection _connection;
+        private readonly IDbConnection _connection;
 
+        public SqlConnectionWrapper(IDbConnection dbConnection)
+        {
+            _connection = dbConnection;
+        }
         public SqlConnectionWrapper(string connectionString)
         {
             _connection = CreateConnection(connectionString);
         }
-        private SqlConnection CreateConnection(string connectionString)
+        private IDbConnection CreateConnection(string connectionString)
         {
             if (string.IsNullOrEmpty(connectionString))
             {
@@ -22,7 +26,7 @@ namespace DataAccessLayer.Wrappers
             return new SqlConnection(connectionString);
         }
 
-        public async Task ExecuteWriterSPAsync<T>(string storedProcedureName, T parameters)
+        public async Task ExecuteWriterSPAsync<T>(string storedProcedureName)
         {
             if (_connection.State == ConnectionState.Closed)
             {
@@ -31,13 +35,12 @@ namespace DataAccessLayer.Wrappers
 
             await _connection.ExecuteAsync(
                 storedProcedureName,
-                parameters,
                 commandType: CommandType.StoredProcedure);
 
             _connection.Close();
         }
 
-        public async Task<IEnumerable<T>> ExecuteReaderSPAsync<T>(string storedProcedureName, T parameters)
+        public async Task<IEnumerable<T>> ExecuteReaderSPAsync<T>(string storedProcedureName)
         {
             if (_connection.State == ConnectionState.Closed)
             {
@@ -46,7 +49,6 @@ namespace DataAccessLayer.Wrappers
 
             return await _connection.QueryAsync<T>(
                 storedProcedureName,
-                parameters,
                 commandType: CommandType.StoredProcedure);
         }
     }

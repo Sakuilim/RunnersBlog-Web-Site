@@ -14,16 +14,15 @@ public class SqlDataAccess : ISqlDataAccess
     }
 
     public async Task<IEnumerable<T>> LoadData<T>(
-        string storedProcedure,
-        T parameters)
+        string storedProcedure)
     {
-        return await _sqlConnectionWrapper.ExecuteReaderSPAsync(storedProcedure, parameters);
+        var result = await _sqlConnectionWrapper.ExecuteReaderSPAsync<T>(storedProcedure);
+        return result;
     }
 
     public async Task SaveData<T>(
-        string storedProcedure,
-        T parameters)
+        string storedProcedure)
     {
-        await _sqlConnectionWrapper.ExecuteWriterSPAsync(storedProcedure, parameters);
+        await _sqlConnectionWrapper.ExecuteWriterSPAsync<T>(storedProcedure);
     }
 }

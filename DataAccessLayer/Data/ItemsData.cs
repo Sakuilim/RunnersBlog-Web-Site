@@ -14,24 +14,19 @@ public class ItemsData : IItemsData
     }
     public async Task<IEnumerable<Item>> GetItems()
     => await _db.LoadData<Item>(
-        "dbo.usp_ItemGetAll",
-        new { });
+        "dbo.usp_ItemGetAll");
     public async Task<Item> GetItem(Guid id)
     {
         var results = await _db.LoadData<Item>(
-            "dbo.usp_ItemGet",
-            new { Id = id });
+            "dbo.usp_ItemGet");
         return results.FirstOrDefault();
     }
     public async Task InsertItem(Item item)
-    => await _db.SaveData(
-            "dbo.usp_ItemInsert",
-            new { });
+    => await _db.SaveData<Item>(
+            "dbo.usp_ItemInsert");
     public async Task UpdateItem(Item item)
-    => await _db.SaveData(
-            "dbo.usp_ItemUpdate",
-            item);
+    => await _db.SaveData<Item>(
+            "dbo.usp_ItemUpdate");
     public async Task DeleteItem(Guid id)
-    => await _db.SaveData("dbo.usp_ItemDelete",
-            new { Id = id });
+    => await _db.SaveData<Item>("dbo.usp_ItemDelete");
 }

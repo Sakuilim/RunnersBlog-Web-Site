@@ -30,9 +30,7 @@ namespace DataAccessLayer.UnitTests.UserDataTests
             };
 
             mockSqlDataAccess.Setup(x => x
-            .LoadData<Item, dynamic>(
-                It.IsAny<string>(),
-                It.IsAny<object>(),
+            .LoadData<Item>(
                 It.IsAny<string>()))
             .ReturnsAsync(fakeEnumerable);
 
@@ -71,9 +69,7 @@ namespace DataAccessLayer.UnitTests.UserDataTests
             };
 
             mockSqlDataAccess.Setup(x => x
-            .LoadData<Item, dynamic>(
-                It.IsAny<string>(),
-                It.IsAny<object>(),
+            .LoadData<Item>(
                 It.IsAny<string>()))
             .ReturnsAsync(fakeEnumerable);
 
@@ -112,9 +108,7 @@ namespace DataAccessLayer.UnitTests.UserDataTests
             await sut.InsertItem(fakeUser);
 
             //Assert
-            mockSqlDataAccess.Verify(x => x.SaveData(
-                It.IsAny<string>(),
-                It.IsAny<object>(),
+            mockSqlDataAccess.Verify(x => x.SaveData<Item>(
                 It.IsAny<string>()),
                 Times.Once);
 
@@ -130,9 +124,7 @@ namespace DataAccessLayer.UnitTests.UserDataTests
             await sut.InsertItem(fakeItem);
 
             //Assert
-            mockSqlDataAccess.Verify(x => x.SaveData(
-                It.IsAny<string>(),
-                It.IsAny<object>(),
+            mockSqlDataAccess.Verify(x => x.SaveData<Item>(
                 It.IsAny<string>()),
                 Times.Once);
 
@@ -151,9 +143,7 @@ namespace DataAccessLayer.UnitTests.UserDataTests
             await sut.UpdateItem(fakeItem);
 
             //Assert
-            mockSqlDataAccess.Verify(x => x.SaveData(
-                It.IsAny<string>(),
-                fakeItem,
+            mockSqlDataAccess.Verify(x => x.SaveData<Item>(
                 It.IsAny<string>()),
                 Times.Once);
 
@@ -172,10 +162,7 @@ namespace DataAccessLayer.UnitTests.UserDataTests
             await sut.DeleteItem(fakeItem.Id);
 
             //Assert
-            mockSqlDataAccess.Verify(x => x.SaveData(
-                It.IsAny<string>(),
-                It.IsAny<object>(),
-                It.IsAny<string>()),
+            mockSqlDataAccess.Verify(x => x.SaveData<Item>(It.IsAny<string>()),
                 Times.Once);
 
         }
@@ -190,10 +177,7 @@ namespace DataAccessLayer.UnitTests.UserDataTests
             await sut.DeleteItem(fakeItem.Id);
 
             //Assert
-            mockSqlDataAccess.Verify(x => x.SaveData(
-                It.IsAny<string>(),
-                It.IsAny<object>(),
-                It.IsAny<string>()),
+            mockSqlDataAccess.Verify(x => x.SaveData<Item>(It.IsAny<string>()),
                 Times.Once);
 
         }

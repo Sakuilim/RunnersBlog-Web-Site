@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using DataAccessLayer.Models.Items;
 using DataAccessLayer.Repositories.DataAccess;
+using DataAccessLayer.Wrappers;
 using FluentAssertions;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
@@ -13,14 +14,14 @@ namespace DataAccessLayer.UnitTests.DataAcessTests
 {
     public class SqlDataAccessTests
     {
-        private readonly Mock<IConfiguration> configuration = new Mock<IConfiguration>();
+        private readonly Mock<IConfiguration> configuration;
         private readonly Mock<IDbConnection> mockDbConnection;
-        private readonly Mock<SqlConnection> mockSqlConnection;
+        private readonly Mock<ISqlConnectionWrapper> mockSqlConnectionWrapper;
         public SqlDataAccessTests()
         {
-            mockSqlConnection = new Mock<SqlConnection>();
-            configuration.Setup(x => x.GetConnectionString(It.IsAny<string>())).Returns(It.IsAny<string>());
+            configuration = new Mock<IConfiguration>();
             mockDbConnection = new Mock<IDbConnection>(); 
+            mockSqlConnectionWrapper = new Mock<ISqlConnectionWrapper>();
         }
         [Fact]
         public async Task LoadData_Should_ReturnData()
@@ -30,21 +31,17 @@ namespace DataAccessLayer.UnitTests.DataAcessTests
 
             var mockItem = new List<Item>
             {
-                new Item()
+                new Item
+                {
+                    Id = Guid.NewGuid()
+                }
             };
 
-            mockSqlConnection.Setup(x => x.)
-
-            mockDbConnection.SetupDapperAsync(x => x.QueryAsync<Item>(
-                It.IsAny<string>(),
-                It.IsAny<object>(),
-                It.IsAny<IDbTransaction>(),
-                It.IsAny<int?>(),
-                It.IsAny<CommandType?>()))
+            mockSqlConnectionWrapper.Setup(x => x.ExecuteReaderSPAsync<Item>(It.IsAny<string>()))
                 .ReturnsAsync(mockItem);
 
             //Act
-            var result = await sut.LoadData<Item, dynamic>("db.fakeusp", new { });
+            var result = await sut.LoadData<Item>("db.fakeusp");
 
             //Assert
             result.Should().Contain(result);
@@ -62,27 +59,20 @@ namespace DataAccessLayer.UnitTests.DataAcessTests
                 mockItem
             };
 
-            mockDbConnection.SetupDapperAsync(x => x.ExecuteAsync(
-                It.IsAny<string>(),
-                It.IsAny<object>(),
-                It.IsAny<IDbTransaction>(),
-                It.IsAny<int?>(),
-                It.IsAny<CommandType?>()));
+            mockSqlConnectionWrapper.Setup(x => x.ExecuteWriterSPAsync<Item>(It.IsAny<string>()))
+                .Returns(Task.CompletedTask);
 
             //Act
-            await sut.SaveData("db.fakesaveusp", mockItem);
+            await sut.SaveData<Item>("db.fakesaveusp");
 
             //Assert
-            mockDbConnection.Verify(x => x.ExecuteAsync(
-                It.IsAny<string>(),
-                It.IsAny<object>(),
-                It.IsAny<IDbTransaction>(),
-                It.IsAny<int?>(),
-                It.IsAny<CommandType?>()),
+            mockSqlConnectionWrapper.Verify(x => x.ExecuteWriterSPAsync<Item>(
+                It.IsAny<string>()),
                 Times.Once);
         }
         public SqlDataAccess GetSut()
-            => new(configuration.Object);
+            => new(configuration.Object,
+                  mockSqlConnectionWrapper.Object);
     }
 
 }
