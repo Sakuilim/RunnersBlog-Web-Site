@@ -2,10 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using DataAccessLayer.DTO;
 using DataAccessLayer.Models.Enums;
-using DataAccessLayer.Repositories;
 using DataAccessLayer.Models.Items;
 using DataAccessLayer.Models;
-using RunnersBlogMVC.Services.ItemsServices;
 using DataAccessLayer.Data;
 
 namespace RunnersBlogMVC.Services.ItemsServices
